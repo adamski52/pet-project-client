@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<title>Storybook Kennels</title>
+<link href='https://fonts.googleapis.com/css?family=Montserrat%7CRoboto:400,500,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script src="node_modules/es6-shim/es6-shim.min.js"></script>
+<script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+<script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>   
+
+<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+<script src="node_modules/systemjs/dist/system.src.js"></script>
+<script src="node_modules/rxjs/bundles/Rx.js"></script>
+<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+
+<!-- 2. Configure SystemJS -->
+<script>
+  System.config({
+    packages: {        
+      js: {
+        format: 'register',
+        defaultExtension: 'js'
+      }
+    }
+  });
+  System.import('js/main')
+        .then(null, console.error.bind(console));
+</script>
+</head>
+<body>
+<nav>
+    <a class="about icon-paw" href="#about">About</a>
+    <a class="services icon-paw" href="#services">Services</a>
+    <a class="watch icon-paw" href="#watch">Watch</a>
+    <a class="enroll icon-paw" href="#enroll">Enroll</a>
+    <a class="schedule icon-paw" href="#schedule">Schedule</a>
+    <a class="contact icon-paw" href="#contact">Contact</a>
+</nav>
+<header class="section intro" id="intro" name="intro">
+    <!--<p class="contrast">Storybook Kennels</p>
+    <p class="subtle">professional, fun daycare and boarding</p>
+    <p class="highlight">individual attention, group play, special accommodations for illnesses and disabilities</p>
+    <a href="#" class="button">Join now</a>-->
+</header>
+<app></app>
+<div class="collage">
+    <div class="popup"></div>
+    <div class="wrapper" collage></div>
+</div>
+<section class="section about" id="about" name="about">
+    <p style="padding-top: 200px;">
+        <a href="" class="btn icon-paw">Example</a>
+        <a href="" class="btn btn-lg icon-paw">Example longer text</a>
+        <a href="" class="btn btn-sm icon-paw">Example longer text</a>
+    </p>
+</section>
+<div class="collage"></div>
+<section class="section services" id="services" name="services">
+</section>
+<div class="collage"></div>
+<section class="section watch" id="watch" name="watch">
+</section>
+<div class="collage"></div>
+<section class="section schedule" id="schedule" name="schedule">
+</section>
+<div class="collage"></div>
+<section class="section enroll" id="enroll" name="enroll">
+</section>
+<div class="collage"></div>
+<section class="section contact" id="contact" name="contact">
+</section>
+<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2944.3430791116007!2d-83.38243304955127!3d42.44171593783247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1457323062569" frameborder="0"></iframe>
+</body>
+</html>

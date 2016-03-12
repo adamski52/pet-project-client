@@ -1,0 +1,8 @@
+# full of hate
+*.sublime-*
+*.DS_Store
+node_modules/
+*.js
+*.css
+.sass-cache/
+*.map

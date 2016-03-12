@@ -1,0 +1,81 @@
+$default-primary: #edc45b;
+$default-text: #fff;
+$default-contrast: #372d2d;
+$default-subtle: #fff799;
+
+$about-primary: #63d1aa;
+$about-text: #fff;
+$about-contrast: #187856;
+$about-subtle: #acffe2;
+$about-background: url(../images/backgrounds/aslan.png);
+
+$intro-primary: #edc45b;
+$intro-text: #fff;
+$intro-contrast: #372d2d;
+$intro-subtle: #fff799;
+$intro-background: url(../images/backgrounds/pug.png);
+
+$watch-primary: #ffb769;
+$watch-text: #fff;
+$watch-contrast: #a85b00;
+$watch-subtle: #ffe6c8;
+
+$schedule-primary: #a7d163;
+$schedule-text: #fff;
+$schedule-contrast: #60812a;
+$schedule-subtle: #deffa8;
+$schedule-background: url(../images/backgrounds/poof.png);
+
+$enroll-primary: #9ad4e0;
+$enroll-text: #fff;
+$enroll-contrast: #0a5362;
+$enroll-subtle: #def9ff;
+$enroll-background: url(../images/backgrounds/franklin.png);
+
+$contact-primary: #ff6f6f;
+$contact-text: #fff;
+$contact-contrast: #7d3b3b;
+$contact-subtle: #f6dada;
+$contact-background: url(../images/backgrounds/shepherd.png);
+
+$services-primary: #bb9cd7;
+$services-text: #fff;
+$services-contrast: #6f4794;
+$services-subtle: #eedcff;
+$services-background: url(../images/backgrounds/zelda.png);
+
+$base-padding: 20px;
+$small-padding: 12px;
+$map-height: 200px;
+$nav-size: 80px;
+$nav-text-size: .8rem;
+$nav-text-height: 25px;
+$nav-border-size: 3px;
+$nav-shadow-x: 0px;
+$nav-shadow-y: 0px;
+$nav-shadow-blur: 50px;
+
+$glow-small: 10px;
+$glow-medium: 20px;
+$glow-large: 40px;
+
+$duration-short: .3s;
+
+@mixin transition($duration, $delay) {
+    -webkit-transition: all $duration;
+    transition: all $duration;
+    -webkit-transition-delay: $delay;
+    transition-delay: $delay;
+}
+
+@mixin glow($amt, $color) {
+    box-shadow: 0 0 $amt $color;
+}
+
+@mixin blur($amt) {
+    -webkit-filter: blur($amt);
+    -moz-filter: blur($amt);
+    -o-filter: blur($amt);
+    -ms-filter: blur($amt);
+    filter: blur($amt);
+}
