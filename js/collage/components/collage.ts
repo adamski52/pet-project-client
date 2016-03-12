@@ -1,6 +1,7 @@
 import {Component, View} from 'angular2/core';
 import {ICollageImage} from "../interfaces/collage-image";
 import {CollageService} from "../services/collage";
+import {OnInit} from 'angular2/core';
 
 @Component({
     selector: '[collage]',
@@ -10,7 +11,7 @@ import {CollageService} from "../services/collage";
     `
 })
 
-export class Collage {
+export class Collage implements OnInit {
     public images:ICollageImage[];
 
     constructor(private _collageService:CollageService) {}

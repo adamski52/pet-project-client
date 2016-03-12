@@ -2,6 +2,10 @@
 @import "partials/_variables.scss";
 @import "partials/_fonts.scss";
 
+html, body {
+    height: 100%;
+}
+
 body {
     background: #fff;
     font-family: $primary-font-family;
@@ -297,12 +301,11 @@ nav {
 }
 
 .section {
-    min-height: 400px;
+    background-attachment: fixed;
     background-position: bottom right;
     background-repeat: no-repeat;
     background-size: contain;
-    overflow: hidden;
-    height: 500px;
+    height: 100%;
 
     &.intro {
         background-color: $intro-primary;
