@@ -6,12 +6,10 @@ import {OnInit} from 'angular2/core';
 @Component({
     selector: '[collage]',
     providers: [CollageService],
-    template: `
-        <img *ngFor="#image of images" collage-image src="{{image.url}}">
-    `
+    templateUrl: "../templates/collage.html"
 })
 
-export class Collage implements OnInit {
+export class CollageComponent implements OnInit {
     public images:ICollageImage[];
 
     constructor(private _collageService:CollageService) {}

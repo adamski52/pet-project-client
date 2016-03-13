@@ -2,9 +2,7 @@ import {Component} from 'angular2/core';
 
 @Component({
     selector: "schedule",
-    template: `
-        <section class="section schedule" id="schedule" name="schedule"></section>
-    `
+    templateUrl: "templates/schedule.html"
 })
 
 export class ScheduleComponent { }

@@ -3,11 +3,37 @@ $default-text: #fff;
 $default-contrast: #372d2d;
 $default-subtle: #fff799;
 
+.contrast {
+    color: $default-contrast;
+}
+
+.subtle {
+    color: $default-subtle;
+}
+
+.standard {
+    color: $default-text;
+}
+
 $about-primary: #63d1aa;
 $about-text: #fff;
 $about-contrast: #187856;
 $about-subtle: #acffe2;
 $about-background: url(../images/backgrounds/aslan.png);
+
+.about {
+    .contrast {
+        color: $about-contrast;
+    }
+
+    .subtle {
+        color: $about-subtle;
+    }
+
+    .standard {
+        color: $about-text;
+    }
+}
 
 $intro-primary: #edc45b;
 $intro-text: #fff;
@@ -15,10 +41,39 @@ $intro-contrast: #372d2d;
 $intro-subtle: #fff799;
 $intro-background: url(../images/backgrounds/pug.png);
 
+.intro {
+    .contrast {
+        color: $intro-contrast;
+    }
+
+    .subtle {
+        color: $intro-subtle;
+    }
+
+    .standard {
+        color: $intro-text;
+    }
+}
+
+
 $watch-primary: #ffb769;
 $watch-text: #fff;
 $watch-contrast: #a85b00;
 $watch-subtle: #ffe6c8;
+
+.watch {
+    .contrast {
+        color: $watch-contrast;
+    }
+
+    .subtle {
+        color: $watch-subtle;
+    }
+
+    .standard {
+        color: $watch-text;
+    }
+}
 
 $schedule-primary: #a7d163;
 $schedule-text: #fff;
@@ -26,11 +81,39 @@ $schedule-contrast: #60812a;
 $schedule-subtle: #deffa8;
 $schedule-background: url(../images/backgrounds/poof.png);
 
+.schedule {
+    .contrast {
+        color: $schedule-contrast;
+    }
+
+    .subtle {
+        color: $schedule-subtle;
+    }
+
+    .standard {
+        color: $schedule-text;
+    }
+}
+
 $enroll-primary: #9ad4e0;
 $enroll-text: #fff;
 $enroll-contrast: #0a5362;
 $enroll-subtle: #def9ff;
 $enroll-background: url(../images/backgrounds/franklin.png);
+
+.enroll {
+    .contrast {
+        color: $enroll-contrast;
+    }
+
+    .subtle {
+        color: $enroll-subtle;
+    }
+
+    .standard {
+        color: $enroll-text;
+    }
+}
 
 $contact-primary: #ff6f6f;
 $contact-text: #fff;
@@ -38,16 +121,46 @@ $contact-contrast: #7d3b3b;
 $contact-subtle: #f6dada;
 $contact-background: url(../images/backgrounds/shepherd.png);
 
+.contact {
+    .contrast {
+        color: $contact-contrast;
+    }
+
+    .subtle {
+        color: $contact-subtle;
+    }
+
+    .standard {
+        color: $intro-text;
+    }
+}
+
 $services-primary: #bb9cd7;
 $services-text: #fff;
 $services-contrast: #6f4794;
 $services-subtle: #eedcff;
 $services-background: url(../images/backgrounds/zelda.png);
 
+.services {
+    .contrast {
+        color: $services-contrast;
+    }
+
+    .subtle {
+        color: $services-subtle;
+    }
+
+    .standard {
+        color: $services-text;
+    }
+}
+
 $base-padding: 20px;
 $small-padding: 12px;
 $map-height: 200px;
 $nav-size: 80px;
+$nav-top-padding: 40px;
+$nav-height: 50px;
 $nav-text-size: .8rem;
 $nav-text-height: 25px;
 $nav-border-size: 3px;

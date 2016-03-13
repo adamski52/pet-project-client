@@ -14,27 +14,42 @@ body {
     line-height: $primary-line-height;
 }
 
-p {
+p, ul {
     margin-bottom: 1.5rem;
 }
 
 nav {
-    height: 50px;
-    line-height: 50px;
+    height: $nav-height;
+    line-height: $nav-height;
     font-size: .9rem;
     z-index: 999;
     color: #fff;
     background-color: rgba(0,0,0,.3);
     position: fixed;
-    top: $base-padding;
+    top: $nav-top-padding;
     width: 100%;
+
+    h1 a {
+        width: 300px;
+        margin-top: -$nav-top-padding;
+        display: inline-block;
+
+        &:hover {
+            width: 320px;
+            margin-top: -$nav-top-padding - 5;
+            margin-left: -10px;
+        }
+    }
 
     a {
         @include transition($duration-short, 0);
+    }
+
+    .nav-link {
         display: inline-block;
         float: left;
         position: relative;
-        line-height: 50px;
+        line-height: $nav-height;
         padding: 0 $base-padding;
         cursor: pointer;
         border-bottom: 2px solid transparent;
@@ -43,7 +58,7 @@ nav {
             display: inline-block;
             overflow: hidden;
             font-size: 1.3rem;
-            line-height: 50px !important;
+            line-height: $nav-height !important;
             position: absolute;
             top: 0;
             right: $small-padding;
@@ -208,76 +223,6 @@ nav {
     }
 }
 
-
-
-
-/*
-.btn-small {
-    font-size: .9rem;
-    padding: 3px;
-    padding-left: 48px;
-    padding-right: 15px;
-    background: #fff;
-    height: 45px;
-    text-transform: uppercase;
-    line-height: 45px;
-    display: inline-block;
-    color: $default-contrast;
-    border-radius: 15px;
-    position: relative;
-    overflow: hidden;
-    @include transition($duration-short, .2s);
-
-    &:after,
-    &:before {
-        content: "";
-        display: inline-block;
-        height: 39px;
-        line-height: 39px;
-        border-radius: 12px;
-        width: 39px;
-        position: absolute;
-        text-align: center;
-        background: url(../images/paws.png) no-repeat 9px 7px;
-    }
-
-    &:before {
-        left: 3px;
-        background-color: $default-contrast;
-        color: #fff;
-        @include transition($duration-short, .4s);
-    }
-
-    &:after {
-        right: -42px;
-        background-color: #fff;
-        color: $default-contrast;
-        @include transition($duration-short, 0);
-        background-position: 9px -20px;
-    }
-        
-
-    &:hover {
-        padding-right: 48px;
-        padding-left: 15px;
-        background: $default-contrast;
-        color: #fff;
-        box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur #fff;
-
-
-        &:before {
-            left: -42px;
-            @include transition($duration-short, 0);
-        }
-
-        &:after {
-            right: 3px;
-            @include transition($duration-short, .4s);
-        }
-    }
-}
-*/
-
 .collage {
     z-index: 99;
     height: 50px;
@@ -300,16 +245,79 @@ nav {
     }
 }
 
+h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 1.2rem;
+
+    &:before {
+        position: relative;
+        top: 2px;
+        border-radius: 25px;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        border: 8px solid $default-text;
+        color: $default-subtle;
+        line-height: 35px !important;
+        font-size: 1.5rem;
+        text-align: center;
+        margin-right: 5px;
+    }
+}
+
+h3 {
+    font-size: 1rem;
+
+    &:before {
+        font-size: 1rem;
+        border-radius: 16px;
+        height: 32px;
+        width: 32px;
+        border-width: 5px;
+        line-height: 22px !important;
+    }
+}
+
+
+
 .section {
     background-attachment: fixed;
     background-position: bottom right;
     background-repeat: no-repeat;
-    background-size: contain;
-    height: 100%;
+    background-size: 60%;
+    min-height: 100%;
+    padding: $nav-height + $nav-top-padding + $base-padding $base-padding $base-padding $base-padding;
+
+    > * {
+        width: 50%;
+    }
+
+    p {
+        font-size: 1.15rem;
+        line-height: 1.2rem;
+        margin-left: 55px;
+        width: 40%;
+        font-family: $accent-font-family;
+    }
+
+    li {
+        font-family: $accent-font-family;
+        font-size: 1.15rem;
+        line-height: 1.2rem;
+        list-style-type: disc;
+        margin-left: 50px;
+    }
 
     &.intro {
         background-color: $intro-primary;
         background-image: $intro-background;
+        text-transform: uppercase;
+        color: $intro-text;
+
+        p {
+            font-family: $primary-font-family;
+        }
 
         .btn:hover{
             &:before {
@@ -320,8 +328,17 @@ nav {
 
     &.about {
         background-color: $about-primary;
-        background-position: bottom left;
         background-image: $about-background;
+        color: $about-text;
+
+        h2, h3 {
+            color: $about-subtle;
+
+            &:before {
+                color: $about-text;
+                border-color: $about-subtle;
+            }
+        }
 
         .btn:hover{
             &:before {
@@ -356,7 +373,6 @@ nav {
     &.enroll {
         background-color: $enroll-primary;
         background-image: $enroll-background;
-        background-position: left bottom;
 
         .btn:hover{
             &:before {
@@ -377,9 +393,11 @@ nav {
     }
 
     &.contact {
+        background-attachment: initial;
         background-color: $contact-primary;
         background-image: $contact-background;
         position: relative;
+        padding-bottom: -$map-height;
 
         .btn:hover{
             &:before {
