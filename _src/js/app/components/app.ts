@@ -24,7 +24,9 @@ import {ModalService} from "../../modal/services/modal";
         WatchComponent,
         ModalComponent
     ],
-    providers: [ModalService]
+    providers: [
+        ModalService
+    ]
 })
 
 export class AppComponent {}

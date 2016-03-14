@@ -29,6 +29,7 @@ nav {
     .nav-link {
         display: inline-block;
         float: left;
+        background-color: transparent;
         position: relative;
         line-height: $nav-height;
         padding: 0 $base-padding;

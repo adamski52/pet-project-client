@@ -1,4 +1,4 @@
 export interface ICollageImage {
-  big: string;
-  small: string;
+  full: string;
+  thumbnail: string;
 }

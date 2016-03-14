@@ -174,6 +174,11 @@ $glow-large: 40px;
 
 $duration-short: .3s;
 
+@mixin desaturate($amount) {
+    -webkit-filter: grayscale($amount);
+    filter: grayscale($amount);
+}
+
 @mixin grow($scale) {
     -ms-transform: scale($scale, $scale);
     -webkit-transform: scale($scale, $scale);

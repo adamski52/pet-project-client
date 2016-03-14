@@ -1,26 +1,32 @@
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {ICollageImage} from "../interfaces/collage-image";
-import {CollageService} from "../services/collage";
 import {OnInit} from 'angular2/core';
 import {CollageImage} from "./collage-image";
+import {Http} from 'angular2/http';
+import {CONSTANTS} from "../../constants";
+import 'rxjs/add/operator/map';
+
 
 @Component({
     selector: 'collage',
     directives: [CollageImage],
-    providers: [CollageService],
     templateUrl: "templates/collage.html"
 })
 
-export class CollageComponent implements OnInit {
+export class CollageComponent {
     public images:ICollageImage[];
 
-    constructor(private _collageService:CollageService) {}
+    constructor(http:Http) {
+        http.get(CONSTANTS.apiBaseURL + "collages").map((response) => {
+            return response.json();
+        }).subscribe((images) => this.images = images);
+    }
 
-    getImages() {
-        this._collageService.getImages().then((images) => this.images = images);
+    /*getImages() {
+        
     }
 
     ngOnInit() {
         this.getImages();
-    }
+    }*/
 }

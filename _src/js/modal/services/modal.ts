@@ -1,5 +1,5 @@
 import {Observable} from 'rxjs/Observable';
-import {ICollageImage} from "../../collage/interfaces/collage";
+import {ICollageImage} from "../../collage/interfaces/collage-image";
 
 import 'rxjs/add/operator/share';
 

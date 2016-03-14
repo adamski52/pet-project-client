@@ -21,7 +21,7 @@ export class ModalComponent {
     }
 
     private onOpened(image:ICollageImage): void {
-        this.url = image.big;
+        this.url = image.full;
         this.isOpen = true;
     }
 
