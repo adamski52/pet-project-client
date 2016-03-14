@@ -5,3 +5,41 @@ $primary-font-size: 28px;
 $primary-line-height: 28px;
 
 $accent-font-family: 'Roboto', sans-serif;
+
+p, ul {
+    margin-bottom: 1.5rem;
+}
+
+h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 1.2rem;
+
+    &:before {
+        position: relative;
+        top: 2px;
+        border-radius: 25px;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        border: 8px solid $default-text;
+        color: $default-subtle;
+        line-height: 35px !important;
+        font-size: 1.5rem;
+        text-align: center;
+        margin-right: 5px;
+    }
+}
+
+h3 {
+    font-size: 1rem;
+
+    &:before {
+        font-size: 1rem;
+        border-radius: 16px;
+        height: 32px;
+        width: 32px;
+        border-width: 5px;
+        line-height: 22px !important;
+    }
+}

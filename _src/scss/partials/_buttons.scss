@@ -1,0 +1,86 @@
+
+.btn {
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    padding: 0 52px + $small-padding 0 $small-padding;
+    text-transform: uppercase;
+    background-color: $default-contrast;
+    color: #fff;
+    line-height: 52px;
+    @include transition($duration-short, 0);
+    border-radius: 4px;
+
+    &:before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.6rem;
+        color: $default-contrast;
+        background-color: #fff;
+        width: 52px;
+        height: 52px;
+        text-align: center;
+        line-height: 52px;
+        @include transition($duration-short, 0);
+        border-radius: 4px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    &:hover {
+        background-color: #fff;
+        color: $default-contrast;
+        @include glow($glow-medium, #fff);
+
+        &:before {
+            background-color: $default-contrast;
+            color: #fff;
+        }
+    }
+}
+
+
+
+.btn-lg {
+    font-size: 1.5rem;
+    line-height: 62px;
+    border-radius: 8px;
+    padding: 0 62px + $base-padding 0 $base-padding;
+
+    &:hover {
+        @include glow($glow-large, #fff);
+    }
+
+    &:before {
+        font-size: 2.3rem;
+        width: 62px;
+        height: 62px;
+        line-height: 62px;
+        border-radius: 8px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+
+
+.btn-sm {
+    font-size: .8rem;
+    line-height: 32px;
+    border-radius: 3px;
+    padding: 0 32px + $small-padding 0 $small-padding;
+
+    &:hover {
+        @include glow($glow-small, #fff);
+    }
+
+    &:before {
+        font-size: 1.2rem;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 3px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}

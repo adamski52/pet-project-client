@@ -1,0 +1,118 @@
+
+nav {
+    height: $nav-height;
+    line-height: $nav-height;
+    font-size: .9rem;
+    z-index: 3;
+    color: #fff;
+    background-color: rgba(0,0,0,.3);
+    position: fixed;
+    top: $nav-top-padding;
+    width: 100%;
+
+    h1 a {
+        width: 300px;
+        margin-top: -$nav-top-padding;
+        display: inline-block;
+
+        &:hover {
+            width: 320px;
+            margin-top: -$nav-top-padding - 5;
+            margin-left: -10px;
+        }
+    }
+
+    a {
+        @include transition($duration-short, 0);
+    }
+
+    .nav-link {
+        display: inline-block;
+        float: left;
+        position: relative;
+        line-height: $nav-height;
+        padding: 0 $base-padding;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+
+        &:before {
+            display: inline-block;
+            overflow: hidden;
+            font-size: 1.3rem;
+            line-height: $nav-height !important;
+            position: absolute;
+            top: 0;
+            right: $small-padding;
+            width: 0;
+        }
+
+        &:hover {
+            padding: 0 $base-padding * 2 0 $base-padding;
+            color: #fff;
+
+            &:before {
+                width: auto;
+            }
+        }
+
+        &.watch:hover {
+            background-color: $watch-primary;
+            border-color: $watch-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $watch-contrast;
+
+            &:before {
+                color: $watch-subtle;
+            }
+        }
+
+        &.about:hover {
+            background-color: $about-primary;
+            border-color: $about-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $about-contrast;
+
+            &:before {
+                color: $about-subtle;
+            }
+        }
+
+        &.services:hover {
+            background-color: $services-primary;
+            border-color: $services-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $services-contrast;
+
+            &:before {
+                color: $services-subtle;
+            }
+        }
+
+        &.enroll:hover {
+            background-color: $enroll-primary;
+            border-color: $enroll-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $enroll-contrast;
+
+            &:before {
+                color: $enroll-subtle;
+            }
+        }
+
+        &.schedule:hover {
+            background-color: $schedule-primary;
+            border-color: $schedule-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $schedule-contrast;
+
+            &:before {
+                color: $schedule-subtle;
+            }
+        }
+
+        &.contact:hover {
+            background-color: $contact-primary;
+            border-color: $contact-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $contact-contrast;
+
+            &:before {
+                color: $contact-subtle;
+            }
+        }
+    }
+}

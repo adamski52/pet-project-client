@@ -1,0 +1,153 @@
+
+.section {
+    background-attachment: fixed;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    min-height: 100%;
+    padding: $nav-height + $nav-top-padding + $base-padding $base-padding $base-padding $base-padding;
+
+    > * {
+        width: 50%;
+    }
+
+    p {
+        font-size: 1.15rem;
+        line-height: 1.2rem;
+        margin-left: 55px;
+        width: 40%;
+        font-family: $accent-font-family;
+    }
+
+    li {
+        font-family: $accent-font-family;
+        font-size: 1.15rem;
+        line-height: 1.2rem;
+        list-style-type: disc;
+        margin-left: 50px;
+    }
+
+    &.intro {
+        background-color: $intro-primary;
+        background-image: $intro-background;
+        text-transform: uppercase;
+        color: $intro-text;
+
+        p {
+            font-family: $primary-font-family;
+        }
+
+        .btn:hover{
+            &:before {
+                color: $intro-primary;
+            }
+        }
+    }
+
+    &.about {
+        background-color: $about-primary;
+        background-image: $about-background;
+        color: $about-text;
+
+        h2, h3 {
+            color: $about-subtle;
+
+            &:before {
+                color: $about-text;
+                border-color: $about-subtle;
+            }
+        }
+
+        .btn:hover{
+            &:before {
+                color: $about-primary;
+            }
+        }
+    }
+
+    &.services {
+        background-color: $services-primary;
+        background-image: $services-background;
+
+        .btn:hover{
+            &:before {
+                color: $services-primary;
+            }
+        }
+    }
+
+    &.watch {
+        background-color: $watch-primary;
+        background: url(https://media.giphy.com/media/bXWpFtVrOyKo8/giphy-tumblr.gif);
+        background-size: cover;
+
+        .btn:hover{
+            &:before {
+                color: $watch-primary;
+            }
+        }
+    }
+
+    &.enroll {
+        background-color: $enroll-primary;
+        background-image: $enroll-background;
+
+        .btn:hover{
+            &:before {
+                color: $enroll-primary;
+            }
+        }
+    }
+
+    &.schedule {
+        background-color: $schedule-primary;
+        background-image: $schedule-background;
+
+        .btn:hover{
+            &:before {
+                color: $schedule-primary;
+            }
+        }
+    }
+
+    &.contact {
+        background-attachment: initial;
+        background-color: $contact-primary;
+        background-image: $contact-background;
+
+        .btn:hover{
+            &:before {
+                color: $contact-primary;
+            }
+        }
+    }
+}
+
+.map {
+    width: 100%;
+    height: $map-height;
+}
+
+.collage {
+    z-index: 1;
+    height: 50px;
+    width: 100%;
+
+    .collage-row {
+        width: 9000px;
+        font-size: 0;
+        white-space: nowrap;
+    }
+
+    img {
+        @include transition($duration-short, 0);
+        width: auto;
+        height: 50px;
+
+        &:hover {
+            @include grow(2);
+            @include glow($glow-small, #000);
+            z-index: 2;
+        }
+    }
+}

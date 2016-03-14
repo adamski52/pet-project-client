@@ -1,0 +1,60 @@
+import {ICollageImage} from "../interfaces/collage-image";
+
+export var IMAGES: ICollageImage[] = [{
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}, {
+    small: "images/collages/thumbnails/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg",
+    big: "images/collages/full/6f097907-b5ed-4674-bb3e-b2ed15f77a4c.jpg"
+}];
