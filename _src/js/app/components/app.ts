@@ -6,7 +6,7 @@ import {EnrollComponent} from "../../enroll/components/enroll";
 import {IntroComponent} from "../../intro/components/intro";
 import {ScheduleComponent} from "../../schedule/components/schedule";
 import {ServicesComponent} from "../../services/components/services";
-import {WatchComponent} from "../../watch/components/watch";
+import {LivestreamComponent} from "../../livestream/components/livestream";
 import {ModalComponent} from "../../modal/components/modal";
 import {ModalService} from "../../modal/services/modal";
 
@@ -21,7 +21,7 @@ import {ModalService} from "../../modal/services/modal";
         IntroComponent,
         ScheduleComponent,
         ServicesComponent,
-        WatchComponent,
+        LivestreamComponent,
         ModalComponent
     ],
     providers: [

@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {ICollageImage} from "../interfaces/collage-image";
 import {OnInit} from 'angular2/core';
 import {CollageImage} from "./collage-image";
-import {Http} from 'angular2/http';
+import {Http, Headers} from 'angular2/http';
 import {CONSTANTS} from "../../constants";
 import 'rxjs/add/operator/map';
 
@@ -18,6 +18,7 @@ export class CollageComponent {
 
     constructor(http:Http) {
         http.get(CONSTANTS.apiBaseURL + "collages").map((response) => {
+            console.log(response);
             return response.json();
         }).subscribe((images) => this.images = images);
     }

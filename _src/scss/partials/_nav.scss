@@ -22,11 +22,11 @@ nav {
         }
     }
 
-    a {
-        @include transition($duration-short, 0);
-    }
 
+
+    .nav-link-dropdown,
     .nav-link {
+        @include transition($duration-short, 0);
         display: inline-block;
         float: left;
         background-color: transparent;
@@ -46,23 +46,67 @@ nav {
             right: $small-padding;
             width: 0;
         }
+    }
 
+    .nav-link-dropdown {
+        position: relative;
+        cursor: auto;
+
+        .nav-link-dropdown-content {
+            -webkit-transition: opacity $duration-short;
+            transition: opacity $duration-short;
+            -webkit-transition-delay: $duration-short;
+            transition-delay: $duration-short;
+            -webkit-box-shadow: 5px 5px 10px -5px #000;
+            box-shadow: 5px 5px 10px -5px #000;
+            position: absolute;
+            left: -1px;
+            top: -9999px;
+            opacity: 0;
+            padding: $base-padding;
+            border-radius: 5px;
+            border-top-left-radius: 0;
+            border: 1px solid rgba(0,0,0,.3);
+            border-top: 0;
+        }
+
+
+        .nav-link-dropdown-link {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+
+        &:hover {
+            .nav-link-dropdown-content {
+                top: $nav-height;
+                opacity: 1;
+            }
+        }
+    }
+
+
+
+    .nav-link-dropdown,
+    .nav-link {
         &:hover {
             padding: 0 $base-padding * 2 0 $base-padding;
             color: #fff;
+            text-decoration: none;
 
             &:before {
                 width: auto;
             }
         }
 
-        &.watch:hover {
-            background-color: $watch-primary;
-            border-color: $watch-contrast;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $watch-contrast;
+        &.livestream:hover {
+            background-color: $livestream-primary;
+            border-color: $livestream-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $livestream-contrast;
 
             &:before {
-                color: $watch-subtle;
+                color: $livestream-subtle;
             }
         }
 

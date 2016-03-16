@@ -56,22 +56,22 @@ $intro-background: url(../images/backgrounds/pug.png);
 }
 
 
-$watch-primary: #ffb769;
-$watch-text: #fff;
-$watch-contrast: #a85b00;
-$watch-subtle: #ffe6c8;
+$livestream-primary: #ffb769;
+$livestream-text: #fff;
+$livestream-contrast: #a85b00;
+$livestream-subtle: #ffe6c8;
 
-.watch {
+.livestream {
     .contrast {
-        color: $watch-contrast;
+        color: $livestream-contrast;
     }
 
     .subtle {
-        color: $watch-subtle;
+        color: $livestream-subtle;
     }
 
     .standard {
-        color: $watch-text;
+        color: $livestream-text;
     }
 }
 
@@ -95,7 +95,7 @@ $schedule-background: url(../images/backgrounds/poof.png);
     }
 }
 
-$enroll-primary: #9ad4e0;
+$enroll-primary: #699ecc;
 $enroll-text: #fff;
 $enroll-contrast: #0a5362;
 $enroll-subtle: #def9ff;
@@ -115,7 +115,7 @@ $enroll-background: url(../images/backgrounds/franklin.png);
     }
 }
 
-$contact-primary: #ff6f6f;
+$contact-primary: #e65348;
 $contact-text: #fff;
 $contact-contrast: #7d3b3b;
 $contact-subtle: #f6dada;
@@ -135,10 +135,17 @@ $contact-background: url(../images/backgrounds/shepherd.png);
     }
 }
 
+$services-primary: #a7d163;
+$services-text: #fff;
+$services-contrast: #60812a;
+$services-subtle: #deffa8;
+
+/* original
 $services-primary: #bb9cd7;
 $services-text: #fff;
 $services-contrast: #6f4794;
 $services-subtle: #eedcff;
+*/
 $services-background: url(../images/backgrounds/zelda.png);
 
 .services {
@@ -157,7 +164,7 @@ $services-background: url(../images/backgrounds/zelda.png);
 
 $base-padding: 20px;
 $small-padding: 12px;
-$map-height: 200px;
+$map-height: 300px;
 $nav-size: 80px;
 $nav-top-padding: 40px;
 $nav-height: 50px;

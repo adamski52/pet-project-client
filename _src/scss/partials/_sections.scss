@@ -18,9 +18,9 @@
     color: $services-text;
 }
 
-.watch {
-    background-color: $watch-primary;
-    color: $watch-text;
+.livestream {
+    background-color: $livestream-primary;
+    color: $livestream-text;
 }
 
 .enroll {
@@ -110,13 +110,13 @@
         }
     }
 
-    &.watch {
+    &.livestream {
         background: url(https://media.giphy.com/media/bXWpFtVrOyKo8/giphy-tumblr.gif);
         background-size: cover;
 
         .btn:hover{
             &:before {
-                color: $watch-primary;
+                color: $livestream-primary;
             }
         }
     }
@@ -156,6 +156,7 @@
 .map {
     width: 100%;
     height: $map-height;
+    @include glow($glow-large, $contact-contrast);
 }
 
 .collage {
@@ -174,9 +175,9 @@
         @include desaturate(100%);
         width: auto;
         height: 50px;
-        opacity: .5;
+        opacity: .2;
         position: relative;
-        mix-blend-mode: multiply;
+        //mix-blend-mode: multiply;
 
         &:hover {
             @include grow(2);
@@ -184,7 +185,7 @@
             z-index: 2;
             opacity: 1;
             @include desaturate(0);
-            mix-blend-mode: normal;
+            //mix-blend-mode: normal;
         }
     }
 }

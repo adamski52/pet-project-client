@@ -10,10 +10,11 @@ p, ul {
     margin-bottom: 1.5rem;
 }
 
-h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     font-weight: normal;
     font-size: 1.2rem;
+    color: $default-text;
 
     &:before {
         position: relative;
@@ -28,6 +29,86 @@ h2, h3, h4, h5, h6 {
         font-size: 1.5rem;
         text-align: center;
         margin-right: 5px;
+    }
+}
+
+.about {
+    h1, h2, h3, h4, h5, h6 {
+        color: $about-text;
+        &:before {
+            border-color: $about-text;
+            color: $about-subtle;
+        }
+    }
+}
+
+.contact {
+    h1, h2, h3, h4, h5, h6 {
+        color: $contact-text;
+        &:before {
+            border-color: $contact-text;
+            color: $contact-subtle;
+        }
+    }
+}
+
+.enroll {
+    h1, h2, h3, h4, h5, h6 {
+        color: $enroll-text;
+        &:before {
+            border-color: $enroll-text;
+            color: $enroll-subtle;
+        }
+    }
+}
+
+.intro {
+    h1, h2, h3, h4, h5, h6 {
+        color: $intro-text;
+        &:before {
+            border-color: $intro-text;
+            color: $intro-subtle;
+        }
+    }
+}
+
+.schedule {
+    h1, h2, h3, h4, h5, h6 {
+        color: $schedule-text;
+        &:before {
+            border-color: $schedule-text;
+            color: $schedule-subtle;
+        }
+    }
+}
+
+.services {
+    h1, h2, h3, h4, h5, h6 {
+        color: $services-text;
+        &:before {
+            border-color: $services-text;
+            color: $services-subtle;
+        }
+    }
+}
+
+.schedule {
+    h1, h2, h3, h4, h5, h6 {
+        color: $schedule-text;
+        &:before {
+            border-color: $schedule-text;
+            color: $schedule-subtle;
+        }
+    }
+}
+
+.livestream {
+    h1, h2, h3, h4, h5, h6 {
+        color: $livestream-text;
+        &:before {
+            border-color: $livestream-text;
+            color: $livestream-subtle;
+        }
     }
 }
 

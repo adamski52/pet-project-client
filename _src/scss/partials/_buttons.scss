@@ -29,6 +29,7 @@
     }
 
     &:hover {
+        text-decoration: none;
         background-color: #fff;
         color: $default-contrast;
         @include glow($glow-medium, #fff);
