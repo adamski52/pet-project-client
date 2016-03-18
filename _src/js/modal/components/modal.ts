@@ -15,8 +15,8 @@ export class ModalComponent {
     private subscription;
     public isOpen: boolean;
 
-    constructor(private _modalService: ModalService) {
-        this.subscription = this._modalService.opened$.subscribe(image => this.onOpened(image));
+    constructor(private _service: ModalService) {
+        this.subscription = this._service.opened$.subscribe(image => this.onOpened(image));
         this.isOpen = false;
     }
 

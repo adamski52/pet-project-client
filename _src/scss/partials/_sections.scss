@@ -1,5 +1,6 @@
 .collage-section {
     display: block;
+    width: 100%;
     height: 50px;
 }
 
@@ -111,8 +112,9 @@
     }
 
     &.livestream {
-        background: url(https://media.giphy.com/media/bXWpFtVrOyKo8/giphy-tumblr.gif);
+        background: url(http://storybook.ddns.net:8082) center center no-repeat;
         background-size: cover;
+        background-attachment: fixed;
 
         .btn:hover{
             &:before {
@@ -187,5 +189,39 @@
             @include desaturate(0);
             //mix-blend-mode: normal;
         }
+    }
+}
+
+.alert {
+    @include transition($duration-short, 0);
+    @include glow($glow-small, #000);
+    position: fixed;
+    bottom: -$alert-height - $glow-small;
+    left: 0;
+    z-index: 99;
+    height: $alert-height;
+    text-align: center;
+    width: 100%;
+    font-size: .8rem;
+    border-top: 1px solid $alert-success-text;
+    line-height: $alert-height;
+    background: $alert-success;
+    color: $alert-success-text;
+
+
+    &.visible {
+        bottom: 0;
+    }
+
+    &.alert-error {
+        background: $alert-error;
+        color: $alert-error-text;
+        border-color: $alert-error-text;
+    }
+
+    &.alert-success {
+        background: $alert-success;
+        color: $alert-success-text;
+        border-color: $alert-success-text;
     }
 }

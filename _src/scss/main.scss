@@ -13,11 +13,14 @@ html, body {
 
 body {
     background: #fff;
-    overflow-x: hidden;
     font-family: $primary-font-family;
     font-size: $primary-font-size;
     font-weight: $primary-font-weight;
     line-height: $primary-line-height;
+}
+
+html, body, storybook {
+    overflow-x: hidden;
 }
 
 a {

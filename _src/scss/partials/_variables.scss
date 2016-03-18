@@ -164,7 +164,9 @@ $services-background: url(../images/backgrounds/zelda.png);
 
 $base-padding: 20px;
 $small-padding: 12px;
+
 $map-height: 300px;
+
 $nav-size: 80px;
 $nav-top-padding: 40px;
 $nav-height: 50px;
@@ -180,6 +182,14 @@ $glow-medium: 20px;
 $glow-large: 40px;
 
 $duration-short: .3s;
+
+$alert-height: 30px;
+$alert-error: #ae6464;
+$alert-error-text: darken($alert-error, 20%);
+$alert-success: #6cb142;
+$alert-success-text: darken($alert-success, 20%);
+$alert-duration: .5s;
+
 
 @mixin desaturate($amount) {
     -webkit-filter: grayscale($amount);

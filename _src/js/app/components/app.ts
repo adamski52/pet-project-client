@@ -8,7 +8,10 @@ import {ScheduleComponent} from "../../schedule/components/schedule";
 import {ServicesComponent} from "../../services/components/services";
 import {LivestreamComponent} from "../../livestream/components/livestream";
 import {ModalComponent} from "../../modal/components/modal";
+import {AlertComponent} from "../../alert/components/alert";
 import {ModalService} from "../../modal/services/modal";
+import {AlertService} from "../../alert/services/alert";
+
 
 @Component({
     selector: "storybook",
@@ -22,10 +25,12 @@ import {ModalService} from "../../modal/services/modal";
         ScheduleComponent,
         ServicesComponent,
         LivestreamComponent,
-        ModalComponent
+        ModalComponent,
+        AlertComponent
     ],
     providers: [
-        ModalService
+        ModalService,
+        AlertService
     ]
 })
 
