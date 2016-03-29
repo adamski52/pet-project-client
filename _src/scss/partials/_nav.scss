@@ -1,63 +1,283 @@
-
 nav {
-    height: $nav-height;
     line-height: $nav-height;
-    font-size: .9rem;
-    z-index: 3;
+    font-size: 1.3rem;
     color: #fff;
+    width: 100%;
     background-color: rgba(0,0,0,.3);
     position: fixed;
+    z-index: 3;
+    height: $nav-height;
     top: $nav-top-padding;
-    width: 100%;
 
-    h1 a {
-        @include transition($duration-short, 0);
-        width: 250px;
-        margin-top: -$nav-top-padding;
-        display: inline-block;
+    div[class^="col-"]  {
+        padding: 0;
+    }
+}
 
-        &:hover {
-            width: 270px;
-            margin-top: -$nav-top-padding - 5;
-            margin-left: -10px;
-        }
+.livestream:hover {
+    background-color: $livestream-primary;
+    border-color: $livestream-contrast;
+    //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $livestream-contrast;
+
+    &:before {
+        color: $livestream-subtle;
+    }
+}
+
+.about:hover {
+    background-color: $about-primary;
+    border-color: $about-contrast;
+    //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $about-contrast;
+
+    &:before {
+        color: $about-subtle;
+    }
+}
+
+.services:hover {
+    background-color: $services-primary;
+    border-color: $services-contrast;
+    //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $services-contrast;
+
+    &:before {
+        color: $services-subtle;
+    }
+}
+
+.enroll:hover {
+    background-color: $enroll-primary;
+    border-color: $enroll-contrast;
+    //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $enroll-contrast;
+
+    &:before {
+        color: $enroll-subtle;
+    }
+}
+
+.schedule:hover {
+    background-color: $schedule-primary;
+    border-color: $schedule-contrast;
+    //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $schedule-contrast;
+
+    &:before {
+        color: $schedule-subtle;
+    }
+}
+
+.contact:hover {
+    background-color: $contact-primary;
+    border-color: $contact-contrast;
+    //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $contact-contrast;
+
+    &:before {
+        color: $contact-subtle;
+    }
+}
+
+.nav-logo {
+    position: fixed;
+    right: $base-padding;
+    top: 0;
+    display: table;
+    z-index: 4;
+    height: 115px;
+    margin: 0;
+    width: 33%;
+    min-width: 175px;
+    max-width: 250px;
+
+    a {
+        display: table-cell;
+        vertical-align: middle;
     }
 
+    img {
+        width: 100%;
+    }
+}
 
+.nav-link,
+.nav-link-dropdown-link {
+    background-color: transparent;
+    color: #fff;
+    a {
+        color: #fff;
+    }
 
-    .nav-link-dropdown,
-    .nav-link {
-        @include transition($duration-short, 0);
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.nav-link-dropdown-content {    
+    input {
+        line-height: 2rem;
+        font-size: 1.5rem;
+        padding: 7px;
+        border: none;
+        border-radius: 4px;
+        font-family: $font-family-serif;
+        color: #666;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
+.nav-link {
+    padding: 0 $base-padding 0 $base-padding*2;
+    position: relative;
+
+    &:before {
+        position: absolute;
+        left: $base-padding/2;
+        font-size: 2.2rem;
+        position: absolute;
+        top: 0;
+        overflow: hidden;
         display: inline-block;
-        float: left;
-        background-color: transparent;
-        position: relative;
         line-height: $nav-height;
-        padding: 0 $base-padding * 2 0 $base-padding;
-        cursor: pointer;
-        border-bottom: 2px solid transparent;
+        width: 0;
+    }
+
+    &:hover {
+        &:before {
+            width: auto;
+        }
+
+        color: #fff;
+    }
+}
+
+
+
+// anything smaller than ipad
+@media (max-width: $screen-sm - 1) {
+    nav {
+        background: rgba(0,0,0,.7);
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: absolute;
+        left: -$nav-width - 20px;
+        z-index: 4;
+        @include transition($duration-short, 0);
+        -webkit-box-shadow: 5px 5px 10px -5px #000;
+        box-shadow: 5px 5px 10px -5px #000;
+    }
+
+    .nav-menu.nav-open {
+        left: 0;
+    }
+
+    .nav-link {
+        display: block;
+        width: $nav-width;
 
         &:before {
-            display: inline-block;
-            overflow: hidden;
-            font-size: 1.3rem;
-            line-height: $nav-height !important;
-            position: absolute;
-            top: 0;
-            right: $small-padding;
-            width: 0;
+            width: auto;
+        }
+
+        &.livestream {
+            background-color: $livestream-primary;
+            border-color: $livestream-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $livestream-contrast;
+
+            &:before {
+                color: $livestream-subtle;
+            }
+        }
+
+        &.about {
+            background-color: $about-primary;
+            border-color: $about-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $about-contrast;
+
+            &:before {
+                color: $about-subtle;
+            }
+        }
+
+        &.services {
+            background-color: $services-primary;
+            border-color: $services-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $services-contrast;
+
+            &:before {
+                color: $services-subtle;
+            }
+        }
+
+        &.enroll {
+            .nav-link-dropdown-content {
+                display: none;
+            }
+
+            background-color: $enroll-primary;
+            border-color: $enroll-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $enroll-contrast;
+
+            &:before {
+                color: $enroll-subtle;
+            }
+        }
+
+        &.schedule {
+            background-color: $schedule-primary;
+            border-color: $schedule-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $schedule-contrast;
+
+            &:before {
+                color: $schedule-subtle;
+            }
+        }
+
+        &.contact {
+            background-color: $contact-primary;
+            border-color: $contact-contrast;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $contact-contrast;
+
+            &:before {
+                color: $contact-subtle;
+            }
+        }
+    }
+}
+
+
+// big down to ipad, inclusively
+@media (min-width: $screen-sm) {
+    .nav-link {
+        float: left;
+        padding: 0 $base-padding*2 0 $base-padding;
+        right: 0;
+        left: auto;
+        line-height: $nav-height !important;
+        @include transition($duration-short, 0);
+        border-bottom: 2px solid transparent;
+        height: $nav-height;
+        display: inline-block;
+
+        &:before {
+            right: $nav-icon-padding;
+            left: auto;
         }
     }
 
     .nav-link-dropdown {
+        display: inline-block;
         position: relative;
-        cursor: auto;
+        float: left;
 
         .nav-link-dropdown-content {
+            background: inherit;
             -webkit-transition: opacity $duration-short;
             transition: opacity $duration-short;
-            -webkit-transition-delay: $duration-short;
-            transition-delay: $duration-short;
             -webkit-box-shadow: 5px 5px 10px -5px #000;
             box-shadow: 5px 5px 10px -5px #000;
             position: absolute;
@@ -71,94 +291,21 @@ nav {
             border-top: 0;
         }
 
-
-        .nav-link-dropdown-link {
-            &:hover {
-                text-decoration: none;
-            }
-        }
-
-
         &:hover {
             .nav-link-dropdown-content {
-                top: $nav-height;
+                top: $nav-height - 2px;
                 opacity: 1;
             }
         }
     }
 
-
-
-    .nav-link-dropdown,
-    .nav-link {
-        &:hover {
-            padding: 0 $base-padding * 2 0 $base-padding;
-            color: #fff;
-            text-decoration: none;
-
-            &:before {
-                width: auto;
-            }
-        }
-
-        &.livestream:hover {
-            background-color: $livestream-primary;
-            border-color: $livestream-contrast;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $livestream-contrast;
-
-            &:before {
-                color: $livestream-subtle;
-            }
-        }
-
-        &.about:hover {
-            background-color: $about-primary;
-            border-color: $about-contrast;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $about-contrast;
-
-            &:before {
-                color: $about-subtle;
-            }
-        }
-
-        &.services:hover {
-            background-color: $services-primary;
-            border-color: $services-contrast;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $services-contrast;
-
-            &:before {
-                color: $services-subtle;
-            }
-        }
-
-        &.enroll:hover {
-            background-color: $enroll-primary;
-            border-color: $enroll-contrast;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $enroll-contrast;
-
-            &:before {
-                color: $enroll-subtle;
-            }
-        }
-
-        &.schedule:hover {
-            background-color: $schedule-primary;
-            border-color: $schedule-contrast;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $schedule-contrast;
-
-            &:before {
-                color: $schedule-subtle;
-            }
-        }
-
-        &.contact:hover {
-            background-color: $contact-primary;
-            border-color: $contact-contrast;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $contact-contrast;
-
-            &:before {
-                color: $contact-subtle;
-            }
-        }
+    .nav-toggle {
+        display: none;
     }
 }
+
+
+// minimum nav size with logo
+@media (max-width: 510px) {
+}
+

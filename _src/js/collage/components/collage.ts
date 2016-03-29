@@ -18,7 +18,7 @@ export class CollageComponent {
     public images:ICollageImage[];
 
     constructor(private http: Http, private _alert: AlertService) {
-        http.get(CONSTANTS.apiBaseURL + "collages").map((response) => {
+        http.get(CONSTANTS.apiBaseURL + "collages" + CONSTANTS.forceUnique()).map((response) => {
             return response.json();
         }).subscribe(
             data => {

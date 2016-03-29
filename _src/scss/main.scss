@@ -1,31 +1,15 @@
-@import "partials/_reset.scss";
-@import "partials/_variables.scss";
+@import "_bootstrap.scss";
 @import "partials/_fonts.scss";
+@import "partials/_variables.scss";
 @import "partials/_nav.scss";
-@import "partials/_sections.scss";
 @import "partials/_buttons.scss";
-@import "partials/_forms.scss";
-@import "partials/_modal.scss";
 
-html, body {
-    height: 100%;
+h1, h2, h3, h4, h5, h6, p, ul, ol, li {
+    margin: 0 0 $base-padding 0;
+    padding: 0;
 }
 
-body {
-    background: #fff;
-    font-family: $primary-font-family;
-    font-size: $primary-font-size;
-    font-weight: $primary-font-weight;
-    line-height: $primary-line-height;
+.section {
+    display: block;
+    clear: both;
 }
-
-html, body, storybook {
-    overflow-x: hidden;
-}
-
-a {
-    &:hover {
-        text-decoration: underline;
-    }
-}
-
