@@ -1,0 +1,225 @@
+.collage-section {
+    display: block;
+    width: 100%;
+    height: 50px;
+}
+
+.section {
+    &.intro {
+        background-color: $intro-primary;
+        color: $intro-text;
+    }
+
+    &.about {
+        background-color: $about-primary;
+        color: $about-text;
+    }
+
+    &.services {
+        background-color: $services-primary;
+        color: $services-text;
+    }
+
+    &.livestream {
+        background-color: $livestream-primary;
+        color: $livestream-text;
+    }
+
+    &.enroll {
+        background-color: $enroll-primary;
+        color: $enroll-text;
+    }
+
+    &.schedule {
+        background-color: $schedule-primary;
+        color: $schedule-text;
+    }
+
+    &.contact {
+        background-color: $contact-primary;
+        color: $contact-text;
+    }
+}
+
+.section {
+    background-attachment: fixed;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    min-height: 100%;
+    padding: $nav-height + $nav-top-padding + $base-padding $base-padding $base-padding $base-padding;
+
+    > * {
+        width: 50%;
+    }
+
+    p {
+        font-size: 1.15rem;
+        line-height: 1.2rem;
+        margin-left: 55px;
+        width: 40%;
+        font-family: $font-family-serif;
+    }
+
+    li {
+        font-family: $font-family-serif;
+        font-size: 1.15rem;
+        line-height: 1.2rem;
+        list-style-type: disc;
+        margin-left: 50px;
+    }
+
+    &.intro {
+        text-transform: uppercase;
+        background-image: $intro-background;
+
+        .btn:hover{
+            &:before {
+                color: $intro-primary;
+            }
+        }
+    }
+
+    &.about {
+        background-image: $about-background;
+
+        h2, h3 {
+            color: $about-subtle;
+
+            &:before {
+                color: $about-text;
+                border-color: $about-subtle;
+            }
+        }
+
+        .btn:hover{
+            &:before {
+                color: $about-primary;
+            }
+        }
+    }
+
+    &.services {
+        background-image: $services-background;
+
+        .btn:hover{
+            &:before {
+                color: $services-primary;
+            }
+        }
+    }
+
+    &.livestream {
+        background: url(http://storybook.ddns.net:8082) center center no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+
+        .btn:hover{
+            &:before {
+                color: $livestream-primary;
+            }
+        }
+    }
+
+    &.enroll {
+        background-image: $enroll-background;
+
+        .btn:hover{
+            &:before {
+                color: $enroll-primary;
+            }
+        }
+    }
+
+    &.schedule {
+        background-image: $schedule-background;
+
+        .btn:hover{
+            &:before {
+                color: $schedule-primary;
+            }
+        }
+    }
+
+    &.contact {
+        background-attachment: initial;
+        background-image: $contact-background;
+
+        .btn:hover{
+            &:before {
+                color: $contact-primary;
+            }
+        }
+    }
+}
+
+.map {
+    width: 100%;
+    height: $map-height;
+    @include glow($glow-large, $contact-contrast);
+}
+
+.collage {
+    z-index: 1;
+    height: 50px;
+    width: 100%;
+
+    .collage-row {
+        width: 9000px;
+        font-size: 0;
+        white-space: nowrap;
+    }
+
+    img {
+        @include transition($duration-short, 0);
+        @include desaturate(100%);
+        width: auto;
+        height: 50px;
+        opacity: .2;
+        position: relative;
+        //mix-blend-mode: multiply;
+
+        &:hover {
+            @include grow(2);
+            @include glow($glow-small, #000);
+            z-index: 2;
+            opacity: 1;
+            @include desaturate(0);
+            //mix-blend-mode: normal;
+        }
+    }
+}
+
+.alert {
+    @include transition($duration-short, 0);
+    @include glow($glow-small, #000);
+    position: fixed;
+    bottom: -$alert-height - $glow-small;
+    left: 0;
+    z-index: 99;
+    height: $alert-height;
+    text-align: center;
+    width: 100%;
+    font-size: .8rem;
+    border-top: 1px solid $alert-success-text;
+    line-height: $alert-height;
+    background: $alert-success;
+    color: $alert-success-text;
+
+
+    &.visible {
+        bottom: 0;
+    }
+
+    &.alert-error {
+        background: $alert-error;
+        color: $alert-error-text;
+        border-color: $alert-error-text;
+    }
+
+    &.alert-success {
+        background: $alert-success;
+        color: $alert-success-text;
+        border-color: $alert-success-text;
+    }
+}

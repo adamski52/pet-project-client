@@ -1,0 +1,311 @@
+nav {
+    background: rgba(0,0,0,.5);
+    position: absolute;
+    top: 0;
+    left: -$nav-width;
+    width: $nav-width;
+    font-size: $nav-text-size;
+    z-index: 4;
+    @include transition($duration-short, 0);
+
+    &.nav-open {
+        left: 0;
+    }
+
+    a {
+        color: #fff;
+    }
+
+
+    .livestream:hover {
+        background-color: $livestream-primary;
+        border-color: $livestream-contrast;
+        //color: $livestream-contrast;
+        //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $livestream-contrast;
+
+        &:before {
+            color: $livestream-subtle;
+        }
+    }
+
+    .about:hover {
+        background-color: $about-primary;
+        border-color: $about-contrast;
+        //color: $about-contrast;
+        //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $about-contrast;
+
+        &:before {
+            color: $about-subtle;
+        }
+    }
+
+    .services:hover {
+        background-color: $services-primary;
+        border-color: $services-contrast;
+        //color: $services-contrast;
+        //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $services-contrast;
+
+        &:before {
+            color: $services-subtle;
+        }
+    }
+
+    .enroll:hover {
+        background-color: $enroll-primary;
+        border-color: $enroll-contrast;
+        //color: $enroll-contrast;
+        //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $enroll-contrast;
+
+        &:before {
+            color: $enroll-subtle;
+        }
+    }
+
+    .schedule:hover {
+        background-color: $schedule-primary;
+        border-color: $schedule-contrast;
+        //color: $schedule-contrast;
+        //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $schedule-contrast;
+
+        &:before {
+            color: $schedule-subtle;
+        }
+    }
+
+    .contact:hover {
+        background-color: $contact-primary;
+        border-color: $contact-contrast;
+        //color: $contact-contrast;
+        //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $contact-contrast;
+
+        &:before {
+            color: $contact-subtle;
+        }
+    }
+
+    .theme-reversed {
+        &.livestream:hover {
+            background-color: $livestream-contrast;
+            border-color: $livestream-contrast;
+            color: #fff;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $livestream-contrast;
+
+            &:before {
+                color: $livestream-subtle;
+            }
+        }
+
+        &.about:hover {
+            background-color: $about-contrast;
+            border-color: $about-contrast;
+            color: #fff;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $about-contrast;
+
+            &:before {
+                color: $about-subtle;
+            }
+        }
+
+        &.services:hover {
+            background-color: $services-contrast;
+            border-color: $services-contrast;
+            color: #fff;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $services-contrast;
+
+            &:before {
+                color: $services-subtle;
+            }
+        }
+
+        &.enroll:hover {
+            background-color: $enroll-contrast;
+            border-color: $enroll-contrast;
+            color: #fff;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $enroll-contrast;
+
+            &:before {
+                color: $enroll-subtle;
+            }
+        }
+
+        &.schedule:hover {
+            background-color: $schedule-contrast;
+            border-color: $schedule-contrast;
+            color: #fff;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $schedule-contrast;
+
+            &:before {
+                color: $schedule-subtle;
+            }
+        }
+
+        &.contact:hover {
+            background-color: $contact-contrast;
+            border-color: $contact-contrast;
+            color: #fff;
+            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $contact-contrast;
+
+            &:before {
+                color: $contact-subtle;
+            }
+        }
+    }
+}
+
+.nav-logo {
+    width: 100%;
+    padding: $small-padding;
+
+    img {
+        width: 100%;
+    }
+}
+
+.nav-toggle {
+    @include transition($duration-short, 0);
+    position: absolute;
+    background: rgba(0,0,0,.5);
+    top: 0;
+    left: $nav-width;
+    display: block;
+    height: $nav-menu-size;
+    width: $nav-menu-size;
+
+    span {
+        display: none;
+    }
+
+    &:after,
+    &:before {
+        @include transition($duration-short, 0);
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        line-height: $nav-menu-size;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        font-size: 2rem;
+    }
+
+    &:after {
+        content: "\4e"; // chevron-right
+        opacity: 0;
+    }
+
+    &:hover {
+        color: #000;
+        background: rgba(255,255,255,.5);
+        text-decoration: none;
+        &:before {
+            opacity: 0;
+        }
+
+        &:after {
+            opacity: 1;
+        }
+    }
+}
+
+.nav-open .nav-toggle {
+    &:hover {
+        &:after {
+            content: "\4f"; // chevron-left
+        }
+    }
+}
+
+
+.nav-link {
+    @include transition($duration-short, 0);
+    display: block;
+    color: #fff;
+    padding: $small-padding $base-padding $small-padding $base-padding*2;
+    border-right: $nav-border-size solid transparent;
+    position: relative;
+    line-height: $nav-icon-size;
+
+
+    &:before {
+        overflow: hidden;
+        width: 0;
+        position: absolute;
+        top: 8px;
+        left: 5px;
+        font-size: $nav-icon-size;
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: #fff;
+
+        &:before {
+            width: auto;
+        }
+    }
+}
+
+.nav-link-dropdown {
+    border-right: $nav-border-size solid transparent;
+
+    @include transition($duration-short, $duration-long);
+
+    &:hover {
+        @include transition($duration-short, 0);
+
+        .nav-link-dropdown-content {
+            max-height: 999px;
+            @include transition($duration-long, $duration-short);
+        }
+
+        > .nav-link {
+            border: none;
+
+            &:before {
+                width: auto;
+            }
+        }
+    }
+}
+
+.nav-link-dropdown-content {
+    display: block;
+    padding: 0 0 0 $base-padding;
+    overflow: hidden;
+    max-height: 0;
+    @include transition($duration-long, 0);
+
+    .nav-link {
+        font-size: 1.4rem;
+        border: none;
+    }
+
+
+    input {
+        line-height: 2rem;
+        font-size: 1.5rem;
+        padding: 7px;
+        margin: 7px 0;
+        border: none;
+        border-radius: 4px;
+        font-family: $font-family-serif;
+        color: #666;
+    }
+
+    p {
+        margin: $small-padding 0;
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: $screen-sm) {
+    nav {
+        left: 0;
+    }
+
+    .nav-toggle {
+        display: none;
+    }
+}
+

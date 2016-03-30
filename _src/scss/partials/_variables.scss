@@ -164,17 +164,19 @@ $services-background: url(../images/backgrounds/zelda.png);
 
 $base-padding: 16px;
 $small-padding: 10px;
-$nav-icon-padding: 7px;
 
 $map-height: 300px;
 
-$nav-width: 200px;
-$nav-size: 80px;
+
+$nav-menu-size: 35px;
 $nav-top-padding: 40px;
+$nav-width: 200px;
 $nav-height: 50px;
-$nav-text-size: .8rem;
+$nav-text-size: 1.8rem;
 $nav-text-height: 25px;
-$nav-border-size: 3px;
+$nav-icon-size: 2.4rem;
+$nav-icon-padding: 7px;
+$nav-border-size: 6px;
 $nav-shadow-x: 0px;
 $nav-shadow-y: 0px;
 $nav-shadow-blur: 50px;
@@ -184,6 +186,7 @@ $glow-medium: 20px;
 $glow-large: 40px;
 
 $duration-short: .3s;
+$duration-long: .8s;
 
 $alert-height: 30px;
 $alert-error: #ae6464;
