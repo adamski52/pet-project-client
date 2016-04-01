@@ -5,71 +5,17 @@
 }
 
 .section {
-    &.intro {
-        background-color: $intro-primary;
-        color: $intro-text;
-    }
-
-    &.about {
-        background-color: $about-primary;
-        color: $about-text;
-    }
-
-    &.services {
-        background-color: $services-primary;
-        color: $services-text;
-    }
-
-    &.livestream {
-        background-color: $livestream-primary;
-        color: $livestream-text;
-    }
-
-    &.enroll {
-        background-color: $enroll-primary;
-        color: $enroll-text;
-    }
-
-    &.schedule {
-        background-color: $schedule-primary;
-        color: $schedule-text;
-    }
-
-    &.contact {
-        background-color: $contact-primary;
-        color: $contact-text;
-    }
-}
-
-.section {
     background-attachment: fixed;
     background-position: bottom right;
     background-repeat: no-repeat;
     background-size: 60%;
     min-height: 100%;
-    padding: $nav-height + $nav-top-padding + $base-padding $base-padding $base-padding $base-padding;
-
-    > * {
-        width: 50%;
-    }
-
-    p {
-        font-size: 1.15rem;
-        line-height: 1.2rem;
-        margin-left: 55px;
-        width: 40%;
-        font-family: $font-family-serif;
-    }
-
-    li {
-        font-family: $font-family-serif;
-        font-size: 1.15rem;
-        line-height: 1.2rem;
-        list-style-type: disc;
-        margin-left: 50px;
-    }
+    //padding: $nav-height + $nav-top-padding + $base-padding $base-padding $base-padding $base-padding;
+    padding: $base-padding $base-padding $base-padding $nav-width + $base-padding;
 
     &.intro {
+        background-color: $intro-primary;
+        color: $intro-text;
         text-transform: uppercase;
         background-image: $intro-background;
 
@@ -81,6 +27,8 @@
     }
 
     &.about {
+        background-color: $about-primary;
+        color: $about-text;
         background-image: $about-background;
 
         h2, h3 {
@@ -100,6 +48,8 @@
     }
 
     &.services {
+        background-color: $services-primary;
+        color: $services-text;
         background-image: $services-background;
 
         .btn:hover{
@@ -110,6 +60,8 @@
     }
 
     &.livestream {
+        background-color: $livestream-primary;
+        color: $livestream-text;
         background: url(http://storybook.ddns.net:8082) center center no-repeat;
         background-size: cover;
         background-attachment: fixed;
@@ -122,6 +74,8 @@
     }
 
     &.enroll {
+        background-color: $enroll-primary;
+        color: $enroll-text;
         background-image: $enroll-background;
 
         .btn:hover{
@@ -132,6 +86,8 @@
     }
 
     &.schedule {
+        background-color: $schedule-primary;
+        color: $schedule-text;
         background-image: $schedule-background;
 
         .btn:hover{
@@ -142,6 +98,8 @@
     }
 
     &.contact {
+        background-color: $contact-primary;
+        color: $contact-text;
         background-attachment: initial;
         background-image: $contact-background;
 
@@ -150,6 +108,26 @@
                 color: $contact-primary;
             }
         }
+    }
+
+    
+    > * {
+        width: 50%;
+    }
+
+    p {
+        font-size: 1.15rem;
+        line-height: 1.2rem;
+        width: 40%;
+        font-family: $font-family-serif;
+    }
+
+    li {
+        font-family: $font-family-serif;
+        font-size: 1.15rem;
+        line-height: 1.2rem;
+        list-style-type: disc;
+        margin-left: 50px;
     }
 }
 

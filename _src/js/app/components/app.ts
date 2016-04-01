@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {NavComponent} from "../../nav/components/nav";
 import {AboutComponent} from "../../about/components/about";
 import {CollageComponent} from "../../collage/components/collage";
 import {ContactComponent} from "../../contact/components/contact";
@@ -11,12 +12,15 @@ import {ModalComponent} from "../../modal/components/modal";
 import {AlertComponent} from "../../alert/components/alert";
 import {ModalService} from "../../modal/services/modal";
 import {AlertService} from "../../alert/services/alert";
-
+import {Toggler} from "../../toggler/components/toggler";
+import {TogglerMenu} from "../../toggler/components/toggler-menu";
+import {TogglerService} from "../../toggler/services/toggler";
 
 @Component({
     selector: "storybook",
     templateUrl: "templates/app.html",
     directives: [
+        NavComponent,
         AboutComponent,
         CollageComponent,
         ContactComponent,
@@ -26,11 +30,14 @@ import {AlertService} from "../../alert/services/alert";
         ServicesComponent,
         LivestreamComponent,
         ModalComponent,
-        AlertComponent
+        AlertComponent,
+        Toggler,
+        TogglerMenu
     ],
     providers: [
         ModalService,
-        AlertService
+        AlertService,
+        TogglerService
     ]
 })
 

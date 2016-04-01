@@ -8,7 +8,10 @@ nav {
     z-index: 4;
     @include transition($duration-short, 0);
 
-    &.nav-open {
+    border-bottom-right-radius: 20px;
+
+
+    &.toggler-open {
         left: 0;
     }
 
@@ -17,7 +20,7 @@ nav {
     }
 
 
-    .livestream:hover {
+    .livestream {
         background-color: $livestream-primary;
         border-color: $livestream-contrast;
         //color: $livestream-contrast;
@@ -28,7 +31,7 @@ nav {
         }
     }
 
-    .about:hover {
+    .about {
         background-color: $about-primary;
         border-color: $about-contrast;
         //color: $about-contrast;
@@ -39,7 +42,7 @@ nav {
         }
     }
 
-    .services:hover {
+    .services {
         background-color: $services-primary;
         border-color: $services-contrast;
         //color: $services-contrast;
@@ -50,7 +53,7 @@ nav {
         }
     }
 
-    .enroll:hover {
+    .enroll {
         background-color: $enroll-primary;
         border-color: $enroll-contrast;
         //color: $enroll-contrast;
@@ -61,7 +64,7 @@ nav {
         }
     }
 
-    .schedule:hover {
+    .schedule {
         background-color: $schedule-primary;
         border-color: $schedule-contrast;
         //color: $schedule-contrast;
@@ -72,7 +75,8 @@ nav {
         }
     }
 
-    .contact:hover {
+    .contact {
+        border-bottom-right-radius: 20px;
         background-color: $contact-primary;
         border-color: $contact-contrast;
         //color: $contact-contrast;
@@ -80,74 +84,6 @@ nav {
 
         &:before {
             color: $contact-subtle;
-        }
-    }
-
-    .theme-reversed {
-        &.livestream:hover {
-            background-color: $livestream-contrast;
-            border-color: $livestream-contrast;
-            color: #fff;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $livestream-contrast;
-
-            &:before {
-                color: $livestream-subtle;
-            }
-        }
-
-        &.about:hover {
-            background-color: $about-contrast;
-            border-color: $about-contrast;
-            color: #fff;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $about-contrast;
-
-            &:before {
-                color: $about-subtle;
-            }
-        }
-
-        &.services:hover {
-            background-color: $services-contrast;
-            border-color: $services-contrast;
-            color: #fff;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $services-contrast;
-
-            &:before {
-                color: $services-subtle;
-            }
-        }
-
-        &.enroll:hover {
-            background-color: $enroll-contrast;
-            border-color: $enroll-contrast;
-            color: #fff;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $enroll-contrast;
-
-            &:before {
-                color: $enroll-subtle;
-            }
-        }
-
-        &.schedule:hover {
-            background-color: $schedule-contrast;
-            border-color: $schedule-contrast;
-            color: #fff;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $schedule-contrast;
-
-            &:before {
-                color: $schedule-subtle;
-            }
-        }
-
-        &.contact:hover {
-            background-color: $contact-contrast;
-            border-color: $contact-contrast;
-            color: #fff;
-            //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $contact-contrast;
-
-            &:before {
-                color: $contact-subtle;
-            }
         }
     }
 }
@@ -208,7 +144,7 @@ nav {
     }
 }
 
-.nav-open .nav-toggle {
+.toggler-open .nav-toggle {
     &:hover {
         &:after {
             content: "\4f"; // chevron-left
@@ -226,10 +162,8 @@ nav {
     position: relative;
     line-height: $nav-icon-size;
 
-
     &:before {
         overflow: hidden;
-        width: 0;
         position: absolute;
         top: 8px;
         left: 5px;
@@ -248,39 +182,59 @@ nav {
 
 .nav-link-dropdown {
     border-right: $nav-border-size solid transparent;
+    position: relative;
+    @include transition($duration-long, $duration-short);
+    
+    .nav-link-toggle {
+        @include transition($duration-long, 0);
+        border-radius: 4px;
+        padding: 3px;
+        height: 25px;
+        width: 25px;
+        line-height: 25px;
+        background: rgba(0,0,0,.2);
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1;
+        display: block;
 
-    @include transition($duration-short, $duration-long);
+        &:hover {
+            text-decoration: none;
+        }
 
-    &:hover {
-        @include transition($duration-short, 0);
+        span {
+            display: none;
+        }
+    }
+
+    &.toggler-open {
+        .nav-link-toggle {
+            &:before {
+                content: "\4d"; // chevron up
+            }
+        }
 
         .nav-link-dropdown-content {
             max-height: 999px;
-            @include transition($duration-long, $duration-short);
         }
+    }
 
-        > .nav-link {
-            border: none;
-
-            &:before {
-                width: auto;
-            }
-        }
+    .nav-link {
+        border: none;
     }
 }
 
 .nav-link-dropdown-content {
     display: block;
-    padding: 0 0 0 $base-padding;
+    padding: 0 $base-padding;
     overflow: hidden;
     max-height: 0;
     @include transition($duration-long, 0);
 
     .nav-link {
         font-size: 1.4rem;
-        border: none;
     }
-
 
     input {
         line-height: 2rem;
@@ -291,6 +245,7 @@ nav {
         border-radius: 4px;
         font-family: $font-family-serif;
         color: #666;
+        width: 100%;
     }
 
     p {
@@ -302,10 +257,161 @@ nav {
 @media (min-width: $screen-sm) {
     nav {
         left: 0;
+
+        .livestream {
+            background-color: transparent;
+            border-color: transparent;
+            &:hover {
+                background-color: $livestream-primary;
+                border-color: $livestream-contrast;
+            }
+        }
+
+        .about {
+            background-color: transparent;
+            border-color: transparent;
+            &:hover {
+                background-color: $about-primary;
+                border-color: $about-contrast;
+            }
+        }
+
+        .services {
+            background-color: transparent;
+            border-color: transparent;
+            &:hover {
+                background-color: $services-primary;
+                border-color: $services-contrast;
+            }
+        }
+
+        .enroll {
+            background-color: transparent;
+            border-color: transparent;
+            &:hover {
+                background-color: $enroll-primary;
+                border-color: $enroll-contrast;
+            }
+        }
+
+        .schedule {
+            background-color: transparent;
+            border-color: transparent;
+            &:hover {
+                background-color: $schedule-primary;
+                border-color: $schedule-contrast;
+            }
+        }
+
+        .contact {
+            background-color: transparent;
+            border-color: transparent;
+            &:hover {
+                background-color: $contact-primary;
+                border-color: $contact-contrast;
+            }
+        }
+
+        .theme-reversed {
+            &.livestream {
+                background-color: transparent;
+                border-color: transparent;
+
+                &:hover {
+                    background-color: $livestream-contrast;
+                    border-color: $livestream-contrast;
+                }
+            }
+
+            &.about {
+                background-color: transparent;
+                border-color: transparent;
+
+                &:hover {
+                    background-color: $about-contrast;
+                    border-color: $about-contrast;
+                }
+            }
+
+            &.services {
+                background-color: transparent;
+                border-color: transparent;
+
+                &:hover {
+                    background-color: $services-contrast;
+                    border-color: $services-contrast;
+                }
+            }
+
+            &.enroll {
+                background-color: transparent;
+                border-color: transparent;
+
+                &:hover {
+                    background-color: $enroll-contrast;
+                    border-color: $enroll-contrast;
+                }
+            }
+
+            &.schedule {
+                background-color: transparent;
+                border-color: transparent;
+
+                &:hover {
+                    background-color: $schedule-contrast;
+                    border-color: $schedule-contrast;
+                }
+            }
+
+            &.contact {
+                background-color: transparent;
+                border-color: transparent;
+
+                &:hover {
+                    background-color: $contact-contrast;
+                    border-color: $contact-contrast;
+                }
+            }
+        }
     }
 
     .nav-toggle {
         display: none;
+    }
+
+    .nav-link {
+        &:before {
+            width: 0;
+        }
+    }
+
+    .nav-link-dropdown {
+        @include transition($duration-short, $duration-long);
+
+        .nav-link-toggle {
+            display: none
+        }
+
+        &:hover {
+            @include transition($duration-short, 0);
+
+            .nav-link-dropdown-content {
+                max-height: 999px;
+            }
+
+            > .nav-link {
+                border: none;
+
+                &:before {
+                    width: auto;
+                }
+            }
+        }
+
+        &.toggler-open .nav-link-dropdown-content,
+        .nav-link-dropdown-content {
+            max-height: 0;
+        }
     }
 }
 
