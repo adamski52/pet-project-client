@@ -14,7 +14,6 @@ export class TogglerMenu {
     private item: string;
 
     toggle(item) {
-        console.log("TOGGLE HEARD", item, this.item);
         if (item == this.item) {
             this.isOpen = !this.isOpen;    
         }

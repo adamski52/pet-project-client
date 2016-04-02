@@ -19,6 +19,5 @@ export class Toggler {
 
     constructor(private _service: TogglerService, @Attribute("item") item: string) {
         this.item = item;
-        this._service.toggle(this.item); // initialize service
     }
 }

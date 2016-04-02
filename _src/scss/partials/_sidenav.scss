@@ -10,6 +10,9 @@ nav {
 
     border-bottom-right-radius: 20px;
 
+    &.nav-fixed {
+        position: fixed;
+    }
 
     &.toggler-open {
         left: 0;
@@ -88,6 +91,7 @@ nav {
     }
 }
 
+.main-logo,
 .nav-logo {
     width: 100%;
     padding: $small-padding;
@@ -95,6 +99,10 @@ nav {
     img {
         width: 100%;
     }
+}
+
+.nav-logo {
+    display: none;
 }
 
 .nav-toggle {
@@ -183,10 +191,11 @@ nav {
 .nav-link-dropdown {
     border-right: $nav-border-size solid transparent;
     position: relative;
-    @include transition($duration-long, $duration-short);
+    //@include transition($duration-long, $duration-short);
+    @include transition($duration-long, 0);
     
     .nav-link-toggle {
-        @include transition($duration-long, 0);
+        @include transition($duration-short, 0);
         border-radius: 4px;
         padding: 3px;
         height: 25px;
@@ -198,6 +207,11 @@ nav {
         right: 10px;
         z-index: 1;
         display: block;
+
+        &:before {
+            cursor: pointer;
+            color: #fff;
+        }
 
         &:hover {
             text-decoration: none;
@@ -227,10 +241,14 @@ nav {
 
 .nav-link-dropdown-content {
     display: block;
-    padding: 0 $base-padding;
+    padding-left: $base-padding;
     overflow: hidden;
     max-height: 0;
     @include transition($duration-long, 0);
+
+    &.no-touchy {
+        padding: 0 $base-padding;
+    }
 
     .nav-link {
         font-size: 1.4rem;
@@ -254,7 +272,7 @@ nav {
     }
 }
 
-@media (min-width: $screen-sm) {
+@media (min-width: 550px) {
     nav {
         left: 0;
 
@@ -375,6 +393,14 @@ nav {
         }
     }
 
+    .nav-logo {
+        display: block;
+    }
+
+    .main-logo {
+        display: none;
+    }
+
     .nav-toggle {
         display: none;
     }
@@ -386,13 +412,14 @@ nav {
     }
 
     .nav-link-dropdown {
-        @include transition($duration-short, $duration-long);
+        @include transition($duration-short, 0);
+        //@include transition($duration-short, $duration-long);
 
         .nav-link-toggle {
-            display: none
+            //display: none
         }
 
-        &:hover {
+        /*&:hover {
             @include transition($duration-short, 0);
 
             .nav-link-dropdown-content {
@@ -411,7 +438,7 @@ nav {
         &.toggler-open .nav-link-dropdown-content,
         .nav-link-dropdown-content {
             max-height: 0;
-        }
+        }*/
     }
 }
 

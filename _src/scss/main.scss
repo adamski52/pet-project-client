@@ -6,6 +6,14 @@
 @import "partials/_sections.scss";
 @import "partials/_buttons.scss";
 
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+a:hover,
 a:focus {
     color: #fff;
 }
