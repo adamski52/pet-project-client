@@ -84,3 +84,124 @@
         border-bottom-left-radius: 0;
     }
 }
+
+.intro {
+    .btn {
+        background-color: $intro-contrast;
+
+        &:before {
+            color: $intro-contrast;
+        }
+
+        &:hover {
+            background-color: #fff;
+            color: $intro-contrast;
+
+            &:before {
+                background-color: $intro-contrast;
+                color: $intro-subtle;
+            }
+        }
+    }
+}
+
+.about {
+    .btn {
+        background-color: $about-contrast;
+
+        &:before {
+            color: $about-contrast;
+        }
+
+        &:hover {
+            background-color: #fff;
+            color: $about-contrast;
+
+            &:before {
+                background-color: $about-contrast;
+                color: $about-subtle;
+            }
+        }
+    }
+}
+
+.services {
+    .btn {
+        background-color: $services-contrast;
+
+        &:before {
+            color: $services-contrast;
+        }
+
+        &:hover {
+            background-color: #fff;
+            color: $services-contrast;
+
+            &:before {
+                background-color: $services-contrast;
+                color: $services-subtle;
+            }
+        }
+    }
+}
+
+.livestream {
+    .btn {
+        background-color: $livestream-contrast;
+
+        &:before {
+            color: $livestream-contrast;
+        }
+
+        &:hover {
+            background-color: #fff;
+            color: $livestream-contrast;
+
+            &:before {
+                background-color: $livestream-contrast;
+                color: $livestream-subtle;
+            }
+        }
+    }
+}
+
+.enroll {
+    .btn {
+        background-color: $enroll-contrast;
+
+        &:before {
+            color: $enroll-contrast;
+        }
+
+        &:hover {
+            background-color: #fff;
+            color: $enroll-contrast;
+
+            &:before {
+                background-color: $enroll-contrast;
+                color: $enroll-subtle;
+            }
+        }
+    }
+}
+
+.contact {
+    .btn {
+        background-color: $contact-contrast;
+
+        &:before {
+            color: $contact-contrast;
+        }
+
+        &:hover {
+            background-color: #fff;
+            color: $contact-contrast;
+
+            &:before {
+                background-color: $contact-contrast;
+                color: $contact-subtle;
+            }
+        }
+    }
+}
+

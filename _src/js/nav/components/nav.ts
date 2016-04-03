@@ -7,8 +7,8 @@ import {TogglerService} from "../../toggler/services/toggler";
     selector: "nav",
     templateUrl: "templates/nav.html",
     host: {
-        "(window:scroll)": "figureNav($event)",
-        "(window:resize)": "figureNav($event)",
+        "(body:scroll)": "figureNav()",
+        "(window:resize)": "figureNav()",
         "[class.nav-fixed]": "isFixed",
     },
     directives: [Toggler, TogglerMenu],
@@ -25,9 +25,10 @@ export class NavComponent {
         this._service.toggle("enroll-menu");
         this._service.toggle("account-menu");
         this._service.toggle("nav-menu");
+        this.figureNav();
     }
 
-    figureNav(e) {
-        this.isFixed = e.target.innerHeight >= this.height;
+    figureNav() {
+        this.isFixed = window.innerHeight >= this.height;
     }
 }

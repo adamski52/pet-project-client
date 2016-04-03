@@ -1,10 +1,10 @@
 @import "_bootstrap.scss";
-@import "partials/_fonts.scss";
 @import "partials/_variables.scss";
-//@import "partials/_topnav.scss";
+@import "partials/_fonts.scss";
 @import "partials/_sidenav.scss";
 @import "partials/_sections.scss";
 @import "partials/_buttons.scss";
+@import "partials/_modal.scss";
 
 html, body {
     height: 100%;
@@ -16,6 +16,10 @@ html, body {
 a:hover,
 a:focus {
     color: #fff;
+}
+
+a:focus {
+    text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, li {

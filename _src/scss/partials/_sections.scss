@@ -31,9 +31,12 @@
         text-transform: uppercase;
         background-image: $intro-background;
 
-        .btn:hover{
+        h1, h2, h3, h4, h5, h6 {
+            color: $intro-heading;
+
             &:before {
-                color: $intro-primary;
+                color: $intro-heading-icon;
+                border-color: $intro-heading-ring;
             }
         }
     }
@@ -43,18 +46,12 @@
         color: $about-text;
         background-image: $about-background;
 
-        h2, h3 {
-            color: $about-subtle;
+        h1, h2, h3, h4, h5, h6 {
+            color: $about-heading;
 
             &:before {
-                color: $about-text;
-                border-color: $about-subtle;
-            }
-        }
-
-        .btn:hover{
-            &:before {
-                color: $about-primary;
+                color: $about-heading-icon;
+                border-color: $about-heading-ring;
             }
         }
     }
@@ -64,9 +61,12 @@
         color: $services-text;
         background-image: $services-background;
 
-        .btn:hover{
+        h1, h2, h3, h4, h5, h6 {
+            color: $services-heading;
+
             &:before {
-                color: $services-primary;
+                color: $services-heading-icon;
+                border-color: $services-heading-ring;
             }
         }
     }
@@ -74,13 +74,17 @@
     &.livestream {
         background-color: $livestream-primary;
         color: $livestream-text;
-        background: url(http://storybook.ddns.net:8082) center center no-repeat;
+        background-image: $livestream-background;
+        background-position: center center;
         background-size: cover;
         background-attachment: fixed;
 
-        .btn:hover{
+        h1, h2, h3, h4, h5, h6 {
+            color: $livestream-heading;
+
             &:before {
-                color: $livestream-primary;
+                color: $livestream-heading-icon;
+                border-color: $livestream-heading-ring;
             }
         }
     }
@@ -90,21 +94,12 @@
         color: $enroll-text;
         background-image: $enroll-background;
 
-        .btn:hover{
-            &:before {
-                color: $enroll-primary;
-            }
-        }
-    }
+        h1, h2, h3, h4, h5, h6 {
+            color: $enroll-heading;
 
-    &.schedule {
-        background-color: $schedule-primary;
-        color: $schedule-text;
-        background-image: $schedule-background;
-
-        .btn:hover{
             &:before {
-                color: $schedule-primary;
+                color: $enroll-heading-icon;
+                border-color: $enroll-heading-ring;
             }
         }
     }
@@ -112,12 +107,14 @@
     &.contact {
         background-color: $contact-primary;
         color: $contact-text;
-        background-attachment: initial;
         background-image: $contact-background;
 
-        .btn:hover{
+        h1, h2, h3, h4, h5, h6 {
+            color: $contact-heading;
+
             &:before {
-                color: $contact-primary;
+                color: $contact-heading-icon;
+                border-color: $contact-heading-ring;
             }
         }
     }
@@ -142,10 +139,6 @@
 
     &.enroll {
         background-color: $enroll-primary;
-    }
-
-    &.schedule {
-        background-color: $schedule-primary;
     }
 
     &.contact {
@@ -231,7 +224,7 @@
     }
 }
 @media (max-width: 650px) {
-    .section {
+    .section:not(.livestream) {
         background-image: none !important;
     }
 }

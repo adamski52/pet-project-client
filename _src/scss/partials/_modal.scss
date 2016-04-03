@@ -1,0 +1,48 @@
+.modal-cover {
+    background: rgba(255,255,255,.8);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    color: #fff;
+
+    .modal-close {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        background: #000;
+        border-radius: 15px;
+        display: inline-block;
+        position: absolute;
+        top: $base-padding;
+        right: $base-padding;
+        text-shadow: 0 0 20px #000;
+    }
+
+    .modal-content {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        background: transparent;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -0.25em;
+        }
+
+        img {
+            max-width: 90%;
+            max-height: 90%;
+            vertical-align: middle;
+            display: inline-block;
+            @include glow($glow-large, #000);
+        }
+    }
+}
