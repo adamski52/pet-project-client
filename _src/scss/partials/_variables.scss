@@ -22,7 +22,6 @@ $about-text: lighten($about-primary, 40%);
 $about-heading: #fff;
 $about-heading-icon: $about-heading;
 $about-heading-ring: $about-subtle;
-//$about-background: url(../images/backgrounds/aslan.png);
 $about-background: url(../images/backgrounds/aslan-face.png);
 .about {
     .contrast {
@@ -45,7 +44,7 @@ $intro-text: lighten($intro-primary, 40%);
 $intro-heading: #fff;
 $intro-heading-icon: $intro-heading;
 $intro-heading-ring: $intro-subtle;
-$intro-background: url(../images/backgrounds/pug-face.png);
+$intro-background: url(../images/backgrounds/yoyo-face.png);
 
 .intro {
     .contrast {
@@ -91,7 +90,6 @@ $enroll-text: lighten($enroll-primary, 35%);
 $enroll-heading: #fff;
 $enroll-heading-icon: $enroll-heading;
 $enroll-heading-ring: $enroll-subtle;
-//$enroll-background: url(../images/backgrounds/franklin.png);
 $enroll-background: url(../images/backgrounds/franklin-face.png);
 
 .enroll {
@@ -115,7 +113,6 @@ $contact-text: lighten($contact-primary, 45%);
 $contact-heading: #fff;
 $contact-heading-icon: $contact-heading;
 $contact-heading-ring: $contact-subtle;
-//$contact-background: url(../images/backgrounds/shepherd.png);
 $contact-background: url(../images/backgrounds/pug-face.png);
 
 .contact {
@@ -139,8 +136,7 @@ $services-text: lighten($services-primary, 40%);
 $services-heading: #fff;
 $services-heading-icon: $services-heading;
 $services-heading-ring: $services-subtle;
-//$services-background: url(../images/backgrounds/zelda.png);
-$services-background: url(../images/backgrounds/yoyo-face.png);
+$services-background: url(../images/backgrounds/zelda-face.png);
 
 .services {
     .contrast {
