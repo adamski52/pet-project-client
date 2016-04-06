@@ -13,7 +13,7 @@ export class VerifyService {
         this.fetch$ = this.http.get(CONSTANTS.apiBaseURL).map(response => {
             // TODO:  Could transpose in to proper object types
             return response;
-        }).debounceTime(400).distinctUntilChanged().share();
+        }).share();
     }
 
     fetch() {
