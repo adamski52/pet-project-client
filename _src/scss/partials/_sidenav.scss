@@ -26,44 +26,36 @@ nav {
     .livestream {
         background-color: $livestream-primary;
         border-color: $livestream-contrast;
-        //color: $livestream-contrast;
-        //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $livestream-contrast;
 
         &:before {
-            color: $livestream-subtle;
+            color: $livestream-contrast;
         }
     }
 
     .about {
         background-color: $about-primary;
         border-color: $about-contrast;
-        //color: $about-contrast;
-        //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $about-contrast;
 
         &:before {
-            color: $about-subtle;
+            color: $about-contrast;
         }
     }
 
     .services {
         background-color: $services-primary;
         border-color: $services-contrast;
-        //color: $services-contrast;
-        //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $services-contrast;
 
         &:before {
-            color: $services-subtle;
+            color: $services-contrast;
         }
     }
 
     .enroll {
         background-color: $enroll-primary;
         border-color: $enroll-contrast;
-        //color: $enroll-contrast;
-        //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $enroll-contrast;
 
         &:before {
-            color: $enroll-subtle;
+            color: $enroll-contrast;
         }
     }
 
@@ -71,11 +63,9 @@ nav {
         border-bottom-right-radius: 20px;
         background-color: $contact-primary;
         border-color: $contact-contrast;
-        //color: $contact-contrast;
-        //box-shadow: $nav-shadow-x $nav-shadow-y $nav-shadow-blur $contact-contrast;
 
         &:before {
-            color: $contact-subtle;
+            color: $contact-contrast;
         }
     }
 }
@@ -172,6 +162,7 @@ nav {
 
         &:before {
             width: auto;
+            text-shadow: none !important;
         }
     }
 }
@@ -270,6 +261,8 @@ nav {
             &:hover {
                 background-color: $livestream-primary;
                 border-color: $livestream-contrast;
+                //color: $livestream-subtle;
+                @include blocktext($livestream-contrast);
             }
         }
 
@@ -279,6 +272,8 @@ nav {
             &:hover {
                 background-color: $about-primary;
                 border-color: $about-contrast;
+                //color: $about-subtle;
+                @include blocktext($about-contrast);
             }
         }
 
@@ -288,6 +283,8 @@ nav {
             &:hover {
                 background-color: $services-primary;
                 border-color: $services-contrast;
+                //color: $services-subtle;
+                @include blocktext($services-contrast);
             }
         }
 
@@ -297,6 +294,8 @@ nav {
             &:hover {
                 background-color: $enroll-primary;
                 border-color: $enroll-contrast;
+                //color: $enroll-subtle;
+                @include blocktext($enroll-contrast);
             }
         }
 
@@ -306,6 +305,8 @@ nav {
             &:hover {
                 background-color: $contact-primary;
                 border-color: $contact-contrast;
+                //color: $contact-subtle;
+                @include blocktext($contact-contrast);
             }
         }
 
@@ -327,6 +328,7 @@ nav {
                 &:hover {
                     background-color: $about-contrast;
                     border-color: $about-contrast;
+                    color: $about-subtle;
                 }
             }
 

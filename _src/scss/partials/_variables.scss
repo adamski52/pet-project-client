@@ -1,3 +1,38 @@
+
+@mixin blocktext($color) {
+    text-shadow: 2px 2px 0px $color;
+}
+
+@mixin desaturate($amount) {
+    -webkit-filter: grayscale($amount);
+    filter: grayscale($amount);
+}
+
+@mixin grow($scale) {
+    -ms-transform: scale($scale, $scale);
+    -webkit-transform: scale($scale, $scale);
+    transform: scale($scale, $scale);
+}
+
+@mixin transition($duration, $delay) {
+    -webkit-transition: all $duration;
+    transition: all $duration;
+    -webkit-transition-delay: $delay;
+    transition-delay: $delay;
+}
+
+@mixin glow($amt, $color) {
+    box-shadow: 0 0 $amt $color;
+}
+
+@mixin blur($amt) {
+    -webkit-filter: blur($amt);
+    -moz-filter: blur($amt);
+    -o-filter: blur($amt);
+    -ms-filter: blur($amt);
+    filter: blur($amt);
+}
+
 $default-primary: #edc45b;
 $default-text: #fff;
 $default-contrast: #372d2d;
@@ -30,6 +65,7 @@ $about-background: url(../images/backgrounds/aslan-face.png);
 
     .subtle {
         color: $about-subtle;
+        @include blocktext(darken($about-subtle, 45%));
     }
 
     .standard {
@@ -53,6 +89,7 @@ $intro-background: url(../images/backgrounds/yoyo-face.png);
 
     .subtle {
         color: $intro-subtle;
+        @include blocktext(darken($intro-subtle, 45%));
     }
 
     .standard {
@@ -99,6 +136,7 @@ $enroll-background: url(../images/backgrounds/franklin-face.png);
 
     .subtle {
         color: $enroll-subtle;
+        @include blocktext(darken($enroll-subtle, 45%));
     }
 
     .standard {
@@ -122,6 +160,7 @@ $contact-background: url(../images/backgrounds/pug-face.png);
 
     .subtle {
         color: $contact-subtle;
+        @include blocktext(darken($contact-subtle, 45%));
     }
 
     .standard {
@@ -145,6 +184,7 @@ $services-background: url(../images/backgrounds/zelda-face.png);
 
     .subtle {
         color: $services-subtle;
+        @include blocktext(darken($services-subtle, 45%));
     }
 
     .standard {
@@ -184,33 +224,3 @@ $alert-success: #6cb142;
 $alert-success-text: darken($alert-success, 20%);
 $alert-duration: .5s;
 
-
-@mixin desaturate($amount) {
-    -webkit-filter: grayscale($amount);
-    filter: grayscale($amount);
-}
-
-@mixin grow($scale) {
-    -ms-transform: scale($scale, $scale);
-    -webkit-transform: scale($scale, $scale);
-    transform: scale($scale, $scale);
-}
-
-@mixin transition($duration, $delay) {
-    -webkit-transition: all $duration;
-    transition: all $duration;
-    -webkit-transition-delay: $delay;
-    transition-delay: $delay;
-}
-
-@mixin glow($amt, $color) {
-    box-shadow: 0 0 $amt $color;
-}
-
-@mixin blur($amt) {
-    -webkit-filter: blur($amt);
-    -moz-filter: blur($amt);
-    -o-filter: blur($amt);
-    -ms-filter: blur($amt);
-    filter: blur($amt);
-}
