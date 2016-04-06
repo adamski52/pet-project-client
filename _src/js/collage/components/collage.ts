@@ -38,12 +38,4 @@ export class CollageComponent {
             }
         );
     }
-
-    /*getImages() {
-        
-    }
-
-    ngOnInit() {
-        this.getImages();
-    }*/
 }

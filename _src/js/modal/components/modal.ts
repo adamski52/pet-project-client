@@ -12,11 +12,10 @@ import {ICollageImage} from "../../collage/interfaces/collage-image";
 
 export class ModalComponent {
     private url: string;
-    private subscription;
     public isOpen: boolean;
 
     constructor(private _service: ModalService) {
-        this.subscription = this._service.opened$.subscribe(image => this.onOpened(image));
+        this._service.opened$.subscribe(image => this.onOpened(image));
         this.isOpen = false;
     }
 

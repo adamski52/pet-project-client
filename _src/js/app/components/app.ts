@@ -16,6 +16,9 @@ import {Toggler} from "../../toggler/components/toggler";
 import {TogglerMenu} from "../../toggler/components/toggler-menu";
 import {TogglerService} from "../../toggler/services/toggler";
 
+import {CONSTANTS} from "../../constants";
+import {APIService} from "../../api/services/api";
+
 @Component({
     selector: "storybook",
     templateUrl: "templates/app.html",
@@ -37,8 +40,18 @@ import {TogglerService} from "../../toggler/services/toggler";
     providers: [
         ModalService,
         AlertService,
-        TogglerService
+        TogglerService,
+        APIService
     ]
 })
 
-export class AppComponent {}
+export class AppComponent {
+    constructor(private _api: APIService) {
+        this._api.get$.subscribe(response => this.onGet(response));
+        this._api.fetch("http://localhost:8000/api/fake");
+    }
+
+    private onGet(response) {
+        console.log("ON GET!!!!", response);
+    }
+}

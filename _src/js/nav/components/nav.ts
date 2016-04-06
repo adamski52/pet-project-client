@@ -18,10 +18,12 @@ import {TogglerService} from "../../toggler/services/toggler";
 export class NavComponent {
     private height: number = 0;
     private isFixed: boolean = true;
+    private spy;
     constructor(private _service: TogglerService, private _element:ElementRef) { }
 
     ngOnInit() {
         this.height = this._element.nativeElement.clientHeight;
+        this.spy = document.getElementById("height-spy");
         this._service.toggle("enroll-menu");
         this._service.toggle("account-menu");
         this._service.toggle("nav-menu");
@@ -29,6 +31,7 @@ export class NavComponent {
     }
 
     figureNav() {
-        this.isFixed = window.innerHeight >= this.height;
+        // can't use window height.  mobile counts virtual keyboards, so use a 100% height spy element
+        this.isFixed = this.spy.clientHeight >= this.height;
     }
 }

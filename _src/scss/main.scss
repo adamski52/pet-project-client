@@ -13,6 +13,19 @@ html, body {
     position: relative;
 }
 
+body {
+    font-size: 0;
+}
+
+#height-spy {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
 a:hover,
 a:focus {
     color: #fff;
