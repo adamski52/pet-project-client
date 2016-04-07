@@ -1,10 +1,9 @@
 import {Component} from 'angular2/core';
 import {ICollageImage} from "../interfaces/collage-image";
-import {OnInit} from 'angular2/core';
 import {CollageImage} from "./collage-image";
 import {AlertService} from "../../alert/services/alert";
-import {Http, Headers} from 'angular2/http';
 import {CONSTANTS} from "../../constants";
+import {CollageService} from "../services/collage";
 import 'rxjs/add/operator/map';
 
 
@@ -15,26 +14,17 @@ import 'rxjs/add/operator/map';
 })
 
 export class CollageComponent {
-    public images:ICollageImage[];
+    public images:ICollageImage[] = [];
 
-    constructor(private http: Http, private _alert: AlertService) {
-        http.get(CONSTANTS.apiBaseURL + "collages" + CONSTANTS.forceUnique()).map((response) => {
-            return response.json();
-        }).subscribe(
+    constructor(private _alert: AlertService, private _collage: CollageService) {
+        this._collage.fetch().subscribe(
             data => {
-                this.images = data;
+                data.forEach(d => this.images.push(d));
 
-                this._alert.open({
-                    type: "success",
-                    message: "Great success."
-                });
+                this._alert.success("Great success.");
             },
             error => {
-                this._alert.open({
-                    type: "error",
-                    message: "eh boy it broke."
-                });
-
+                this._alert.error("eh boy it broke.");
             }
         );
     }

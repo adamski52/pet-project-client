@@ -1,12 +1,20 @@
 export var CONSTANTS = {
-    apiBaseURL: window.location.href.indexOf("localhost") > -1 ? "http://localhost:8000/api/" : "/storybook/api/",
-    forceUnique: function() {
-        return "?" + new Date().getTime();
-    },
+    API_BASE_URL: window.location.href.indexOf("localhost") > -1 ? "http://localhost:8000/api/" : "/storybook/api/",
     ALERT_TYPES: {
         ERROR: "error",
         SUCCESS: "success",
         INFO: "info",
         WARNING: "warning"
+    },
+    getURL: function(name:string, unique?:boolean) {
+        let url = this.API_BASE_URL + name;
+        if(unique) {
+            url += "?" + new Date().getTime();
+        }
+        else {
+            url += "/"
+        }
+
+        return url;
     }
 };

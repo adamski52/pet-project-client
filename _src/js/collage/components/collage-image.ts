@@ -14,9 +14,9 @@ export class CollageImage {
 
     private subscription;
 
-    constructor(private _modalService: ModalService) {}
+    constructor(private _modal: ModalService) {}
 
     onClick() { 
-        this._modalService.open(this.image);
+        this._modal.open(this.image);
     }
 }

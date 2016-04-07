@@ -7,9 +7,9 @@
     <a class="nav-link-toggle theme-reversed enroll icon-chevron-down" toggler item="enroll-menu"><span>Toggle</span></a>
     <a class="nav-link enroll icon-paw" href="#enroll">Enroll</a>
     <form class="nav-link-dropdown-content enroll no-touchy">
-        <input type="text" name="username" id="username" placeholder="Username">
-        <input type="password" name="password" id="password" placeholder="Password">
-        <a href="" class="btn btn-sm icon-lock">Login</a>
+        <input type="text" #username name="username" id="username" placeholder="Username">
+        <input type="password" #password name="password" id="password" placeholder="Password">
+        <a href="http://www.google.com" (click)="onLogin($event, username.value, password.value)" class="btn btn-sm icon-lock">Login</a>
         <p><a href="#">Forgot password?</a></p>
     </form>
 </div>

@@ -1,4 +1,6 @@
-.btn {
+.btn,
+.btn:focus,
+.btn:active {
     position: relative;
     display: inline-block;
     font-size: 1.4rem;
@@ -9,7 +11,9 @@
     line-height: 40px;
     @include transition($duration-short, 0);
     border-radius: 4px;
+}
 
+.btn {
     &:before {
         position: absolute;
         top: 0;
@@ -17,6 +21,7 @@
         font-size: 2.1rem;
         color: $default-contrast;
         background-color: #fff;
+        text-shadow: none;
         width: 40px;
         height: 40px;
         text-align: center;
@@ -30,6 +35,7 @@
     &:hover {
         text-decoration: none;
         background-color: #fff;
+        text-shadow: none;
         color: $default-contrast;
         @include glow($glow-medium, #fff);
 
@@ -42,13 +48,17 @@
 
 
 
-.btn-lg {
+.btn-lg,
+.btn-lg:focus,
+.btn-lg:active {
     font-size: 2rem;
     line-height: 62px;
     border-radius: 8px;
     padding: 0 62px + $base-padding 0 $base-padding;
+}
 
-    &:hover {
+.btn-lg {
+    &:hover, {
         @include glow($glow-large, #fff);
     }
 
@@ -64,12 +74,16 @@
 }
 
 
-.btn-sm {
+.btn-sm,
+.btn-sm:focus,
+.btn-sm:active {
     font-size: 1.1rem;
     line-height: 32px;
     border-radius: 3px;
     padding: 0 32px + $small-padding 0 $small-padding;
+}
 
+.btn-sm {
     &:hover {
         @include glow($glow-small, #fff);
     }

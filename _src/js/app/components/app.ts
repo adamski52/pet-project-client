@@ -10,14 +10,16 @@ import {ServicesComponent} from "../../services/components/services";
 import {LivestreamComponent} from "../../livestream/components/livestream";
 import {ModalComponent} from "../../modal/components/modal";
 import {AlertComponent} from "../../alert/components/alert";
-import {ModalService} from "../../modal/services/modal";
-import {AlertService} from "../../alert/services/alert";
 import {Toggler} from "../../toggler/components/toggler";
 import {TogglerMenu} from "../../toggler/components/toggler-menu";
+
+import {ModalService} from "../../modal/services/modal";
+import {AlertService} from "../../alert/services/alert";
 import {TogglerService} from "../../toggler/services/toggler";
+import {CollageService} from "../../collage/services/collage";
+import {LoginService} from "../../enroll/services/login";
 
 import {CONSTANTS} from "../../constants";
-import {VerifyService} from "../../api/services/verify";
 
 @Component({
     selector: "storybook",
@@ -41,15 +43,11 @@ import {VerifyService} from "../../api/services/verify";
         ModalService,
         AlertService,
         TogglerService,
-        VerifyService
+        CollageService,
+        LoginService
     ]
 })
 
 export class AppComponent {
-    constructor(private _verify: VerifyService) {
-        this._verify.fetch().subscribe(
-            response => console.log("INITIAL GET", response),
-            error => console.log("INITIAL ERROR", error)
-        );
-    }
+    constructor() {}
 }
