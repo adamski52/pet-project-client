@@ -14,10 +14,14 @@ export class Toggler {
     toggle(e) {
         e.preventDefault();
 
-        this._service.toggle(this.item);
+        this._toggle.toggle(this.item);
     }
 
-    constructor(private _service: TogglerService, @Attribute("item") item: string) {
+    set(value:boolean) {
+        this._toggle.set(this.item, value);
+    }
+
+    constructor(private _toggle: TogglerService, @Attribute("item") item: string) {
         this.item = item;
     }
 }

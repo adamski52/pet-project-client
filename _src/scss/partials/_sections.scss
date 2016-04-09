@@ -189,13 +189,15 @@
     @include transition($duration-short, 0);
     @include glow($glow-small, #000);
     position: fixed;
+    margin: 0;
+    padding: 0;
+    font-size: 1.4rem;
     bottom: -$alert-height - $glow-small;
     left: 0;
     z-index: 99;
     height: $alert-height;
     text-align: center;
     width: 100%;
-    font-size: .8rem;
     border-top: 1px solid $alert-success-text;
     line-height: $alert-height;
     background: $alert-success;

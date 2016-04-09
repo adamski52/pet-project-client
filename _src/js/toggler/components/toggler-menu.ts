@@ -10,7 +10,6 @@ import {TogglerService} from "../services/toggler";
 
 export class TogglerMenu {
     private isOpen: Boolean = true;
-    private subscription;
     private item: string;
 
     toggle(item) {
@@ -19,8 +18,25 @@ export class TogglerMenu {
         }
     }
 
-    constructor(private _service: TogglerService, @Attribute("item") item: string) {
+    set(item, value:boolean) {
+        if(item == this.item) {
+            this.isOpen = value;
+        }
+    }
+
+    constructor(private _toggler: TogglerService, @Attribute("item") item: string) {
         this.item = item;
-        this.subscription = this._service.toggled$.subscribe((item) => this.toggle(item));
+        this._toggler.data$.subscribe(
+            obj => {
+                obj = JSON.parse(obj);
+
+                if (obj.value == "toggle") {
+                    this.toggle(obj.item);
+                }
+                else {
+                    this.set(obj.item, obj.value);
+                }
+            }
+        );
     }
 }

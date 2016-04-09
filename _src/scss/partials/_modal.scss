@@ -10,17 +10,27 @@
 
     .modal-close {
         cursor: pointer;
+        font-size: 1.8rem;
         width: 30px;
         height: 30px;
         text-align: center;
         line-height: 30px;
         background: #000;
+        z-index: 9;
         border-radius: 15px;
         display: inline-block;
         position: absolute;
         top: $base-padding;
         right: $base-padding;
         text-shadow: 0 0 20px #000;
+
+        &:before {
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 28px;
+            text-align: center;
+        }
     }
 
     .modal-content {

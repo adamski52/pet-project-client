@@ -12,12 +12,16 @@ import {ModalComponent} from "../../modal/components/modal";
 import {AlertComponent} from "../../alert/components/alert";
 import {Toggler} from "../../toggler/components/toggler";
 import {TogglerMenu} from "../../toggler/components/toggler-menu";
+import {AuthMenu} from "../../secure/components/auth-menu";
+
+import {API} from "../../app/lib/api";
 
 import {ModalService} from "../../modal/services/modal";
 import {AlertService} from "../../alert/services/alert";
 import {TogglerService} from "../../toggler/services/toggler";
 import {CollageService} from "../../collage/services/collage";
-import {LoginService} from "../../enroll/services/login";
+import {LoginService} from "../../secure/services/login";
+import {LogoutService} from "../../secure/services/logout";
 
 import {CONSTANTS} from "../../constants";
 
@@ -37,14 +41,17 @@ import {CONSTANTS} from "../../constants";
         ModalComponent,
         AlertComponent,
         Toggler,
-        TogglerMenu
+        TogglerMenu,
+        AuthMenu
     ],
     providers: [
         ModalService,
         AlertService,
         TogglerService,
         CollageService,
-        LoginService
+        LoginService,
+        LogoutService,
+        API
     ]
 })
 

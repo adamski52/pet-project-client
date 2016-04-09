@@ -4,13 +4,23 @@ import 'rxjs/add/operator/share';
 
 export class TogglerService {
     private _observer: Observer<String>;
-    public toggled$: Observable<String>;
+    public data$: Observable<String>;
 
     constructor() {
-        this.toggled$ = new Observable(observer => this._observer = observer).share();
+        this.data$ = new Observable(observer => this._observer = observer).share();
     }
 
     public toggle(item) {
-        this._observer.next(item);
+        this._observer.next(JSON.stringify({
+            item: item,
+            value: "toggle"
+        }));
+    }
+
+    public set(item, value) {
+        this._observer.next(JSON.stringify({
+            item: item,
+            value: value
+        }));
     }
 }

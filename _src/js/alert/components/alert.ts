@@ -17,14 +17,6 @@ export class AlertComponent {
         this.subscription = this._service.alert$.subscribe(alert => this.onAlert(alert));
     }
 
-    public showSuccess():void {
-
-    }
-
-    public showError():void {
-
-    }
-
     private onAlert(alert:IAlert): void {
         this.message = alert.message;
         this.type = alert.type;

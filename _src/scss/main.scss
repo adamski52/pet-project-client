@@ -13,10 +13,6 @@ html, body {
     position: relative;
 }
 
-body {
-    font-size: 0;
-}
-
 #height-spy {
     height: 100%;
     width: 100%;
@@ -43,8 +39,4 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li {
 .section {
     display: block;
     clear: both;
-}
-
-.alert {
-    display: none;
 }

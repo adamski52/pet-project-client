@@ -2,7 +2,10 @@ import {Component, OnInit, ElementRef} from 'angular2/core';
 import {Toggler} from "../../toggler/components/toggler";
 import {TogglerMenu} from "../../toggler/components/toggler-menu";
 import {TogglerService} from "../../toggler/services/toggler";
-import {LoginService} from "../../enroll/services/login";
+import {LoginService} from "../../secure/services/login";
+import {AlertService} from "../../alert/services/alert";
+import {AuthMenu} from "../../secure/components/auth-menu";
+import {LogoutService} from "../../secure/services/logout";
 
 
 @Component({
@@ -11,22 +14,17 @@ import {LoginService} from "../../enroll/services/login";
     host: {
         "(body:scroll)": "figureNav()",
         "(window:resize)": "figureNav()",
-        "[class.nav-fixed]": "isFixed",
+        "[class.nav-fixed]": "isFixed"
     },
-    directives: [Toggler, TogglerMenu],
-    providers: [TogglerService, LoginService]
+    directives: [Toggler, TogglerMenu, AuthMenu]
 })
 
 export class NavComponent {
-    private height: number = 0;
     private isFixed: boolean = true;
-    private spy;
 
-    constructor(private _toggler: TogglerService, private _element:ElementRef, private _login:LoginService) { }
+    constructor(private _toggler: TogglerService, private _alert:AlertService, private _element:ElementRef, private _logout:LogoutService, private _login:LoginService) {}
 
     ngOnInit() {
-        this.height = this._element.nativeElement.clientHeight;
-        this.spy = document.getElementById("height-spy");
         this._toggler.toggle("enroll-menu");
         this._toggler.toggle("account-menu");
         this._toggler.toggle("nav-menu");
@@ -35,7 +33,11 @@ export class NavComponent {
 
     figureNav() {
         // can't use window height.  mobile counts virtual keyboards, so use a 100% height spy element
-        this.isFixed = this.spy.clientHeight >= this.height;
+        let height = this._element.nativeElement.clientHeight;
+        let spy = document.getElementById("height-spy");
+
+        this.isFixed = spy.clientHeight >= height;
+        console.log("isFixed?", this.isFixed);
     }
 
     onLogin(e, username, password) {
@@ -43,9 +45,11 @@ export class NavComponent {
         this._login.post({
             username,
             password
-        }).subscribe(
-            response => console.log("HOORAY!", response),
-            error => console.log("FAIL FAIL", error)
-        );
+        });
+    }
+
+    onLogout(e) {
+        e.preventDefault();
+        this._logout.post();
     }
 }
