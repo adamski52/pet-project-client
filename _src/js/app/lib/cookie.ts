@@ -59,13 +59,4 @@ export class Cookie {
             Cookie.setCookie(name, '', -1, path, domain);
         }
     }
-
-    public static setLocal(name: string, value: string) {
-        this._vals[name] = value;
-    }
-
-    public static getLocal(name: string) {
-        return this._vals[name] || "";
-    }
-
 }

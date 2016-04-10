@@ -19,7 +19,7 @@ export class UserService {
             response => {
                 this._observer.next(response);
             },
-            error => this._alert.error("You must login before accessing this functionality.")
+            error => {}//this._alert.error("You must login before accessing this functionality.")
         );
     }
 }

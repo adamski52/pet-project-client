@@ -3,7 +3,7 @@ import {LoginService} from "../../secure/services/login";
 import {LogoutService} from "../../secure/services/logout";
 import {UserService} from "../../secure/services/user";
 import {SecureService} from "../../secure/services/secure";
-import {Cookie} from "../../app/lib/cookie";
+import {AlertService} from "../../alert/services/alert";
 import {CONSTANTS} from "../../constants";
 
 @Component({
@@ -21,6 +21,7 @@ export class SecureComponent {
                 private _login: LoginService,
                 private _user: UserService,
                 private _secure: SecureService,
+                private _alert:AlertService,
                 private _zone: NgZone) { }
 
     ngOnInit() {
@@ -35,28 +36,34 @@ export class SecureComponent {
         this._login.data$.subscribe(
             response => {
                 this._user.get();
-                this._isAuthenticated = true;
             }
         );
 
         this._logout.data$.subscribe(
             response => {
                 this._isAuthenticated = false;
+                this._secure.close();
+                this._alert.success("Logout successful.");
             }
         );
 
         // if the user is already loged in, the response from this should be other than [].
         this._user.data$.subscribe(
             response => {
-                this._zone.run(() => {
-                    this._isAuthenticated = true;
-                    this._showSecure = true;
-                });
+                console.log("USERS", response);
+                if (response.length > 0) {
+                    this._zone.run(() => {
+                        this._alert.success("Login successful.");
+                        this._isAuthenticated = true;
+                        this._secure.open();
+                    });
+                }
+                else {
+                    this._secure.close();
+                }
             }
         );
 
-        if (Cookie.getCookie(CONSTANTS.CSRF_NAME)) {
-            this._user.get();
-        }
+        this._secure.close();
     }
 }

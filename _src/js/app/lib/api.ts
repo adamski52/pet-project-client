@@ -28,12 +28,7 @@ export class API {
         return headers;
     }
 
-    constructor(private _http: Http) {
-        /*this.get("csrftoken", true, false).subscribe(
-            response => console.log("TOKEN FETCH", response),
-            error => console.log("WE'RE F'D:  ", error)
-        );*/
-    }
+    constructor(private _http: Http) {}
 
     get(name: string, unique:boolean = false, requiresToken:boolean = true): Observable<Response> {
         let headers: Headers = new Headers();

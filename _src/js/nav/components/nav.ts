@@ -39,20 +39,11 @@ export class NavComponent {
         this._toggler.toggle("nav-menu");
         //this._toggler.toggle("secure-content");
 
-        this._user.data$.subscribe(
+        this._secure.data$.subscribe(
             response => {
-                this._zone.run(() => {
-                    this.isAuthenticated = true;
-                })
-            }
-        );
-
-        this._logout.data$.subscribe(
-            response => {
-                this._zone.run(() => {
-                    this.isAuthenticated = false;
-                })
-            }
+                this.isAuthenticated = !!response;
+            },
+            error => { }
         );
 
         this.figureNav();
@@ -91,7 +82,6 @@ export class NavComponent {
             e.preventDefault();
         }
 
-        this._secure.close();
         this._logout.post();
     }
 }

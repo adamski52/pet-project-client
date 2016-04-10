@@ -63,7 +63,15 @@ import {CONSTANTS} from "../../constants";
 })
 
 export class AppComponent {
-    constructor() {
-        
+    constructor(private _user:UserService) {}
+
+    ngOnInit() {
+        this._user.data$.subscribe(
+            response => {
+                setTimeout(() => document.getElementById("initial-loader").classList.remove("is-visible"), 2000);
+                setTimeout(() => document.getElementById("initial-loader").remove(), 5000);
+            }
+        );
+        this._user.get();
     }
 }
