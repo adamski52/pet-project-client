@@ -12,9 +12,9 @@ import {AlertService} from "../../alert/services/alert";
     selector: "nav",
     templateUrl: "templates/nav.html",
     host: {
-        "(body:scroll)": "figureNav()",
         "(window:resize)": "figureNav()",
         "[class.nav-fixed]": "isFixed",
+        "[class.is-aware]": "isAware",
         "[class.is-authenticated]": "isAuthenticated"
     },
     directives: [Toggler, TogglerMenu]
@@ -22,7 +22,12 @@ import {AlertService} from "../../alert/services/alert";
 
 export class NavComponent {
     private isFixed: boolean = true;
+    private isAware: boolean = false;
     private isAuthenticated: boolean = false;
+    private _enrollHeight: number = 0;
+    private _accountHeight: number = 0;
+    private _navHeight: number = 0;
+    private _itemHeight: number = 0;
 
     constructor(private _toggler: TogglerService,
                 private _alert:AlertService,
@@ -34,28 +39,42 @@ export class NavComponent {
                 private _zone:NgZone) {}
 
     ngOnInit() {
-        this._toggler.toggle("enroll-menu");
-        //this._toggler.toggle("account-menu");
-        this._toggler.toggle("nav-menu");
-        //this._toggler.toggle("secure-content");
+        this._enrollHeight = document.getElementById("enroll-menu").clientHeight;
+        this._accountHeight = document.getElementById("account-menu").clientHeight;
+        this._itemHeight = document.getElementById("nav-item").clientHeight;
+        this._navHeight = this._element.nativeElement.clientHeight - this._enrollHeight - this._accountHeight + this._itemHeight;
 
-        this._secure.data$.subscribe(
+        this._toggler.toggle("enroll-menu");
+        this._toggler.toggle("nav-menu");
+
+
+
+        this._user.data$.subscribe(
             response => {
-                this.isAuthenticated = !!response;
-            },
-            error => { }
+                this.isAuthenticated = true;
+                this.figureNav();
+            }
+        );
+
+        this._logout.data$.subscribe(
+            response => {
+                this.isAuthenticated = false;
+                this.figureNav();
+            }
         );
 
         this.figureNav();
-
+        this.isAware = true;
     }
 
     figureNav() {
         // can't use window height.  mobile counts virtual keyboards, so use a 100% height spy element
-        let height = this._element.nativeElement.clientHeight;
-        let spy = document.getElementById("height-spy");
-
-        this.isFixed = spy.clientHeight >= height;
+        if (this.isAuthenticated) {
+            this.isFixed = document.getElementById("height-spy").clientHeight >= this._navHeight + this._accountHeight;
+        }
+        else {
+            this.isFixed = document.getElementById("height-spy").clientHeight >= this._navHeight + this._enrollHeight;
+        }
     }
 
     onPublicClick(e?:Event) {

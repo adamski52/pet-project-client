@@ -15,11 +15,22 @@ export class UserService {
                 private _alert:AlertService) {}
 
     get() {
+        this._api.get("whoami").subscribe(
+            response => {
+                if (response.length > 0) {
+                    this._observer.next(response[0]);
+                }
+            },
+            error => { }
+        );   
+    }
+
+    getAll() {
         this._api.get("users").subscribe(
             response => {
                 this._observer.next(response);
             },
-            error => {}//this._alert.error("You must login before accessing this functionality.")
+            error => {}
         );
     }
 }

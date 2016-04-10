@@ -1,1 +1,5 @@
-<div class="alert alert-{{type}} {{visibility}}">{{message}}</div>
+<div class="alert {{visibility}}">
+<ul>
+    <li *ngFor="#msg of messages" class="alert-{{msg.type}}">{{msg.message}}</li>
+</ul>
+</div>

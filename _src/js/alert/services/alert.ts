@@ -8,10 +8,10 @@ import 'rxjs/add/operator/share';
 @Injectable()
 export class AlertService {
     private _observer: Observer<IAlert>;
-    public alert$: Observable<IAlert>;
+    public data$: Observable<IAlert>;
 
     constructor() {
-        this.alert$ = new Observable(observer => this._observer = observer).share();
+        this.data$ = new Observable(observer => this._observer = observer).share();
     }
 
     public success(message:string) {

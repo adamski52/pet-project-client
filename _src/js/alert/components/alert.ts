@@ -1,5 +1,6 @@
 import {Component, OnInit, NgZone} from 'angular2/core';
 import {AlertService} from "../services/alert";
+import {SecureService} from "../../secure/services/secure";
 import {IAlert} from "../interfaces/alert";
 
 @Component({
@@ -8,24 +9,52 @@ import {IAlert} from "../interfaces/alert";
  })
 
 export class AlertComponent {
-    private message: string;
+    private messages: IAlert[] = [];
     private type: string;
     private visibility: string = "";
+    private _hideTimeout;
+    private _clearTimeout;
+    private _prevResponse: boolean = false;
 
-    constructor(private _service: AlertService, private _zone:NgZone) {
+    constructor(private _alert: AlertService,
+                private _zone:NgZone,
+                private _secure:SecureService) {
     }
 
     ngOnInit() {
-        this._service.alert$.subscribe(alert => this.onAlert(alert));
+        this._alert.data$.subscribe(alert => this.onAlert(alert));
+        this._secure.data$.subscribe(
+            response => {
+                response = !!response;
+                if (response != this._prevResponse) {
+                    if (response) {
+                        this._alert.info("Switched to Secure Mode.");
+                    }
+                    else {
+                        this._alert.info("Switched to Public Mode.");
+                    }
+                }
+                this._prevResponse = response;
+            }
+        );
     }
 
     private onAlert(alert:IAlert): void {
-        console.log("ALERT >>", alert.type, alert.message);
-        this.message = alert.message;
-        this.type = alert.type;
-        this.visibility = "visible";
+        try {
+            clearTimeout(this._hideTimeout);
+            clearTimeout(this._clearTimeout);
+        }
+        catch(e){}
+
+        this.messages.push(alert);
+        this.visibility = "is-visible";
         this._zone.run(() => {
-            setTimeout(_ => this.visibility = "", 2000);
+            this._hideTimeout = setTimeout(_ => {
+                this.visibility = "";
+            }, 2000);
+            this._clearTimeout = setTimeout(_ => {
+                this.messages = [];
+            }, 3000);
         });
         
     }

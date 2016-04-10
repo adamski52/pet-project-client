@@ -1,16 +1,21 @@
 <nav togglerMenu item="nav-menu" class="toggler-open"></nav>
-
-<intro></intro>
-<collage class="collage-section intro"></collage>
-<about></about>
-<collage class="collage-section about"></collage>
-<services></services>
-<collage class="collage-section services"></collage>
-<livestream></livestream>
-<collage class="collage-section enroll"></collage>
-<enroll></enroll>
-<collage class="collage-section contact"></collage>
-<contact></contact>
-<secure class="secure"></secure>
+<div class="main-container" [ngClass]="{'is-visible': !showSecure}">
+    <intro></intro>
+    <collage class="collage-section intro"></collage>
+    <about></about>
+    <collage class="collage-section about"></collage>
+    <services></services>
+    <collage class="collage-section services"></collage>
+    <livestream></livestream>
+    <collage class="collage-section enroll"></collage>
+    <enroll></enroll>
+    <collage class="collage-section contact"></collage>
+    <contact></contact>
+</div>
+<div class="main-container" [ngClass]="{'is-visible': showSecure}">
+    <myself></myself>
+    <friends></friends>
+    <dogs></dogs>
+</div>
 <modal></modal>
 <alert></alert>

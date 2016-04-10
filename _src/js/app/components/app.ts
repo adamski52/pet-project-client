@@ -12,7 +12,9 @@ import {ModalComponent} from "../../modal/components/modal";
 import {AlertComponent} from "../../alert/components/alert";
 import {Toggler} from "../../toggler/components/toggler";
 import {TogglerMenu} from "../../toggler/components/toggler-menu";
-import {SecureComponent} from "../../secure/components/secure";
+import {FriendsComponent} from "../../secure/components/friends";
+import {MyselfComponent} from "../../secure/components/myself";
+import {DogsComponent} from "../../secure/components/dogs";
 
 import {API} from "../../app/lib/api";
 import {Cookie} from "../../app/lib/cookie";
@@ -45,7 +47,9 @@ import {CONSTANTS} from "../../constants";
         AlertComponent,
         Toggler,
         TogglerMenu,
-        SecureComponent
+        MyselfComponent,
+        DogsComponent,
+        FriendsComponent
     ],
     providers: [
         ModalService,
@@ -63,15 +67,53 @@ import {CONSTANTS} from "../../constants";
 })
 
 export class AppComponent {
-    constructor(private _user:UserService) {}
+    private showSecure: boolean = false;
+
+    constructor(private _user:UserService,
+                private _secure:SecureService,
+                private _login: LoginService,
+                private _logout: LogoutService,
+                private _alert: AlertService) { }
 
     ngOnInit() {
-        this._user.data$.subscribe(
+        setTimeout(() => document.getElementById("initial-loader").classList.remove("is-visible"), 2000);
+        setTimeout(() => document.getElementById("initial-loader").remove(), 3000);
+
+
+        this._secure.data$.subscribe(
             response => {
-                setTimeout(() => document.getElementById("initial-loader").classList.remove("is-visible"), 2000);
-                setTimeout(() => document.getElementById("initial-loader").remove(), 5000);
+                this.showSecure = !!response;
             }
         );
+
+        // if the user logged in, this will capture it, and then gather the rest of their profile using _user
+        this._login.data$.subscribe(
+            response => {
+                this._user.get();
+            }
+        );
+
+        this._logout.data$.subscribe(
+            response => {
+                this._secure.close();
+                this._alert.success("Logout successful.");
+            }
+        );
+
+        // if the user is already loged in, the response from this should be other than [].
+        this._user.data$.subscribe(
+            response => {
+                //this._zone.run(() => {
+                    this._alert.success("Login successful.");
+                    this._secure.open();
+                //});
+            }
+        );
+
+        this._secure.close();
+
+
+
         this._user.get();
     }
 }

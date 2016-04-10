@@ -177,12 +177,17 @@ nav {
 }
 
 
-.is-authenticated {
-    .nav-link-dropdown {
-        max-height: 0px;
-        &.requires-auth {
-            max-height: 9999px;
+.is-aware {
+    &.is-authenticated {
+        .nav-link-dropdown {
+            max-height: 0px;
+            &.requires-auth {
+                max-height: 9999px;
+            }
         }
+    }
+    .requires-auth {
+        max-height: 0px;
     }
 }
 
@@ -193,10 +198,6 @@ nav {
     overflow: hidden;
     max-height: 9999px;
     @include transition($duration-short, 0);
-
-    &.requires-auth {
-        max-height: 0px;
-    }
 
 
     .nav-link-toggle {
