@@ -1,11 +1,11 @@
 <h1 class="nav-logo"><a href="#"><img src="images/logo-iso.png" alt="Storybook Kennels"></a></h1>
 <a href="#" class="nav-toggle icon-alt-bars icon-bars" toggler item="nav-menu"><span>Menu</span></a>
-<a class="nav-link about icon-paw" href="#about">About</a>
-<a class="nav-link services icon-paw" href="#services">Services</a>
-<a class="nav-link livestream icon-paw" href="#livestream">Livestream</a>
+<a class="nav-link about icon-paw" href="#about" (click)="onPublicClick($event)">About</a>
+<a class="nav-link services icon-paw" href="#services" (click)="onPublicClick($event)">Services</a>
+<a class="nav-link livestream icon-paw" href="#livestream" (click)="onPublicClick($event)">Livestream</a>
 <div class="nav-link-dropdown toggler-open enroll" togglerMenu item="enroll-menu">
     <a class="nav-link-toggle theme-reversed enroll icon-chevron-down" toggler item="enroll-menu"><span>Toggle</span></a>
-    <a class="nav-link enroll icon-paw" href="#enroll">Enroll</a>
+    <a class="nav-link enroll icon-paw" href="#enroll" (click)="onPublicClick($event)">Enroll</a>
     <form class="nav-link-dropdown-content enroll no-touchy">
         <input type="text" #username name="username" id="username" placeholder="Username">
         <input type="password" #password name="password" id="password" placeholder="Password">
@@ -13,14 +13,14 @@
         <p><a href="#">Forgot password?</a></p>
     </form>
 </div>
-<div class="nav-link-dropdown toggler-open enroll requires-auth" togglerMenu item="account-menu">
-    <a class="nav-link-toggle theme-reversed enroll icon-chevron-down" toggler item="account-menu"><span>Toggle</span></a>
-    <a class="nav-link enroll icon-paw" href="#">My Account</a>
-    <div class="nav-link-dropdown-content enroll">
-        <a class="nav-link theme-reversed enroll icon-guide-dog" href="#myself">Myself</a>
-        <a class="nav-link theme-reversed enroll icon-guide-dog" href="#friends">My Friends and Family</a>
-        <a class="nav-link theme-reversed enroll icon-guide-dog" href="#dogs">My Dogs</a>
-        <a href="" (click)="onLogout($event)" class="nav-link theme-reversed enroll icon-guide-dog">Logout</a>
+<div class="nav-link-dropdown toggler-open account requires-auth" togglerMenu item="account-menu">
+    <a class="nav-link-toggle theme-reversed account icon-chevron-down" toggler item="account-menu"><span>Toggle</span></a>
+    <a class="nav-link account icon-paw" href="#" (click)="onSecureClick($event)">My Account</a>
+    <div class="nav-link-dropdown-content account">
+        <a class="nav-link theme-reversed account icon-guide-dog" href="#myself" (click)="onSecureClick($event)">Myself</a>
+        <a class="nav-link theme-reversed account icon-guide-dog" href="#friends" (click)="onSecureClick($event)">My Friends and Family</a>
+        <a class="nav-link theme-reversed account icon-guide-dog" href="#dogs" (click)="onSecureClick($event)">My Dogs</a>
+        <a href="" (click)="onLogout($event)" class="nav-link theme-reversed account icon-guide-dog">Logout</a>
     </div>
 </div>
-<a class="nav-link contact icon-paw" href="#contact">Contact</a>
+<a class="nav-link contact icon-paw" href="#contact" (click)="onPublicClick($event)">Contact</a>

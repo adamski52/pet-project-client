@@ -192,6 +192,31 @@ $services-background: url(../images/backgrounds/zelda-face.png);
     }
 }
 
+
+$account-primary: #862c69;
+$account-contrast: darken($account-primary, 15%);
+$account-subtle: lighten($account-primary, 30%);
+$account-text: lighten($account-primary, 50%);
+$account-heading: #fff;
+$account-heading-icon: $account-heading;
+$account-heading-ring: $account-subtle;
+$account-background: url(../images/backgrounds/poof-face.png);
+
+.account {
+    .contrast {
+        color: $account-contrast;
+    }
+
+    .subtle {
+        color: $account-subtle;
+        @include blocktext(darken($account-subtle, 45%));
+    }
+
+    .standard {
+        color: $account-text;
+    }
+}
+
 $base-padding: 16px;
 $small-padding: 10px;
 

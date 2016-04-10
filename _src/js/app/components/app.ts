@@ -24,6 +24,7 @@ import {CollageService} from "../../collage/services/collage";
 import {LoginService} from "../../secure/services/login";
 import {LogoutService} from "../../secure/services/logout";
 import {UserService} from "../../secure/services/user";
+import {SecureService} from "../../secure/services/secure";
 
 import {CONSTANTS} from "../../constants";
 
@@ -54,6 +55,7 @@ import {CONSTANTS} from "../../constants";
         LoginService,
         LogoutService,
         UserService,
+        SecureService,
         
         API,
         Cookie

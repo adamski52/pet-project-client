@@ -59,6 +59,15 @@ nav {
         }
     }
 
+    .account {
+        background-color: $account-primary;
+        border-color: $account-contrast;
+
+        &:before {
+            color: $account-contrast;
+        }
+    }
+
     .contact {
         border-bottom-right-radius: 20px;
         background-color: $contact-primary;
@@ -316,6 +325,17 @@ nav {
             }
         }
 
+        .account {
+            background-color: transparent;
+            border-color: transparent;
+            &:hover {
+                background-color: $account-primary;
+                border-color: $account-contrast;
+                //color: $account-subtle;
+                @include blocktext($account-contrast);
+            }
+        }
+
         .contact {
             background-color: transparent;
             border-color: transparent;
@@ -376,6 +396,19 @@ nav {
                     border-color: $enroll-contrast;
                     &:before {
                         color: $enroll-subtle;
+                    }
+                }
+            }
+
+            &.account {
+                background-color: transparent;
+                border-color: transparent;
+
+                &:hover {
+                    background-color: $account-contrast;
+                    border-color: $account-contrast;
+                    &:before {
+                        color: $account-subtle;
                     }
                 }
             }

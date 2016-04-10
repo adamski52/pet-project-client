@@ -2,10 +2,11 @@ import {Component, OnInit, ElementRef, NgZone} from 'angular2/core';
 import {Toggler} from "../../toggler/components/toggler";
 import {TogglerMenu} from "../../toggler/components/toggler-menu";
 import {TogglerService} from "../../toggler/services/toggler";
+import {SecureService} from "../../secure/services/secure";
 import {LoginService} from "../../secure/services/login";
-import {AlertService} from "../../alert/services/alert";
 import {LogoutService} from "../../secure/services/logout";
-
+import {UserService} from "../../secure/services/user";
+import {AlertService} from "../../alert/services/alert";
 
 @Component({
     selector: "nav",
@@ -28,17 +29,20 @@ export class NavComponent {
                 private _element:ElementRef,
                 private _logout:LogoutService,
                 private _login:LoginService,
+                private _user: UserService,
+                private _secure:SecureService,
                 private _zone:NgZone) {}
 
     ngOnInit() {
         this._toggler.toggle("enroll-menu");
-        this._toggler.toggle("account-menu");
+        //this._toggler.toggle("account-menu");
         this._toggler.toggle("nav-menu");
+        //this._toggler.toggle("secure-content");
 
-        this._login.data$.subscribe(
+        this._user.data$.subscribe(
             response => {
                 this._zone.run(() => {
-                    this.isAuthenticated = true
+                    this.isAuthenticated = true;
                 })
             }
         );
@@ -46,7 +50,7 @@ export class NavComponent {
         this._logout.data$.subscribe(
             response => {
                 this._zone.run(() => {
-                    this.isAuthenticated = false
+                    this.isAuthenticated = false;
                 })
             }
         );
@@ -61,6 +65,14 @@ export class NavComponent {
         let spy = document.getElementById("height-spy");
 
         this.isFixed = spy.clientHeight >= height;
+    }
+
+    onPublicClick(e?:Event) {
+        this._secure.close();
+    }
+
+    onSecureClick(e?: Event) {
+        this._secure.open();
     }
 
     onLogin(username:string, password:string, e?:Event) {
@@ -79,6 +91,7 @@ export class NavComponent {
             e.preventDefault();
         }
 
+        this._secure.close();
         this._logout.post();
     }
 }

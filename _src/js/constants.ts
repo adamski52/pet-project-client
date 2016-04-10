@@ -6,6 +6,8 @@ export var CONSTANTS = {
         INFO: "info",
         WARNING: "warning"
     },
+    TOKEN_NAME: "sessionid",
+    CSRF_NAME: "csrftoken",
     getURL: function(name:string, unique?:boolean) {
         let url = this.API_BASE_URL + name;
         if(unique) {

@@ -1,12 +1,17 @@
 .secure {
-    position: fixed;
-    right: -100%;
-    width: 100%;
-    min-height: 100%;
-    background: #000;
-    @include transition($duration-long, 0);
+    .section {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        width: 100%;
+        min-height: 100%;
+        z-index: 1;
+        @include transition($duration-long, 0);
+    }
 
     &.is-visible {
-        right: 0;
+        .section {
+            right: 0;
+        }
     }
 }

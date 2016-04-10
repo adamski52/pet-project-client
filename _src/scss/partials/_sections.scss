@@ -104,6 +104,21 @@
         }
     }
 
+    &.account {
+        background-color: $account-primary;
+        color: $account-text;
+        background-image: $account-background;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: $account-heading;
+
+            &:before {
+                color: $account-heading-icon;
+                border-color: $account-heading-ring;
+            }
+        }
+    }
+
     &.contact {
         background-color: $contact-primary;
         color: $contact-text;
@@ -139,6 +154,10 @@
 
     &.enroll {
         background-color: $enroll-primary;
+    }
+
+    &.account {
+        background-color: $account-primary;
     }
 
     &.contact {
@@ -269,6 +288,10 @@
 
         &.enroll:before {
             background-image: $enroll-background;
+        }
+
+        &.account:before {
+            background-image: $account-background;
         }
 
         &.contact:before {

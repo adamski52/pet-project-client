@@ -15,20 +15,25 @@ export class API {
     private getHeaders(useToken:boolean = true):Headers {
         let headers = new Headers({
             "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest"
+            "X-Requested-With": "XMLHttpRequest",
         });
 
         if (useToken) {
-            let token = Cookie.getCookie("token");
+            let token = Cookie.getCookie(CONSTANTS.CSRF_NAME);
             if (token) {
-                headers.set("Authorization", "JWT " + token);
+                headers.set("X-CSRFToken", token);
             }
         }
 
         return headers;
     }
 
-    constructor(private _http: Http) {}
+    constructor(private _http: Http) {
+        /*this.get("csrftoken", true, false).subscribe(
+            response => console.log("TOKEN FETCH", response),
+            error => console.log("WE'RE F'D:  ", error)
+        );*/
+    }
 
     get(name: string, unique:boolean = false, requiresToken:boolean = true): Observable<Response> {
         let headers: Headers = new Headers();
