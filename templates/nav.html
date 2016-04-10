@@ -3,17 +3,17 @@
 <a class="nav-link about icon-paw" href="#about">About</a>
 <a class="nav-link services icon-paw" href="#services">Services</a>
 <a class="nav-link livestream icon-paw" href="#livestream">Livestream</a>
-<div class="nav-link-dropdown toggler-open enroll" togglerMenu item="enroll-menu" authMenu initial="true">
+<div class="nav-link-dropdown toggler-open enroll" togglerMenu item="enroll-menu">
     <a class="nav-link-toggle theme-reversed enroll icon-chevron-down" toggler item="enroll-menu"><span>Toggle</span></a>
     <a class="nav-link enroll icon-paw" href="#enroll">Enroll</a>
     <form class="nav-link-dropdown-content enroll no-touchy">
         <input type="text" #username name="username" id="username" placeholder="Username">
         <input type="password" #password name="password" id="password" placeholder="Password">
-        <a href="" (click)="onLogin($event, username.value, password.value)" class="btn btn-sm icon-lock">Login</a>
+        <a href="" (click)="onLogin(username.value, password.value, $event)" class="btn btn-sm icon-lock">Login</a>
         <p><a href="#">Forgot password?</a></p>
     </form>
 </div>
-<div class="nav-link-dropdown toggler-open enroll" togglerMenu item="account-menu" authMenu initial="false">
+<div class="nav-link-dropdown toggler-open enroll requires-auth" togglerMenu item="account-menu">
     <a class="nav-link-toggle theme-reversed enroll icon-chevron-down" toggler item="account-menu"><span>Toggle</span></a>
     <a class="nav-link enroll icon-paw" href="#">My Account</a>
     <div class="nav-link-dropdown-content enroll">

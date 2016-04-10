@@ -14,6 +14,6 @@
     <form>
         <input type="text" #username name="username" id="username" placeholder="Username">
         <input type="password" #password name="password" id="password" placeholder="Password">
-        <a href="" (click)="onLogin($event, username.value, password.value)" class="btn btn-sm icon-lock">Login</a>
+        <a href="" (click)="onLogin(username.value, password.value, $event)" class="btn btn-sm icon-lock">Login</a>
     </form>
 </section>

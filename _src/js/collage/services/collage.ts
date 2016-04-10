@@ -8,6 +8,6 @@ export class CollageService {
     constructor(private _api:API) {}
 
     get():Observable<Response> {
-        return this._api.get("collages", true);
+        return this._api.get("collages", true, false);
     }
 }

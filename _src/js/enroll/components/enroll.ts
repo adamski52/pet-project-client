@@ -12,8 +12,11 @@ export class EnrollComponent {
         );
     }
 
-    onLogin(e, username, password) {
-        e.preventDefault();
+    onLogin(username:string, password:string, e?:Event) {
+        if (e) {
+            e.preventDefault();
+        }
+
         this._login.post({
             username,
             password

@@ -1,10 +1,9 @@
-import {Component, OnInit, ElementRef} from 'angular2/core';
+import {Component, OnInit, ElementRef, NgZone} from 'angular2/core';
 import {Toggler} from "../../toggler/components/toggler";
 import {TogglerMenu} from "../../toggler/components/toggler-menu";
 import {TogglerService} from "../../toggler/services/toggler";
 import {LoginService} from "../../secure/services/login";
 import {AlertService} from "../../alert/services/alert";
-import {AuthMenu} from "../../secure/components/auth-menu";
 import {LogoutService} from "../../secure/services/logout";
 
 
@@ -14,21 +13,46 @@ import {LogoutService} from "../../secure/services/logout";
     host: {
         "(body:scroll)": "figureNav()",
         "(window:resize)": "figureNav()",
-        "[class.nav-fixed]": "isFixed"
+        "[class.nav-fixed]": "isFixed",
+        "[class.is-authenticated]": "isAuthenticated"
     },
-    directives: [Toggler, TogglerMenu, AuthMenu]
+    directives: [Toggler, TogglerMenu]
 })
 
 export class NavComponent {
     private isFixed: boolean = true;
+    private isAuthenticated: boolean = false;
 
-    constructor(private _toggler: TogglerService, private _alert:AlertService, private _element:ElementRef, private _logout:LogoutService, private _login:LoginService) {}
+    constructor(private _toggler: TogglerService,
+                private _alert:AlertService,
+                private _element:ElementRef,
+                private _logout:LogoutService,
+                private _login:LoginService,
+                private _zone:NgZone) {}
 
     ngOnInit() {
         this._toggler.toggle("enroll-menu");
         this._toggler.toggle("account-menu");
         this._toggler.toggle("nav-menu");
+
+        this._login.data$.subscribe(
+            response => {
+                this._zone.run(() => {
+                    this.isAuthenticated = true
+                })
+            }
+        );
+
+        this._logout.data$.subscribe(
+            response => {
+                this._zone.run(() => {
+                    this.isAuthenticated = false
+                })
+            }
+        );
+
         this.figureNav();
+
     }
 
     figureNav() {
@@ -37,19 +61,24 @@ export class NavComponent {
         let spy = document.getElementById("height-spy");
 
         this.isFixed = spy.clientHeight >= height;
-        console.log("isFixed?", this.isFixed);
     }
 
-    onLogin(e, username, password) {
-        e.preventDefault();
+    onLogin(username:string, password:string, e?:Event) {
+        if (e) {
+            e.preventDefault();
+        }
+
         this._login.post({
             username,
             password
         });
     }
 
-    onLogout(e) {
-        e.preventDefault();
+    onLogout(e?:Event) {
+        if (e) {
+            e.preventDefault();
+        }
+
         this._logout.post();
     }
 }

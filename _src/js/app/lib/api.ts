@@ -1,71 +1,70 @@
-import {Http, Headers, Response, RequestOptionsArgs} from 'angular2/http';
+import {Http, Response, Headers} from 'angular2/http';
 import {CONSTANTS} from "../../constants";
 import {Injectable} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
+import {Cookie} from "../../app/lib/cookie";
 
 @Injectable()
 export class API {
-    private getHeaders(args?: RequestOptionsArgs): RequestOptionsArgs {
-        if (args === null || args === undefined) {
-            return {
-                headers: new Headers({
-                    "Content-Type": "application/json"
-                })
-            };
-        }
-
-        if (!args.hasOwnProperty("headers")) {
-            args.headers = new Headers();
-        }
-
-        if(!args.headers.has("Content-Type")) {
-            args.headers.set("Content-Type", "application/json");
-        }
-
-        return args;
-    }
-
-    private getBody(body?:Object) {
-        if (body === null || body === undefined) {
-            return {};
-        }
+    private getBody(body?:Object):Object {
+        body = body || {};
 
         return body;
     }
 
+    private getHeaders(useToken:boolean = true):Headers {
+        let headers = new Headers({
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+        });
+
+        if (useToken) {
+            let token = Cookie.getCookie("token");
+            if (token) {
+                headers.set("Authorization", "JWT " + token);
+            }
+        }
+
+        return headers;
+    }
+
     constructor(private _http: Http) {}
 
-    get(name: string, unique:boolean = false, headers?: RequestOptionsArgs): Observable<Response> {
-        headers = this.getHeaders(headers);
+    get(name: string, unique:boolean = false, requiresToken:boolean = true): Observable<Response> {
+        let headers: Headers = new Headers();
+        headers = this.getHeaders(requiresToken);
 
-        return this._http.get(CONSTANTS.getURL(name) + (unique ? "?" + new Date().getTime() : ""), headers).map(response => {
+        return this._http.get(CONSTANTS.getURL(name) + (unique ? "?" + new Date().getTime() : ""), {
+            headers: headers
+        }).map(response => {
             return response.json();
         });
     }
 
-    post(name: string, body?: Object, headers?: RequestOptionsArgs): Observable<Response> {
+    post(name: string, body?: Object): Observable<Response> {
         body = this.getBody(body);
-        headers = this.getHeaders(headers);
 
-        return this._http.post(CONSTANTS.getURL(name), JSON.stringify(body), headers);
-        /*.map(response => {
-            return response.json();
-        });*/
-    }
-
-    put(name: string, body?: Object, headers?: RequestOptionsArgs): Observable<Response> {
-        body = this.getBody(body);
-        headers = this.getHeaders(headers);
-
-        return this._http.put(CONSTANTS.getURL(name), JSON.stringify(body), headers).map(response => {
+        return this._http.post(CONSTANTS.getURL(name), JSON.stringify(body), {
+            headers: this.getHeaders()
+        }).map(response => {
             return response.json();
         });
     }
 
-    delete(name: string, headers?: RequestOptionsArgs): Observable<Response> {
-        headers = this.getHeaders(headers);
+    put(name: string, body?: Object): Observable<Response> {
+        body = this.getBody(body);
 
-        return this._http.delete(CONSTANTS.getURL(name), headers).map(response => {
+        return this._http.put(CONSTANTS.getURL(name), JSON.stringify(body), {
+            headers: this.getHeaders()
+        }).map(response => {
+            return response.json();
+        });
+    }
+
+    delete(name: string): Observable<Response> {
+        return this._http.delete(CONSTANTS.getURL(name), {
+            headers: this.getHeaders()
+        }).map(response => {
             return response.json();
         });
     } 

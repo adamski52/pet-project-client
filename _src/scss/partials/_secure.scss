@@ -1,0 +1,12 @@
+.secure {
+    position: fixed;
+    right: -100%;
+    width: 100%;
+    min-height: 100%;
+    background: #000;
+    @include transition($duration-long, 0);
+
+    &.is-visible {
+        right: 0;
+    }
+}

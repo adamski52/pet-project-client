@@ -12,9 +12,10 @@ import {ModalComponent} from "../../modal/components/modal";
 import {AlertComponent} from "../../alert/components/alert";
 import {Toggler} from "../../toggler/components/toggler";
 import {TogglerMenu} from "../../toggler/components/toggler-menu";
-import {AuthMenu} from "../../secure/components/auth-menu";
+import {SecureComponent} from "../../secure/components/secure";
 
 import {API} from "../../app/lib/api";
+import {Cookie} from "../../app/lib/cookie";
 
 import {ModalService} from "../../modal/services/modal";
 import {AlertService} from "../../alert/services/alert";
@@ -22,6 +23,7 @@ import {TogglerService} from "../../toggler/services/toggler";
 import {CollageService} from "../../collage/services/collage";
 import {LoginService} from "../../secure/services/login";
 import {LogoutService} from "../../secure/services/logout";
+import {UserService} from "../../secure/services/user";
 
 import {CONSTANTS} from "../../constants";
 
@@ -42,7 +44,7 @@ import {CONSTANTS} from "../../constants";
         AlertComponent,
         Toggler,
         TogglerMenu,
-        AuthMenu
+        SecureComponent
     ],
     providers: [
         ModalService,
@@ -51,10 +53,15 @@ import {CONSTANTS} from "../../constants";
         CollageService,
         LoginService,
         LogoutService,
-        API
+        UserService,
+        
+        API,
+        Cookie
     ]
 })
 
 export class AppComponent {
-    constructor() {}
+    constructor() {
+        
+    }
 }

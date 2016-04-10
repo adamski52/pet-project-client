@@ -167,21 +167,28 @@ nav {
     }
 }
 
-.nav-link,
-.nav-link-dropdown {
-    overflow: hidden;
-    max-height: 9999px;
 
-    &.is-hidden {
-        @include transition($duration-long, 0);
-        max-height: 0;
+.is-authenticated {
+    .nav-link-dropdown {
+        max-height: 0px;
+        &.requires-auth {
+            max-height: 9999px;
+        }
     }
 }
+
 
 .nav-link-dropdown {
     border-right: $nav-border-size solid transparent;
     position: relative;
+    overflow: hidden;
+    max-height: 9999px;
     @include transition($duration-short, 0);
+
+    &.requires-auth {
+        max-height: 0px;
+    }
+
 
     .nav-link-toggle {
         @include transition($duration-short, 0);
