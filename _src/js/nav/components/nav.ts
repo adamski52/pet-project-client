@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, NgZone} from 'angular2/core';
+import {Component, OnInit, ElementRef} from 'angular2/core';
 import {Toggler} from "../../toggler/components/toggler";
 import {TogglerMenu} from "../../toggler/components/toggler-menu";
 import {TogglerService} from "../../toggler/services/toggler";
@@ -35,8 +35,7 @@ export class NavComponent {
                 private _logout:LogoutService,
                 private _login:LoginService,
                 private _user: UserService,
-                private _secure:SecureService,
-                private _zone:NgZone) {}
+                private _secure:SecureService) {}
 
     ngOnInit() {
         this._enrollHeight = document.getElementById("enroll-menu").clientHeight;
