@@ -199,6 +199,9 @@ nav {
     max-height: 9999px;
     @include transition($duration-short, 0);
 
+    &:before {
+        display: none;
+    }
 
     .nav-link-toggle {
         @include transition($duration-short, 0);
@@ -281,6 +284,12 @@ nav {
 @media (min-width: 550px) {
     nav {
         left: 0;
+
+        .nav-link {
+            &:before {
+                text-shadow: none;
+            }
+        }
 
         .livestream {
             background-color: transparent;
@@ -427,54 +436,74 @@ nav {
                 }
             }
         }
-    }
 
-    .nav-logo {
-        display: block;
-    }
-
-    .main-logo {
-        display: none;
-    }
-
-    .nav-toggle {
-        display: none;
-    }
-
-    .nav-link {
-        &:before {
-            width: 0;
-        }
-    }
-
-    .nav-link-dropdown {
-        @include transition($duration-short, 0);
-        //@include transition($duration-short, $duration-long);
-
-        .nav-link-toggle {
-            //display: none
+        .nav-logo {
+            display: block;
         }
 
-        /*&:hover {
+        .main-logo {
+            display: none;
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        .nav-link {
+            &:before {
+                width: 0;
+            }
+        }
+
+        .nav-link-dropdown {
             @include transition($duration-short, 0);
 
-            .nav-link-dropdown-content {
-                max-height: 999px;
+            &:before {
+                @include transition($duration-short, 0);
+                border-radius: 4px;
+                padding: 3px;
+                height: 25px;
+                width: 25px;
+                line-height: 18px;
+                background: rgba(0,0,0,.2);
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                z-index: 1;
+                display: block;
+                color: #fff;
+                font-size: 1.8rem;
             }
 
-            > .nav-link {
-                border: none;
+            .nav-link-toggle {
+                display: none
+            }
+
+            &.toggler-open {
+                .nav-link-dropdown-content {
+                    max-height: 0;
+                }
+            }
+
+            &:hover {
+                @include transition($duration-short, 0);
 
                 &:before {
-                    width: auto;
+                    content: "\4d"; // chevron-up
+                }
+
+                .nav-link-dropdown-content {
+                    max-height: 999px;
+                }
+
+                > .nav-link {
+                    border: none;
+
+                    &:before {
+                        width: auto;
+                    }
                 }
             }
         }
-
-        &.toggler-open .nav-link-dropdown-content,
-        .nav-link-dropdown-content {
-            max-height: 0;
-        }*/
     }
 }
-
