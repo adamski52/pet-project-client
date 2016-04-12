@@ -277,6 +277,9 @@ nav {
 }
 
 @media (min-width: 550px) {
+    .main-logo {
+        display: none;
+    }
     nav {
         left: 0;
 
@@ -434,10 +437,6 @@ nav {
 
         .nav-logo {
             display: block;
-        }
-
-        .main-logo {
-            display: none;
         }
 
         .nav-toggle {
