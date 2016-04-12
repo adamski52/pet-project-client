@@ -4,6 +4,7 @@ import 'rxjs/Rx';
 import {provide, Injectable} from 'angular2/core';
 import {AppComponent} from './app/components/app';
 import {CORSBaseRequestOptions} from "./app/lib/cors-base-request-options";
+import {ROUTER_PROVIDERS} from 'angular2/router';
 
 @Injectable()
 class CORSBrowserXHR extends BrowserXhr {
@@ -14,10 +15,8 @@ class CORSBrowserXHR extends BrowserXhr {
     }
 }
 
-//bootstrap(AppComponent);
-//bootstrap(AppComponent, [HTTP_PROVIDERS]);
 bootstrap(AppComponent, [
     HTTP_PROVIDERS,
+    ROUTER_PROVIDERS,
     provide(BrowserXhr, { useClass: CORSBrowserXHR })
-    //provide(RequestOptions, { useClass: CORSBaseRequestOptions })
 ]);

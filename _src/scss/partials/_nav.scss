@@ -10,10 +10,6 @@ nav {
 
     border-bottom-right-radius: 20px;
 
-    &.nav-fixed {
-        position: fixed;
-    }
-
     &.toggler-open {
         left: 0;
     }
@@ -177,20 +173,14 @@ nav {
 }
 
 
-.is-aware {
-    &.is-authenticated {
-        .nav-link-dropdown {
-            max-height: 0px;
-            &.requires-auth {
-                max-height: 9999px;
-            }
+.is-authenticated {
+    .nav-link-dropdown {
+        max-height: 0px;
+        &.requires-auth {
+            max-height: 9999px;
         }
     }
-    .requires-auth {
-        max-height: 0px;
-    }
 }
-
 
 .nav-link-dropdown {
     border-right: $nav-border-size solid transparent;
@@ -198,6 +188,11 @@ nav {
     overflow: hidden;
     max-height: 9999px;
     @include transition($duration-short, 0);
+
+    &.requires-auth {
+        max-height: 0px;
+    }
+
 
     &:before {
         display: none;

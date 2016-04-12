@@ -1,13 +1,3 @@
-.main-container {
-    @include transition($duration-long*3, 0);
-    height: 100%;
-    display: none;
-
-    &.is-visible {
-        display: block;
-    }
-}
-
 .collage-section {
     display: none;
     width: 100%;

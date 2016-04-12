@@ -8,8 +8,8 @@ import {TogglerService} from "../services/toggler";
     }
 })
 
-export class TogglerMenu {
-    private isOpen: Boolean = true;
+export class TogglerMenuComponent {
+    private isOpen: boolean = true;
     private item: string;
 
     toggle(item) {
@@ -28,8 +28,6 @@ export class TogglerMenu {
         this.item = item;
         this._toggler.data$.subscribe(
             obj => {
-                obj = JSON.parse(obj);
-
                 if (obj.value == "toggle") {
                     this.toggle(obj.item);
                 }

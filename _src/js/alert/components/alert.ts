@@ -1,7 +1,5 @@
 import {Component, OnInit, NgZone} from 'angular2/core';
 import {AlertService} from "../services/alert";
-import {SecureService} from "../../secure/services/secure";
-import {IAlert} from "../interfaces/alert";
 
 @Component({
     selector: "alert",
@@ -9,37 +7,19 @@ import {IAlert} from "../interfaces/alert";
  })
 
 export class AlertComponent {
-    private messages: IAlert[] = [];
-    private type: string;
+    private messages: Object[] = [];
     private visibility: string = "";
-    private _hideTimeout;
-    private _clearTimeout;
-    private _prevResponse: boolean = false;
+    private _hideTimeout:number;
+    private _clearTimeout:number;
 
     constructor(private _alert: AlertService,
-                private _zone:NgZone,
-                private _secure:SecureService) {
-    }
+                private _zone:NgZone) {}
 
     ngOnInit() {
         this._alert.data$.subscribe(alert => this.onAlert(alert));
-        this._secure.data$.subscribe(
-            response => {
-                response = !!response;
-                if (response != this._prevResponse) {
-                    if (response) {
-                        this._alert.info("Switched to Secure Mode.");
-                    }
-                    else {
-                        this._alert.info("Switched to Public Mode.");
-                    }
-                }
-                this._prevResponse = response;
-            }
-        );
     }
 
-    private onAlert(alert:IAlert): void {
+    private onAlert(alert:Object): void {
         try {
             clearTimeout(this._hideTimeout);
             clearTimeout(this._clearTimeout);

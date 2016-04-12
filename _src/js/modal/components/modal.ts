@@ -1,6 +1,5 @@
 import {Component} from 'angular2/core';
 import {ModalService} from "../services/modal";
-import {ICollageImage} from "../../collage/interfaces/collage-image";
 
 @Component({
     selector: "modal",
@@ -19,7 +18,7 @@ export class ModalComponent {
         this.isOpen = false;
     }
 
-    private onOpened(image:ICollageImage): void {
+    private onOpened(image:Object): void {
         this.url = image.full;
         this.isOpen = true;
     }

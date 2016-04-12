@@ -1,17 +1,18 @@
 import {Observable} from 'rxjs/Observable';
 import {Observer} from 'rxjs/Observer';
 import {Injectable} from 'angular2/core';
-import {IAlert} from "../../alert/interfaces/alert";
 import {CONSTANTS} from "../../constants";
 import 'rxjs/add/operator/share';
 
 @Injectable()
 export class AlertService {
-    private _observer: Observer<IAlert>;
-    public data$: Observable<IAlert>;
+    private _observer: Observer<Object>;
+    public data$: Observable<Object>;
 
     constructor() {
-        this.data$ = new Observable(observer => this._observer = observer).share();
+        this.data$ = new Observable(observer => {
+            this._observer = observer
+        }).share();
     }
 
     public success(message:string) {

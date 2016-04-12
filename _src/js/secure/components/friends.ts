@@ -3,7 +3,7 @@ import {Component} from 'angular2/core';
 
 @Component({
     selector: "friends",
-    templateUrl: "templates/friends.html"
+    templateUrl: "templates/secure/friends.html"
 })
 
 export class FriendsComponent {

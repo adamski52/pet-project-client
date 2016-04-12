@@ -1,5 +1,4 @@
 import {Component, ElementRef, NgZone} from 'angular2/core';
-import {ICollageImage} from "../interfaces/collage-image";
 import {CollageImage} from "./collage-image";
 import {AlertService} from "../../alert/services/alert";
 import {CollageService} from "../services/collage";
@@ -16,7 +15,7 @@ import 'rxjs/add/operator/map';
 
 export class CollageComponent {
     private _isInitialized: boolean = false;
-    public images: ICollageImage[] = [];
+    public images: Object[] = [];
 
     constructor(private _collage: CollageService,
                 private _alert: AlertService,
@@ -36,6 +35,7 @@ export class CollageComponent {
             this._collage.get().subscribe(
                 response => {
                     this._zone.run(() => {
+                        console.log("COLLAGE FOR EACH");
                         response.forEach(image => this.images.push(image));
                     });
                 },

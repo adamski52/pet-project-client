@@ -3,7 +3,7 @@ import {Component} from 'angular2/core';
 
 @Component({
     selector: "dogs",
-    templateUrl: "templates/dogs.html"
+    templateUrl: "templates/secure/dogs.html"
 })
 
 export class DogsComponent {

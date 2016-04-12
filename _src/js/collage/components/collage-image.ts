@@ -1,6 +1,5 @@
 import {Directive, Input} from 'angular2/core';
 import {ModalService} from "../../modal/services/modal";
-import {ICollageImage} from "../interfaces/collage-image";
 
 @Directive({
     selector: '[collage-image]',
@@ -10,7 +9,7 @@ import {ICollageImage} from "../interfaces/collage-image";
 })
 
 export class CollageImage {
-    @Input() image: ICollageImage;
+    @Input() image: Object;
 
     private subscription;
 

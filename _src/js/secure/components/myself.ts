@@ -3,7 +3,7 @@ import {Component} from 'angular2/core';
 
 @Component({
     selector: "myself",
-    templateUrl: "templates/myself.html"
+    templateUrl: "templates/secure/myself.html"
 })
 
 export class MyselfComponent {

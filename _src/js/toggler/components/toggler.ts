@@ -8,7 +8,7 @@ import {TogglerService} from "../services/toggler";
     }
 })
 
-export class Toggler {
+export class TogglerComponent {
     private item: string;
 
     toggle(e) {

@@ -7,7 +7,8 @@ import {AlertService} from "../../alert/services/alert";
 })
 
 export class EnrollComponent {
-    constructor(private _alert: AlertService, private _login: LoginService) {
+    constructor(private _alert: AlertService,
+                private _login: LoginService) {
         this._login.data$.subscribe(
         );
     }
