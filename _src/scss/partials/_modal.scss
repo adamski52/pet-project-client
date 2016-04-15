@@ -1,21 +1,18 @@
 .modal-cover {
-    background: rgba(255,255,255,.8);
+    background: $modal-cover-background;
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 9999;
-    color: #fff;
 
     .modal-close {
         cursor: pointer;
-        font-size: 1.8rem;
         width: 30px;
         height: 30px;
         text-align: center;
-        line-height: 30px;
-        background: #000;
+        background: $modal-close-background;
         z-index: 9;
         border-radius: 15px;
         display: inline-block;
@@ -28,7 +25,6 @@
             display: block;
             width: 100%;
             height: 100%;
-            line-height: 28px;
             text-align: center;
         }
     }
@@ -44,7 +40,6 @@
             display: inline-block;
             height: 100%;
             vertical-align: middle;
-            margin-right: -0.25em;
         }
 
         img {

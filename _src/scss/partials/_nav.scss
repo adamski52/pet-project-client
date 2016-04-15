@@ -1,10 +1,21 @@
+.main-logo,
+.nav-logo {
+    padding: $small-padding;
+    margin: 0;
+    line-height: auto;
+    height: auto;
+
+    img {
+        width: 100%;
+    }
+}
+
 nav {
     background: rgba(0,0,0,.5);
-    position: absolute;
+    position: relative;
     top: 0;
     left: -$nav-width;
     width: $nav-width;
-    font-size: $nav-text-size;
     z-index: 4;
     @include transition($duration-short, 0);
 
@@ -14,8 +25,121 @@ nav {
         left: 0;
     }
 
-    a {
-        color: #fff;
+    .nav-link {
+        @include transition($duration-short, 0);
+        display: block;
+        padding-left: $nav-item-padding;
+        border-right: $nav-border-size solid transparent;
+        height: $nav-item-height;
+        line-height: $nav-item-height;
+
+        &:before {
+            @include transition($duration-short, 0);
+            display: inline-block;
+            font-size: 1.4em;
+            height: $nav-item-height;
+            line-height: $nav-item-height;
+            margin-right: 5px;
+            opacity: 0;
+            float: left;
+        }
+
+        &:hover {
+            padding-left: $nav-item-padding*2;
+            &:before {
+                text-shadow: none;
+                opacity: 1;
+            }
+        }
+    }
+
+    .nav-link-dropdown {
+        border-right: $nav-border-size solid transparent;
+        overflow: hidden;
+        position: relative;
+        max-height: 9999px;
+        @include transition($duration-short, 0);
+
+        &.requires-auth {
+            max-height: 0px;
+        }
+
+        &:hover {
+            .nav-link {
+                &:before {
+                    text-shadow: none;
+                    opacity: 1;
+                }
+            }
+        }
+
+
+        .nav-link-toggle:before,
+        &:before {
+            @include transition($duration-short, 0);
+            border-radius: 4px;
+            padding: 3px;
+            height: 18px;
+            width: 18px;
+            line-height: 18px;
+            background: rgba(0,0,0,.2);
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+            display: block;
+            color: $default-text !important;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        &:before {
+            display: none;
+        }
+
+        .nav-link-toggle {
+            span {
+                display: none;
+            }
+        }
+
+        &.toggler-open {
+            .nav-link-toggle {
+                &:before {
+                    content: "\4d"; // chevron up
+                }
+            }
+
+            .nav-link-dropdown-content {
+                max-height: 999px;
+            }
+        }
+
+        .nav-link {
+            border: none;
+        }
+    }
+
+    .nav-link-dropdown-content {
+        display: block;
+        padding-left: $base-padding;
+        overflow: hidden;
+        max-height: 0;
+        @include transition($duration-long, 0);
+
+        &.no-touchy {
+            padding: 0 $base-padding;
+        }
+
+        input {
+            width: 100%;
+            font-size: .8em;
+        }
+
+        p {
+            margin: $small-padding 0;
+            font-size: .8em;
+        }
     }
 
 
@@ -73,221 +197,78 @@ nav {
             color: $contact-contrast;
         }
     }
-}
 
-.main-logo,
-.nav-logo {
-    width: 100%;
-    padding: $small-padding;
 
-    img {
-        width: 100%;
-    }
-}
-
-.nav-logo {
-    display: none;
-}
-
-.nav-toggle {
-    @include transition($duration-short, 0);
-    position: absolute;
-    background: rgba(0,0,0,.5);
-    top: 0;
-    left: $nav-width;
-    display: block;
-    line-height: $nav-menu-size;
-    height: $nav-menu-size;
-
-    span {
-        margin-left: 30px;
-        margin-right: 5px;
-        font-family: $font-family-serif;
-    }
-
-    &:after,
-    &:before {
+    .nav-toggle {
         @include transition($duration-short, 0);
-        display: block;
         position: absolute;
+        background: rgba(0,0,0,.5);
         top: 0;
-        left: 5px;
+        left: $nav-width;
+        display: block;
+        height: $nav-menu-size;
         line-height: $nav-menu-size;
-        font-size: 2rem;
-    }
+        padding: 0 $small-padding 0 $nav-menu-size;
 
-    &:after {
-        content: "\4e"; // chevron-right
-        opacity: 0;
-    }
-
-    &:hover {
-        color: #000;
-        background: rgba(255,255,255,.5);
-        text-decoration: none;
+        &:after,
         &:before {
+            @include transition($duration-short, 0);
+            display: block;
+            width: $nav-menu-size;
+            height: $nav-menu-size;
+            line-height: $nav-menu-size;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        &:after {
+            content: "\4e"; // chevron-right
             opacity: 0;
         }
 
-        &:after {
-            opacity: 1;
-        }
-    }
-}
-
-.toggler-open .nav-toggle {
-    &:hover {
-        &:after {
-            content: "\4f"; // chevron-left
-        }
-    }
-}
-
-
-.nav-link {
-    @include transition($duration-short, 0);
-    display: block;
-    color: #fff;
-    padding: $small-padding $base-padding $small-padding $base-padding*2;
-    border-right: $nav-border-size solid transparent;
-    position: relative;
-    line-height: $nav-icon-size;
-
-    &:before {
-        overflow: hidden;
-        position: absolute;
-        top: 8px;
-        left: 5px;
-        font-size: $nav-icon-size;
-    }
-
-    &:hover {
-        text-decoration: none;
-        color: #fff;
-
-        &:before {
-            width: auto;
-            text-shadow: none !important;
-        }
-    }
-}
-
-
-.is-authenticated {
-    .nav-link-dropdown {
-        max-height: 0px;
-        &.requires-auth {
-            max-height: 9999px;
-        }
-    }
-}
-
-.nav-link-dropdown {
-    border-right: $nav-border-size solid transparent;
-    position: relative;
-    overflow: hidden;
-    max-height: 9999px;
-    @include transition($duration-short, 0);
-
-    &.requires-auth {
-        max-height: 0px;
-    }
-
-
-    &:before {
-        display: none;
-    }
-
-    .nav-link-toggle {
-        @include transition($duration-short, 0);
-        border-radius: 4px;
-        padding: 3px;
-        height: 25px;
-        width: 25px;
-        line-height: 25px;
-        background: rgba(0,0,0,.2);
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 1;
-        display: block;
-
-        &:before {
-            cursor: pointer;
-            color: #fff;
-        }
-
         &:hover {
-            text-decoration: none;
-        }
+            color: #000;
+            background: rgba(255,255,255,.5);
+            &:before {
+                opacity: 0;
+            }
 
-        span {
-            display: none;
+            &:after {
+                opacity: 1;
+            }
         }
     }
 
     &.toggler-open {
-        .nav-link-toggle {
-            &:before {
-                content: "\4d"; // chevron up
+        .nav-toggle {
+            &:hover {
+                &:after {
+                    content: "\4f"; // chevron-left
+                }
             }
         }
+    }
 
-        .nav-link-dropdown-content {
-            max-height: 999px;
+    &.is-authenticated {
+        .nav-link-dropdown {
+            max-height: 0px;
+            &.requires-auth {
+                max-height: 9999px;
+            }
         }
     }
-
-    .nav-link {
-        border: none;
-    }
 }
 
-.nav-link-dropdown-content {
-    display: block;
-    padding-left: $base-padding;
-    overflow: hidden;
-    max-height: 0;
-    @include transition($duration-long, 0);
-
-    &.no-touchy {
-        padding: 0 $base-padding;
-    }
-
-    .nav-link {
-        font-size: 1.4rem;
-    }
-
-    input {
-        line-height: 2rem;
-        font-size: 1.5rem;
-        padding: 7px;
-        margin: 7px 0;
-        border: none;
-        border-radius: 4px;
-        font-family: $font-family-serif;
-        color: #666;
-        width: 100%;
-    }
-
-    p {
-        margin: $small-padding 0;
-        font-size: 1.2rem;
-    }
-}
 
 @media (min-width: 550px) {
     .main-logo {
         display: none;
     }
+
     nav {
         left: 0;
-
-        .nav-link {
-            &:before {
-                text-shadow: none;
-            }
-        }
 
         .livestream {
             background-color: transparent;
@@ -295,7 +276,6 @@ nav {
             &:hover {
                 background-color: $livestream-primary;
                 border-color: $livestream-contrast;
-                //color: $livestream-subtle;
                 @include blocktext($livestream-contrast);
             }
         }
@@ -306,7 +286,6 @@ nav {
             &:hover {
                 background-color: $about-primary;
                 border-color: $about-contrast;
-                //color: $about-subtle;
                 @include blocktext($about-contrast);
             }
         }
@@ -317,7 +296,6 @@ nav {
             &:hover {
                 background-color: $services-primary;
                 border-color: $services-contrast;
-                //color: $services-subtle;
                 @include blocktext($services-contrast);
             }
         }
@@ -328,7 +306,6 @@ nav {
             &:hover {
                 background-color: $enroll-primary;
                 border-color: $enroll-contrast;
-                //color: $enroll-subtle;
                 @include blocktext($enroll-contrast);
             }
         }
@@ -339,7 +316,6 @@ nav {
             &:hover {
                 background-color: $account-primary;
                 border-color: $account-contrast;
-                //color: $account-subtle;
                 @include blocktext($account-contrast);
             }
         }
@@ -350,10 +326,11 @@ nav {
             &:hover {
                 background-color: $contact-primary;
                 border-color: $contact-contrast;
-                //color: $contact-subtle;
                 @include blocktext($contact-contrast);
             }
         }
+
+
 
         .theme-reversed {
             &.livestream {
@@ -435,39 +412,12 @@ nav {
             }
         }
 
-        .nav-logo {
-            display: block;
-        }
-
         .nav-toggle {
             display: none;
         }
 
-        .nav-link {
-            &:before {
-                width: 0;
-            }
-        }
-
         .nav-link-dropdown {
             @include transition($duration-short, 0);
-
-            &:before {
-                @include transition($duration-short, 0);
-                border-radius: 4px;
-                padding: 3px;
-                height: 25px;
-                width: 25px;
-                line-height: 18px;
-                background: rgba(0,0,0,.2);
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                z-index: 1;
-                display: block;
-                color: #fff;
-                font-size: 1.8rem;
-            }
 
             .nav-link-toggle {
                 display: none
@@ -477,6 +427,10 @@ nav {
                 .nav-link-dropdown-content {
                     max-height: 0;
                 }
+            }
+
+            &:before {
+                display: block;
             }
 
             &:hover {
@@ -490,7 +444,7 @@ nav {
                     max-height: 999px;
                 }
 
-                > .nav-link {
+                .nav-link {
                     border: none;
 
                     &:before {

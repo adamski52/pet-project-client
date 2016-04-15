@@ -1,37 +1,38 @@
-.btn,
-.btn:focus,
-.btn:active {
-    position: relative;
+.btn {
     display: inline-block;
-    font-size: 1.4rem;
-    padding: 0 52px + $small-padding 0 $small-padding;
+    margin: $small-padding $small-padding $small-padding 0;
+    font-family: $accent-font-family;
     text-transform: uppercase;
+    height: $btn-md-height;
+    line-height: $btn-md-height;
     background-color: $default-contrast;
     color: #fff;
-    line-height: 40px;
     @include transition($duration-short, 0);
     border-radius: 4px;
-}
+    border: none;
+    padding: 0 0 0 $medium-padding;
+    @include borderbox();
 
-.btn {
     &:before {
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 2.1rem;
+        float: right;
+        font-size: 1.6em;
+        height: $btn-md-height;
+        width: $btn-md-height;
+        text-align: center;
+        line-height: $btn-md-height;
         color: $default-contrast;
+        margin-left: $medium-padding;
         background-color: #fff;
         text-shadow: none;
-        width: 40px;
-        height: 40px;
         text-align: center;
-        line-height: 40px;
         @include transition($duration-short, 0);
-        border-radius: 4px;
+        @include borderbox();
+        border-radius: inherit;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
     }
 
+    &:focus,
     &:hover {
         text-decoration: none;
         background-color: #fff;
@@ -48,54 +49,42 @@
 
 
 
-.btn-lg,
-.btn-lg:focus,
-.btn-lg:active {
-    font-size: 2rem;
-    line-height: 62px;
-    border-radius: 8px;
-    padding: 0 62px + $base-padding 0 $base-padding;
-}
-
 .btn-lg {
+    height: $btn-lg-height;
+    line-height: $btn-lg-height;
+    font-size: 1.2em;
+    padding-left: $base-padding;
+
+    &:focus,
     &:hover, {
         @include glow($glow-large, #fff);
     }
 
     &:before {
-        font-size: 3.1rem;
-        width: 62px;
-        height: 62px;
-        line-height: 62px;
-        border-radius: 8px;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+        margin-left: $base-padding;
+        height: $btn-lg-height;
+        line-height: $btn-lg-height;
+        width: $btn-lg-height;
     }
 }
 
 
-.btn-sm,
-.btn-sm:focus,
-.btn-sm:active {
-    font-size: 1.1rem;
-    line-height: 32px;
-    border-radius: 3px;
-    padding: 0 32px + $small-padding 0 $small-padding;
-}
-
 .btn-sm {
+    font-size: .7em;
+    height: $btn-sm-height;
+    line-height: $btn-sm-height;
+    padding-left: $small-padding;
+    
+    &:focus,
     &:hover {
         @include glow($glow-small, #fff);
     }
 
     &:before {
-        font-size: 1.6rem;
-        width: 32px;
-        height: 32px;
-        line-height: 32px;
-        border-radius: 3px;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+        margin-left: $small-padding;
+        height: $btn-sm-height;
+        line-height: $btn-sm-height;
+        width: $btn-sm-height;
     }
 }
 
@@ -107,6 +96,7 @@
             color: $intro-contrast;
         }
 
+        &:focus,
         &:hover {
             background-color: #fff;
             color: $intro-contrast;
@@ -127,6 +117,7 @@
             color: $about-contrast;
         }
 
+        &:focus,
         &:hover {
             background-color: #fff;
             color: $about-contrast;
@@ -147,6 +138,7 @@
             color: $services-contrast;
         }
 
+        &:focus,
         &:hover {
             background-color: #fff;
             color: $services-contrast;
@@ -167,6 +159,7 @@
             color: $livestream-contrast;
         }
 
+        &:focus,
         &:hover {
             background-color: #fff;
             color: $livestream-contrast;
@@ -187,6 +180,7 @@
             color: $enroll-contrast;
         }
 
+        &:focus,
         &:hover {
             background-color: #fff;
             color: $enroll-contrast;
@@ -207,6 +201,7 @@
             color: $contact-contrast;
         }
 
+        &:focus,
         &:hover {
             background-color: #fff;
             color: $contact-contrast;

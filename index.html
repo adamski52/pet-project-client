@@ -1,22 +1,30 @@
 <!doctype html>
 <html>
 <head>
-  <base href="/storybook/">
+  <script>
+    if(document.location.href.indexOf("localhost") > -1) {
+      document.write("<base href='/'>");
+    }
+    else {
+      documenet.write("<base href='/storybook/'>");
+    }
+  </script>
+  
   <title>Storybook Kennels</title>
+  
   <meta http-equiv="cache-control" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
   <link href='https://fonts.googleapis.com/css?family=Montserrat%7CRoboto:400,500,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="css/main.css">
-  <script src="lib/angular2-polyfills.js"></script>
-  <script src="lib/es6-shim.min.js"></script>
-  <script src="lib/system-polyfills.js"></script>
 
-  <script src="lib/shims_for_IE.js"></script>
-  <script src="lib/system.src.js"></script>
-  <script src="lib/Rx.js"></script>
-  <script src="lib/angular2.dev.js"></script>
-  <script src="lib/router.dev.js"></script>
-  <script src="lib/http.dev.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.9/angular2-polyfills.js"></script>
+  <script src="https://code.angularjs.org/tools/system.js"></script>
+  <script src="https://code.angularjs.org/tools/typescript.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.9/Rx.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.9/angular2.dev.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.9/router.dev.js"></script>
+  <script src="https://code.angularjs.org/2.0.0-beta.9/http.dev.js"></script>
 
   <script>
     System.config({
@@ -27,12 +35,13 @@
         }
       }
     });
+
     System.import('js/main')
-          .then(null, console.error.bind(console));
+          .catch(null, console.error.bind(console));
   </script>
 </head>
 <body>
-    <storybook></storybook>
+    <div storybook class="main-container"></div>
     <div id="height-spy"></div>
     <div id="initial-loader" class="loading is-visible"></div>
 </body>

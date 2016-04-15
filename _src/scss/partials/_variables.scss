@@ -1,37 +1,38 @@
+$base-padding: 16px;
+$medium-padding: 13px;
+$small-padding: 10px;
 
-@mixin blocktext($color) {
-    text-shadow: 2px 2px 0px $color;
-}
+$nav-menu-size: 35px;
+$nav-item-height: 45px;
+$nav-item-padding: 7px;
+$nav-width: 200px;
+$nav-border-size: 6px;
 
-@mixin desaturate($amount) {
-    -webkit-filter: grayscale($amount);
-    filter: grayscale($amount);
-}
+$btn-sm-height: 35px;
+$btn-md-height: 40px;
+$btn-lg-height: 50px;
 
-@mixin grow($scale) {
-    -ms-transform: scale($scale, $scale);
-    -webkit-transform: scale($scale, $scale);
-    transform: scale($scale, $scale);
-}
+$glow-small: 10px;
+$glow-medium: 20px;
+$glow-large: 40px;
 
-@mixin transition($duration, $delay) {
-    -webkit-transition: all $duration;
-    transition: all $duration;
-    -webkit-transition-delay: $delay;
-    transition-delay: $delay;
-}
+$duration-short: .3s;
+$duration-long: .8s;
 
-@mixin glow($amt, $color) {
-    box-shadow: 0 0 $amt $color;
-}
+$heading-icon-size: 50px;
 
-@mixin blur($amt) {
-    -webkit-filter: blur($amt);
-    -moz-filter: blur($amt);
-    -o-filter: blur($amt);
-    -ms-filter: blur($amt);
-    filter: blur($amt);
-}
+$main-font-family: 'Montserrat', sans-serif;
+$accent-font-family: 'Roboto', sans-serif;
+$base-text-size: 18px;
+$input-text-color: #333;
+
+$modal-cover-background: rgba(255, 255, 255, .8);
+$modal-close-background: #000;
+
+$alert-error-color: lighten(#f5b3b3, 10%);
+$alert-success-color: lighten(#bbf5b3, 10%);
+$alert-warning-color: lighten(#ffeaa8, 10%);
+$alert-info-color: lighten(#9cddff, 10%);
 
 $default-primary: #edc45b;
 $default-text: #fff;
@@ -216,36 +217,3 @@ $account-background: url(../images/backgrounds/poof-face.png);
         color: $account-text;
     }
 }
-
-$base-padding: 16px;
-$small-padding: 10px;
-
-$map-height: 80%;
-
-$nav-menu-size: 35px;
-$nav-top-padding: 40px;
-$nav-width: 200px;
-$nav-height: 50px;
-$nav-text-size: 1.8rem;
-$nav-text-height: 25px;
-$nav-icon-size: 2.4rem;
-$nav-icon-padding: 7px;
-$nav-border-size: 6px;
-$nav-shadow-x: 0px;
-$nav-shadow-y: 0px;
-$nav-shadow-blur: 50px;
-
-$glow-small: 10px;
-$glow-medium: 20px;
-$glow-large: 40px;
-
-$duration-short: .3s;
-$duration-long: .8s;
-
-$alert-height: 30px;
-$alert-error: #ae6464;
-$alert-error-text: darken($alert-error, 20%);
-$alert-success: #6cb142;
-$alert-success-text: darken($alert-success, 20%);
-$alert-duration: .5s;
-

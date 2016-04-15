@@ -5,24 +5,17 @@
 }
 
 .section {
+    @include borderbox();
+    position: absolute;
+    top: 0;
+    left: 0;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom right;
     background-attachment: fixed;
     min-height: 100%;
-    padding: $base-padding;
-
-    p {
-        font-size: 1.8rem;
-        line-height: 1.8rem;
-    }
-
-    li {
-        font-size: 1.8rem;
-        line-height: 1.8rem;
-        list-style-type: disc;
-        margin-left: 50px;
-    }
+    width: 100%;
+    padding: $base-padding $base-padding $base-padding $heading-icon-size + $small-padding + $base-padding;
 
 
     &.intro {
@@ -30,6 +23,8 @@
         color: $intro-text;
         text-transform: uppercase;
         background-image: $intro-background;
+        padding: $base-padding $base-padding $base-padding $base-padding;
+
 
         h1, h2, h3, h4, h5, h6 {
             color: $intro-heading;
@@ -167,7 +162,7 @@
 
 .map {
     width: 100%;
-    height: $map-height;
+    height: 80%;
     position: relative;
     z-index: 2;
     @include glow($glow-large, $contact-contrast);
@@ -207,25 +202,53 @@
 .alert {
     @include transition($duration-short, 0);
     @include glow($glow-small, #000);
-    border: none;
     position: fixed;
-    margin: 0;
-    padding: 0;
-    font-size: 1.4rem;
     bottom: -100%;
     left: 0;
     z-index: 99;
     text-align: center;
     width: 100%;
-    line-height: $alert-height;
+    text-transform: uppercase;
 
-    ul, ol, li {
+    ul {
         margin: 0;
     }
 
+    li {
+        border-top: 1px solid transparent;
+        margin: 0;
+        font-family: $accent-font-family;
+        font-weight: bold;
+        font-size: .7em;
+        padding: 6px;
+    }
 
     &.is-visible {
         bottom: 0;
+    }
+
+    .alert-error {
+        background: $alert-error-color;
+        color: darken($alert-error-color, 50%);
+        border-color: darken($alert-error-color, 20%);
+    }
+
+    .alert-success {
+        background: $alert-success-color;
+        color: darken($alert-success-color, 50%);
+        border-color: darken($alert-success-color, 20%);
+    }
+
+    .alert-warning {
+        background: $alert-warning-color;
+        color: darken($alert-warning-color, 50%);
+        border-color: darken($alert-warning-color, 40%);
+    }
+
+    .alert-info {
+        background: $alert-info-color;
+        color: darken($alert-info-color, 50%);
+        border-color: darken($alert-info-color, 20%);
     }
 }
 
@@ -256,11 +279,10 @@
     }
 
     .section {
-        position: relative;
 
+        // force things above the background image.
         & > * {
             position: relative;
-            z-index: 1;
         }
 
         &.intro:before {
@@ -290,10 +312,14 @@
 }
 @media (min-width: 650px) {
     .section {
-        padding: $base-padding 25% $base-padding $nav-width + $base-padding;
+        padding: $base-padding 25% $base-padding $nav-width + $base-padding + $small-padding + $heading-icon-size;
+
+        &.intro {
+            padding: $base-padding 25% $base-padding $nav-width + $base-padding;
+        }
     }
 }
-@media (min-width: $screen-sm) {
+@media (min-width: 768px) {
     .collage-section {
         display: block;
     }
