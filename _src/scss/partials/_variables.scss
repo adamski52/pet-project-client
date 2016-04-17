@@ -217,3 +217,52 @@ $account-background: url(../images/backgrounds/poof-face.png);
         color: $account-text;
     }
 }
+
+$dogs-primary: #f49b00;
+$dogs-contrast: darken($dogs-primary, 15%);
+$dogs-subtle: lighten($dogs-primary, 30%);
+$dogs-text: lighten($dogs-primary, 50%);
+$dogs-heading: #fff;
+$dogs-heading-icon: $dogs-heading;
+$dogs-heading-ring: $dogs-subtle;
+$dogs-background: url(../images/backgrounds/shepherd-face.png);
+
+.dogs {
+    .contrast {
+        color: $dogs-contrast;
+    }
+
+    .subtle {
+        color: $dogs-subtle;
+        @include blocktext(darken($dogs-subtle, 45%));
+    }
+
+    .standard {
+        color: $dogs-text;
+    }
+}
+
+
+$myself-primary: #f49b00;
+$myself-contrast: darken($myself-primary, 15%);
+$myself-subtle: lighten($myself-primary, 30%);
+$myself-text: lighten($myself-primary, 50%);
+$myself-heading: #fff;
+$myself-heading-icon: $myself-heading;
+$myself-heading-ring: $myself-subtle;
+$myself-background: url(../images/backgrounds/shepherd-face.png);
+
+.myself {
+    .contrast {
+        color: $myself-contrast;
+    }
+
+    .subtle {
+        color: $myself-subtle;
+        @include blocktext(darken($myself-subtle, 45%));
+    }
+
+    .standard {
+        color: $myself-text;
+    }
+}
