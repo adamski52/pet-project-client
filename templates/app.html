@@ -1,4 +1,25 @@
-<nav togglerMenu item="nav-menu" class="toggler-open"></nav>
+<header class="hero-header">
+    <a [routerLink]="['Home']"><img src="images/logo.png" alt="Storybook Kennels"></a>
+    <nav class="fluid-container">
+        <a [routerLink]="['AboutUs']">About Us</a>
+        <a [routerLink]="['SignUp']">Sign Up</a>
+        <a [routerLink]="['ContactUs']">Contact Us</a>
+        <!--<a [routerLink]="['SignOut']">Sign Out</a>
+        <a [routerLink]="['OurServices']">Our Services</a>
+        <a [routerLink]="['MyAccount']">My Account</a>
+        <a [routerLink]="['MyConnections']">My Connections</a>
+        <a [routerLink]="['MyDogs']">My Dogs</a>
+        <a [routerLink]="['MyNotifications']">Notifications</a>-->
+    </nav>
+</header>
+
 <router-outlet></router-outlet>
-<div modal></div>
-<div alert></div>
+
+<footer>
+    <p>super footer</p>
+</footer>
+<!--<div alert class="alert">
+    <ul>
+        <li *ngFor="#msg of messages" class="alert-{{msg.type}}">{{msg.message}}</li>
+    </ul>
+</div>-->
