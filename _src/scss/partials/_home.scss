@@ -1,0 +1,135 @@
+.nav-wrapper {
+    padding: 0;
+}
+
+.logo {
+    padding: $padding-base-vertical $padding-base-horizontal;
+    border-bottom: $border-base-size $brand-accent solid;
+    background: $brand-primary;
+    text-align: center;
+
+    img {
+        max-width: 255px;
+        width: 100%;
+    }
+}
+
+
+.nav-container {
+    background: lighten($brand-accent, 15%);
+    text-align: center;
+    font-weight: bold;
+    padding: 0;
+    font-family: $font-family-sans-serif;
+    position: relative;
+}
+
+
+.nav-link {
+    color: $gray-dark;
+    margin-left: $padding-base-horizontal;
+    height: $navbar-height;
+    line-height: $navbar-height;
+    
+    &:hover,
+    &:active {
+        text-decoration: none;
+        color: $brand-primary; 
+    }
+}
+
+.nav-menu {
+    display: none;
+}
+
+.hero-background {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.login-form {
+    border-bottom-left-radius: $border-radius-base;
+    padding: $padding-base-vertical;
+    background: $body-bg;
+
+    .form-control {
+        padding: $padding-base-vertical;
+        border-width: $border-base-size;
+    }
+
+    .form-group {
+        margin: 0;
+        padding: 0 $padding-base-vertical 0 0;
+    }
+}
+
+
+// tablet and bigger
+@media (min-width: $screen-sm-min) {
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .hero-background {
+        position: fixed;
+        z-index: -1;
+    }
+
+    .nav-container {
+        text-align: right;
+        background: $body-bg;
+        padding-right: $padding-base-vertical;
+    }
+
+    .login-form {
+        float: right !important;
+        width: auto;
+        background: rgba(255,255,255,.5);
+    }
+}
+.visible-mobile {
+    display: none;
+}
+
+
+@media (max-width: $screen-xs) {
+    .visible-mobile {
+        display: block;
+    }
+
+    .nav-link {
+        display: block;
+    }
+
+    .mobile-nav-options {
+        height: $navbar-height;
+        line-height: $navbar-height;
+    }
+
+    .offscreen-mobile {
+        position: absolute;
+        top: $navbar-height;
+        width: 90%;
+
+        &.offscreen-left {
+            left: -100%;
+
+
+            &.offscreen-visible {
+                left: 0;
+            }
+        }
+
+        &.offscreen-right {
+            right: -100%;
+
+            &.offscreen-visible {
+                right: 0;
+            }
+        }
+    }
+}

@@ -3,7 +3,7 @@ import {UserService} from "../services/user";
 
 @Component({
     selector: "[account]",
-    templateUrl: "templates/secure/account.html"
+    templateUrl: "templates/account.html"
 })
 
 export class AccountComponent {
@@ -17,7 +17,5 @@ export class AccountComponent {
         }
 
         this.user = this._user.user;
-
-        console.log("ACCOUNT");
     }
 }

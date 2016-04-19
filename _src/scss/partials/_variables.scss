@@ -1,0 +1,16 @@
+@mixin animate($duration, $delay: 0s, $what: all) {
+    -webkit-transition-property: $what;
+    transition-property: $what;
+
+    -webkit-transition-duration: $duration;
+    transition-duration: $duration;
+
+    -webkit-transition-delay: $delay;
+    transition-delay: $delay;
+}
+
+$duration-short: .5s;
+$duration-long: 1.2s;
+
+$brand-accent: #f7adcb !default;
+$border-base-size: 3px !default;

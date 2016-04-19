@@ -6,10 +6,7 @@ import {UserService} from "../services/user";
 import {AlertService} from "../services/alert";
 
 @Directive({
-    selector: "[nav]",
-    host: {
-        "[class.is-authenticated]": "isAuthenticated"
-    }
+    selector: "[nav]"
 })
 
 export class NavComponent {
