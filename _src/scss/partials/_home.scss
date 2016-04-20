@@ -26,8 +26,9 @@
 
 
 .nav-link {
+    display: inline-block;
+    margin: 0 $padding-base-horizontal;
     color: $gray-dark;
-    margin-left: $padding-base-horizontal;
     height: $navbar-height;
     line-height: $navbar-height;
     
@@ -51,6 +52,7 @@
 .login-form {
     border-bottom-left-radius: $border-radius-base;
     padding: $padding-base-vertical;
+    height: 46px;
     background: $body-bg;
 
     .form-control {
@@ -64,6 +66,56 @@
     }
 }
 
+.mobile-nav {
+    display: none;
+}
+
+
+// mobile only with no unset for others
+@media (max-width: $screen-xs-min) {
+    .offscreen-left,
+    .offscreen-right {
+        position: absolute;
+        top: $navbar-height;
+        width: 90%;
+    }
+
+
+    .offscreen-left {
+        left: -100%;
+
+        &.offscreen-visible {
+            left: 0;
+        }
+    }
+
+    .offscreen-right {
+        right: -100%;
+
+        &.offscreen-visible {
+            right: 0;
+        }
+    }
+
+    .mobile-nav {
+        display: block;
+
+        .btn {
+            width: 100%;
+            margin: $padding-base-vertical 0;
+        }
+    }
+
+    .nav-link {
+        display: block;
+        margin: 0;
+    
+        &:hover,
+        &:active {
+            background: $body-bg;
+        }
+    }
+}
 
 // tablet and bigger
 @media (min-width: $screen-sm-min) {
@@ -75,8 +127,9 @@
     }
 
     .hero-background {
-        position: fixed;
         z-index: -1;
+        float: left;
+        margin-top: -46px;
     }
 
     .nav-container {
@@ -89,47 +142,5 @@
         float: right !important;
         width: auto;
         background: rgba(255,255,255,.5);
-    }
-}
-.visible-mobile {
-    display: none;
-}
-
-
-@media (max-width: $screen-xs) {
-    .visible-mobile {
-        display: block;
-    }
-
-    .nav-link {
-        display: block;
-    }
-
-    .mobile-nav-options {
-        height: $navbar-height;
-        line-height: $navbar-height;
-    }
-
-    .offscreen-mobile {
-        position: absolute;
-        top: $navbar-height;
-        width: 90%;
-
-        &.offscreen-left {
-            left: -100%;
-
-
-            &.offscreen-visible {
-                left: 0;
-            }
-        }
-
-        &.offscreen-right {
-            right: -100%;
-
-            &.offscreen-visible {
-                right: 0;
-            }
-        }
     }
 }
