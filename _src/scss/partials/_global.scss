@@ -1,0 +1,27 @@
+h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    color: $brand-primary;
+    font-weight: bold;
+    font-family: $font-family-sans-serif;
+}
+
+.btn {
+    text-transform: uppercase;
+}
+
+footer {
+    padding: $padding-base;
+    @include gradient-vertical(#fff, darken($gray-lighter, 5%), 0%, 100%);
+    border-top: 6px solid lighten($gray-lighter, 5%);
+}
+
+.icon-block {
+    margin-left: 30px;
+    text-indent: -30px;
+
+    &:before {
+        font-size: 1.4em;
+        vertical-align: middle;
+        margin-right: $padding-small;
+    }
+}

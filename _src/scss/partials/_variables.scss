@@ -9,8 +9,58 @@
     transition-delay: $delay;
 }
 
+@mixin borderbox() {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@mixin blocktext($color) {
+    text-shadow: 2px 2px 0px $color;
+}
+
+@mixin desaturate($amount) {
+    -webkit-filter: grayscale($amount);
+    filter: grayscale($amount);
+}
+
+@mixin grow($scale) {
+    -ms-transform: scale($scale, $scale);
+    -webkit-transform: scale($scale, $scale);
+    transform: scale($scale, $scale);
+}
+
+@mixin glow($amt, $color) {
+    box-shadow: 0 0 $amt $color;
+}
+
+@mixin blur($amt) {
+    -webkit-filter: blur($amt);
+    -moz-filter: blur($amt);
+    -o-filter: blur($amt);
+    -ms-filter: blur($amt);
+    filter: blur($amt);
+}
+
+$glow-base: 20px;
+
 $duration-short: .5s;
 $duration-long: 1.2s;
 
 $brand-accent: #f7adcb !default;
 $border-base-size: 3px !default;
+
+$card-height: 150px;
+$card-height-large: 175px;
+
+$card-glow-size: $glow-base;
+$card-glow-color: #000;
+
+$card-background: #fff;
+
+$padding-base: floor($grid-gutter-width/2);
+$padding-small: floor($padding-base/2);
+
+$login-input-border-size: 0px;
+$login-input-height: 36px;
+$login-height: ($login-input-border-size*2)+$login-input-height+($padding-small*2);

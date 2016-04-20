@@ -3,7 +3,7 @@
 }
 
 .logo {
-    padding: $padding-base-vertical $padding-base-horizontal;
+    padding: $padding-base;
     border-bottom: $border-base-size $brand-accent solid;
     background: $brand-primary;
     text-align: center;
@@ -27,7 +27,7 @@
 
 .nav-link {
     display: inline-block;
-    margin: 0 $padding-base-horizontal;
+    margin: 0 $padding-base;
     color: $gray-dark;
     height: $navbar-height;
     line-height: $navbar-height;
@@ -50,25 +50,76 @@
 }
 
 .login-form {
-    border-bottom-left-radius: $border-radius-base;
-    padding: $padding-base-vertical;
-    height: 46px;
+    border-bottom-left-radius: $padding-small;
+    padding: $padding-small;
     background: $body-bg;
+    height: $login-height;
 
     .form-control {
-        padding: $padding-base-vertical;
-        border-width: $border-base-size;
+        padding: $padding-base;
+        border-width: $login-input-border-size;
+        height: $login-input-height;
     }
 
     .form-group {
         margin: 0;
-        padding: 0 $padding-base-vertical 0 0;
+        padding: 0 $padding-base 0 0;
     }
 }
 
 .mobile-nav {
     display: none;
 }
+
+
+.card {
+    @include glow($card-glow-size, $card-glow-color);
+    @include gradient-vertical(#fff, lighten(#000, 95%), 0%, 100%);
+    width: 100%;
+    padding: 0;
+    min-height: $card-height;
+
+    border-radius: $border-radius-base;
+    border: $border-base-size solid $brand-primary;
+    border-top: none;
+    border-bottom: none;
+
+    margin-bottom: $grid-gutter-width;
+
+    text-align: center;
+
+    .card-wrapper {
+        padding: $padding-base;
+        background: url(../images/backgrounds/paws.png) no-repeat center bottom;
+        min-height: $card-height;
+        height: 100%;
+    }
+
+    &.card-large {
+        margin-top: -$grid-gutter-width;
+    }
+
+    .card-heading {
+        margin-top: 0;
+        color: $gray;
+        font-family: $font-family-base;
+    }
+}
+
+.card-stack > * {
+    &:first-child {
+        .card-wrapper {
+            background-position: left bottom;
+        }
+    }
+
+    &:last-child {
+        .card-wrapper {
+            background-position: right top;
+        }
+    }
+}
+
 
 
 // mobile only with no unset for others
@@ -102,7 +153,7 @@
 
         .btn {
             width: 100%;
-            margin: $padding-base-vertical 0;
+            margin: $padding-base 0;
         }
     }
 
@@ -117,6 +168,8 @@
     }
 }
 
+
+
 // tablet and bigger
 @media (min-width: $screen-sm-min) {
     .logo {
@@ -129,18 +182,39 @@
     .hero-background {
         z-index: -1;
         float: left;
-        margin-top: -46px;
+        margin-top: -$login-height;
     }
 
     .nav-container {
         text-align: right;
         background: $body-bg;
-        padding-right: $padding-base-vertical;
+        padding-right: $padding-base;
     }
 
     .login-form {
         float: right !important;
         width: auto;
         background: rgba(255,255,255,.5);
+
+        .btn {
+            height: $login-input-height;
+        }
+    }
+
+    .card {
+        margin-top: -$card-height/2;
+
+        &.card-large {
+            min-height: $card-height-large;
+            margin-top: -$card-height-large/2;
+
+            .card-wrapper {
+                min-height: $card-height-large;
+            }
+        }
+
+        .card-content {
+            text-align: left;
+        }
     }
 }
