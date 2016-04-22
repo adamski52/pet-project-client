@@ -1,69 +1,34 @@
-<header>
-    <div class="row">
-        <a [routerLink]="['Home']" class="col-xs-12 col-sm-3 logo"><img src="images/logo.png" alt="Storybook Kennels"></a>
-        
-        <nav class="col-xs-12 text-uppercase nav-wrapper">
-            <div class="col-xs-12 mobile-nav">
-                <div class="col-xs-6">
-                    <a href="" class="btn btn-default">
-                        <span class="glyphicon glyphicon-menu-hamburger"></span> Menu
-                    </a>
-                </div>
-                <div class="col-xs-6">
-                    <button class="btn btn-primary">Sign In</button>
-                </div>
+<div class="row hero-background">
+    <img hero-image src="images/backgrounds/yoyo.jpg">
+</div>
+<section class="row card-stack">
+    <article class="col-xs-12 col-sm-push-4 col-sm-4 card-wrapper">
+        <div class="card card-large">
+            <div class="card-inner">
+                <h2 class="card-heading">Thing 1</h2>
+                <p class="card-content">lorem ipsum dolar sit amet.  something big something small?</p>
+                <a href="" class="btn btn-primary">Do Something</a>
             </div>
-            <div class="col-xs-12 nav-container offscreen-left">       
-                <a [routerLink]="['Home']" class="nav-link">Home</a>
-                <a [routerLink]="['About']" class="nav-link">About Us</a>
-                <a [routerLink]="['Services']" class="nav-link">Our Services</a>
-                <a [routerLink]="['Contact']" class="nav-link">Contact Us</a>        
-            </div>
+        </div>
+    </article>
 
-            <form class="col-xs-12 form-inline login-form text-uppercase offscreen-right">
-                <div class="col-xs-4 col-sm-5 form-group">
-                    <label class="sr-only" for="username">Username</label>
-                    <input class="form-control text-uppercase" type="text" name="username" id="username" placeholder="Username">
-                </div>
-                <div class="col-xs-4 col-sm-5 form-group">
-                    <label class="sr-only" for="password">Password</label>
-                    <input class="form-control text-uppercase" type="password" name="password" id="password" placeholder="Password">
-                </div>
-                <button class="col-xs-4 col-sm-2 btn btn-primary">Sign In</button>
-            </form>
-        </nav>
-        <img class="hero-background" src="images/backgrounds/yoyo.jpg">
-    </div>
-
-    <div class="row card-stack">
-        <article class="col-xs-12 col-sm-push-4 col-sm-4">
-            <div class="card card-large">
-                <div class="card-wrapper">
-                    <h2 class="card-heading">Thing 1</h2>
-                    <p class="card-content">lorem ipsum dolar sit amet.  something big something small?</p>
-                    <a href="" class="btn btn-primary">Do Something</a>
-                </div>
+    <article class="col-xs-6 col-sm-pull-4 col-sm-4 card-wrapper">
+        <div class="card">
+            <div class="card-inner">
+                <h2 class="card-heading">Thing 2</h2>
+                <p class="card-content">lorem ipsum dolar sit amet.  something big something small?</p>
+                <a href="" class="btn btn-primary">Do Something</a>
             </div>
-        </article>
+        </div>
+    </article>
 
-        <article class="col-xs-6 col-sm-pull-4 col-sm-4">
-            <div class="card">
-                <div class="card-wrapper">
-                    <h2 class="card-heading">Thing 2</h2>
-                    <p class="card-content">lorem ipsum dolar sit amet.  something big something small?</p>
-                    <a href="" class="btn btn-primary">Do Something</a>
-                </div>
+    <article class="col-xs-6 col-sm-4 card-wrapper">
+        <div class="card">
+            <div class="card-inner">
+                <h2 class="card-heading">Thing 3</h2>
+                <p class="card-content">lorem ipsum dolar sit amet.  something big something small?</p>
+                <a href="" class="btn btn-primary">Do Something</a>
             </div>
-        </article>
-
-        <article class="col-xs-6 col-sm-4">
-            <div class="card">
-                <div class="card-wrapper">
-                    <h2 class="card-heading">Thing 3</h2>
-                    <p class="card-content">lorem ipsum dolar sit amet.  something big something small?</p>
-                    <a href="" class="btn btn-primary">Do Something</a>
-                </div>
-            </div>
-        </article>
-    </div>
-</header>
+        </div>
+    </article>
+</section>

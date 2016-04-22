@@ -1,76 +1,12 @@
-.nav-wrapper {
-    padding: 0;
-}
-
-.logo {
-    padding: $padding-base;
-    border-bottom: $border-base-size $brand-accent solid;
-    background: $brand-primary;
-    text-align: center;
+.hero-background {
+    z-index: -1;
 
     img {
-        max-width: 255px;
         width: 100%;
+        height: auto;
+        display: block;
     }
 }
-
-
-.nav-container {
-    background: lighten($brand-accent, 15%);
-    text-align: center;
-    font-weight: bold;
-    padding: 0;
-    font-family: $font-family-sans-serif;
-    position: relative;
-}
-
-
-.nav-link {
-    display: inline-block;
-    margin: 0 $padding-base;
-    color: $gray-dark;
-    height: $navbar-height;
-    line-height: $navbar-height;
-    
-    &:hover,
-    &:active {
-        text-decoration: none;
-        color: $brand-primary; 
-    }
-}
-
-.nav-menu {
-    display: none;
-}
-
-.hero-background {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.login-form {
-    border-bottom-left-radius: $padding-small;
-    padding: $padding-small;
-    background: $body-bg;
-    height: $login-height;
-
-    .form-control {
-        padding: $padding-base;
-        border-width: $login-input-border-size;
-        height: $login-input-height;
-    }
-
-    .form-group {
-        margin: 0;
-        padding: 0 $padding-base 0 0;
-    }
-}
-
-.mobile-nav {
-    display: none;
-}
-
 
 .card {
     @include glow($card-glow-size, $card-glow-color);
@@ -88,83 +24,39 @@
 
     text-align: center;
 
-    .card-wrapper {
+    &.card-large {
+        margin-top: -$grid-gutter-width;
+    }
+}
+
+.card-wrapper {
+    .card-inner {
         padding: $padding-base;
         background: url(../images/backgrounds/paws.png) no-repeat center bottom;
         min-height: $card-height;
         height: 100%;
     }
 
-    &.card-large {
-        margin-top: -$grid-gutter-width;
+    &:first-child .card-inner {
+        background-position: left bottom;
     }
 
-    .card-heading {
-        margin-top: 0;
-        color: $gray;
-        font-family: $font-family-base;
+    &:last-child .card-inner {
+        background-position: right top;
     }
 }
 
-.card-stack > * {
-    &:first-child {
-        .card-wrapper {
-            background-position: left bottom;
-        }
-    }
-
-    &:last-child {
-        .card-wrapper {
-            background-position: right top;
-        }
-    }
+.card-heading {
+    margin-top: 0;
+    color: $gray;
+    font-family: $font-family-base;
 }
-
 
 
 // mobile only with no unset for others
 @media (max-width: $screen-xs-min) {
-    .offscreen-left,
-    .offscreen-right {
-        position: absolute;
-        top: $navbar-height;
-        width: 90%;
-    }
-
-
-    .offscreen-left {
-        left: -100%;
-
-        &.offscreen-visible {
-            left: 0;
-        }
-    }
-
-    .offscreen-right {
-        right: -100%;
-
-        &.offscreen-visible {
-            right: 0;
-        }
-    }
-
-    .mobile-nav {
-        display: block;
-
-        .btn {
-            width: 100%;
-            margin: $padding-base 0;
-        }
-    }
-
-    .nav-link {
-        display: block;
-        margin: 0;
-    
-        &:hover,
-        &:active {
-            background: $body-bg;
-        }
+    .card-wrapper {
+        width: 100%;
     }
 }
 
@@ -172,33 +64,8 @@
 
 // tablet and bigger
 @media (min-width: $screen-sm-min) {
-    .logo {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-    }
-
     .hero-background {
-        z-index: -1;
-        float: left;
         margin-top: -$login-height;
-    }
-
-    .nav-container {
-        text-align: right;
-        background: $body-bg;
-        padding-right: $padding-base;
-    }
-
-    .login-form {
-        float: right !important;
-        width: auto;
-        background: rgba(255,255,255,.5);
-
-        .btn {
-            height: $login-input-height;
-        }
     }
 
     .card {
@@ -208,7 +75,7 @@
             min-height: $card-height-large;
             margin-top: -$card-height-large/2;
 
-            .card-wrapper {
+            .card-inner {
                 min-height: $card-height-large;
             }
         }

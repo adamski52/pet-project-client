@@ -1,7 +1,41 @@
+<header nav class="row">
+    <a [routerLink]="['Home']" class="logo"><img src="images/logo.png" alt="Storybook Kennels"></a>
+    
+    <nav class="nav-wrapper">
+        <div class="col-xs-12 mobile-nav">
+            <div class="col-xs-6">
+                <a (click)="toggleLeft()" class="btn btn-default">
+                    <span class="glyphicon glyphicon-menu-hamburger"></span> Menu
+                </a>
+            </div>
+            <div class="col-xs-6">
+                <button (click)="toggleRight()" class="btn btn-primary">Sign In</button>
+            </div>
+        </div>
+        <div class="col-xs-12 nav-container offscreen-left">       
+            <a [routerLink]="['Home']" class="nav-link">Home</a>
+            <a [routerLink]="['About']" class="nav-link">About Us</a>
+            <a [routerLink]="['Services']" class="nav-link">Our Services</a>
+            <a [routerLink]="['Contact']" class="nav-link">Contact Us</a>        
+        </div>
+
+        <form class="col-xs-12 form-inline login-form text-uppercase offscreen-right">
+            <div class="col-xs-4 col-sm-5 form-group">
+                <label class="sr-only" for="username">Username</label>
+                <input class="form-control text-uppercase" type="text" name="username" id="username" placeholder="Username">
+            </div>
+            <div class="col-xs-4 col-sm-5 form-group">
+                <label class="sr-only" for="password">Password</label>
+                <input class="form-control text-uppercase" type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <button class="col-xs-4 col-sm-2 btn btn-primary">Sign In</button>
+        </form>
+    </nav>
+</header>
+
 <router-outlet></router-outlet>
 
 <footer class="row">
-
     <div class="col-xs-6 col-sm-3">
         <h6>Home</h6>
         <ul>

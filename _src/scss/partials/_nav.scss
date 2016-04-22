@@ -1,0 +1,211 @@
+.logo {
+    @include make-xs-column(12);
+    @include make-sm-column(3);
+
+    text-align: center;
+    padding: $padding-small $padding-base;
+    border-bottom: $border-base-size $brand-accent solid;
+    background: $brand-primary; 
+
+    img {
+        max-width: 255px;
+    }
+}
+
+.nav-link {
+
+    display: inline-block;
+    margin: 0 $padding-base;
+    height: 100%;
+
+    &:hover,
+    &:active {
+        text-decoration: none;
+        color: $brand-primary; 
+    }
+}
+
+.nav-container {
+    background: lighten($brand-accent, 15%);
+    text-align: center;
+    font-weight: bold;
+    padding: 0;
+    text-transform: uppercase;
+    font-family: $font-family-sans-serif;
+    position: relative;
+}
+
+.login-form {
+    padding: $padding-small;
+    background: darken(#fff, 5%);
+
+    .form-group {
+        margin: 0;
+        padding: 0 $padding-base 0 0;
+    }
+}
+
+.mobile-nav {
+    display: none;
+}
+
+.nav-menu {
+    display: none;
+}
+
+.nav-link {
+    color: $gray-dark;
+    height: $navbar-height;
+    line-height: $navbar-height;
+    
+    &:hover,
+    &:active {
+        color: $brand-primary; 
+    }
+}
+
+
+
+.nav-main {
+    .logo {
+        height: $main-nav-height;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .nav-wrapper {
+        @include make-xs-column(12);
+        text-transform: uppercase;  
+        padding: 0;
+    }
+}
+
+
+
+
+
+.nav-hero {
+    .logo {
+        img {
+            width: 100%;
+        }
+    }
+}
+
+
+
+// mobile only with no unset for others
+@media (max-width: $screen-xs-min) {
+    .offscreen-left,
+    .offscreen-right {
+        @include animate($duration-short);
+        overflow: hidden;
+        max-height: 0px;
+        min-height: 0px;
+    }
+
+    .offscreen-right {
+        padding: 0 $padding-small;
+    }
+
+    .offscreen-right-visible {
+        .offscreen-right {
+            max-height: 999px;
+            padding: $padding-small;
+        }
+    }
+
+    .offscreen-left-visible {
+        .offscreen-left {
+            max-height: 999px;
+        }
+    }
+
+    .mobile-nav {
+        display: block;
+
+        .btn {
+            width: 100%;
+            margin: $padding-base 0;
+        }
+    }
+
+    .nav-link {
+        display: block;
+        margin: 0;
+        border-top: 1px solid lighten($brand-accent, 10%);
+
+    
+        &:hover,
+        &:active {
+            background: $body-bg;
+        }
+    }
+}
+
+
+
+
+@media (min-width: $screen-sm-min) {
+    .nav-container {
+        text-align: right;
+    }
+
+    .login-form {
+        border-bottom-left-radius: $padding-small;
+        height: $login-height;
+        float: right !important;
+        width: auto;
+    }
+
+    .nav-main {
+        .logo {
+            @include make-xs-column(3);
+        }
+
+        .nav-wrapper {
+            @include make-xs-column(9);
+            padding: 0;
+        }
+
+        .nav-container {
+            height: $main-nav-height;
+            line-height: $main-nav-line-height;
+            border-bottom: $border-base-size $brand-accent solid;
+            background: $brand-primary;
+        }
+
+        .login-form {
+            padding: $padding-small;
+            background: rgba(0,0,0,.05);
+        }
+
+        .nav-link {
+            color: #fff;
+            
+            &:hover,
+            &:active {
+                color: $brand-accent; 
+            }
+        }
+    }
+
+    .nav-hero {
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .login-form {
+            background: rgba(255,255,255,.5);
+        }
+
+        .nav-container {
+            background: $body-bg;
+        }
+    }
+}
