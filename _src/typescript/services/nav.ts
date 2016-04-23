@@ -6,10 +6,11 @@ import {Observer} from 'rxjs/Observer';
 export class NavService {
     private _observer: Observer<Object>;
     private _state:Object = {
-        isHeroMode: true,
         isLeftOpen: false,
-        isRightOpen: false
+        isRightOpen: false,
+        isHeroMode: true
     };
+
     public data$ = new Observable(observer => this._observer = observer).share();
 
     constructor() {}
@@ -41,5 +42,9 @@ export class NavService {
 
     toggleRight() {
         this.setRight(!this._state.isRightOpen);
+    }
+
+    get() {
+        this._observer.next(this._state);
     }
 }

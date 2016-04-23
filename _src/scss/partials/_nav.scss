@@ -13,15 +13,15 @@
 }
 
 .nav-link {
-
     display: inline-block;
-    margin: 0 $padding-base;
+    padding: 0 $padding-small;
     height: 100%;
 
     &:hover,
-    &:active {
+    &:active,
+    &.router-link-active {
         text-decoration: none;
-        color: $brand-primary; 
+        color: $brand-primary;
     }
 }
 
@@ -139,7 +139,8 @@
 
     
         &:hover,
-        &:active {
+        &:active,
+        &.router-link-active {
             background: $body-bg;
         }
     }
@@ -163,6 +164,7 @@
     .nav-main {
         .logo {
             @include make-xs-column(3);
+            text-align: left;
         }
 
         .nav-wrapper {
@@ -179,15 +181,16 @@
 
         .login-form {
             padding: $padding-small;
-            background: rgba(0,0,0,.05);
+            background: lighten(#000, 95%);
         }
 
         .nav-link {
             color: #fff;
             
             &:hover,
-            &:active {
-                color: $brand-accent; 
+            &:active,
+            &.router-link-active {
+                color: lighten($brand-accent, 10%);
             }
         }
     }

@@ -8,18 +8,16 @@ import {NavService} from "../services/nav";
 @Directive({
     selector: "[nav]",
     host: {
-        "[class.nav-hero]": "isHeroMode",
-        "[class.nav-main]": "!isHeroMode",
-        "[class.offscreen-left-visible]": "isLeftOpen",
-        "[class.offscreen-right-visible]": "isRightOpen"
+        "[class.nav-hero]": "_state.isHeroMode",
+        "[class.nav-main]": "!_state.isHeroMode",
+        "[class.offscreen-left-visible]": "_state.isLeftOpen",
+        "[class.offscreen-right-visible]": "_state.isRightOpen"
     }
 })
 
 export class NavComponent {
     private isAuthenticated: boolean = false;
-    private isHeroMode: boolean = true;
-    private isLeftOpen: boolean = false;
-    private isRightOpen: boolean = false;
+    private _state:Object;
 
     constructor(private _alert:AlertService,
                 private _element:ElementRef,
@@ -42,11 +40,11 @@ export class NavComponent {
 
         this._nav.data$.subscribe(
             response => {
-                this.isHeroMode = response.isHeroMode;
-                this.isLeftOpen = response.isLeftOpen;
-                this.isRightOpen = response.isRightOpen;
+                this._state = response;
             }
         );
+
+        this._nav.get();
     }
 
 

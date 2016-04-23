@@ -3,11 +3,16 @@ html, body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     text-transform: uppercase;
     color: $brand-primary;
     font-weight: bold;
     font-family: $font-family-sans-serif;
+    margin: 0 0 $padding-base 0;
+}
+
+h1, .h1 {
+    @include blocktext($brand-accent);
 }
 
 .btn {
@@ -28,5 +33,30 @@ footer {
         font-size: 1.4em;
         vertical-align: middle;
         margin-right: $padding-small;
+    }
+}
+
+.section {
+    @include make-row();
+    margin-top: $padding-base;
+    margin-bottom: $padding-base;
+
+    .section-photo {
+        @include make-xs-column(5);
+        @include make-sm-column(3);
+
+        text-align: center;
+
+        img {
+            border: $brand-accent $border-base-size solid;
+            border-radius: 50%;
+            width: 100%;
+            max-width: 200px;
+        }
+    }
+
+    .section-content {
+        @include make-xs-column(7);
+        @include make-sm-column(9);
     }
 }
