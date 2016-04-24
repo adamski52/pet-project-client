@@ -9,6 +9,11 @@
     transition-delay: $delay;
 }
 
+@mixin unanimate() {
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+}
+
 @mixin borderbox() {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -47,7 +52,6 @@ $glow-base: 20px;
 $duration-short: .5s;
 $duration-long: 1.2s;
 
-$brand-accent: #f7adcb !default;
 $border-base-size: 3px !default;
 
 $card-height: 150px;
@@ -58,11 +62,11 @@ $card-glow-color: #000;
 
 $card-background: #fff;
 
-$padding-base: floor($grid-gutter-width/2);
+$padding-base: $grid-gutter-width;
 $padding-small: floor($padding-base/2);
 
 $login-input-border-size: 0px;
-$login-input-height: 36px;
+$login-input-height: 34px;
 $login-height: ($login-input-border-size*2)+$login-input-height+($padding-small*2);
 
 $main-nav-height: 75px;

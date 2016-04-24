@@ -2,7 +2,6 @@ import {Component} from "angular2/core";
 import {RouteConfig, AsyncRoute, ROUTER_DIRECTIVES} from "angular2/router";
 import {ComponentHelper} from "../lib/component-helper";
 import {NavComponent} from "./nav";
-import {NavService} from "../services/nav";
 
 @Component({
     selector: "[storybook]",
@@ -56,21 +55,5 @@ import {NavService} from "../services/nav";
 )
 
 export class AppComponent {
-    constructor(private _nav:NavService) {}
-
-    setLeft(isOpen:boolean) {
-        this._nav.setLeft(isOpen);        
-    }
-
-    setRight(isOpen:boolean) {
-        this._nav.setRight(isOpen);
-    }
-
-    toggleLeft() {
-        this._nav.toggleLeft();
-    }
-
-    toggleRight() {
-        this._nav.toggleRight();
-    }
+    constructor() {}
 }

@@ -1,6 +1,6 @@
 .logo {
     @include make-xs-column(12);
-    @include make-sm-column(3);
+    @include make-md-column(3);
 
     text-align: center;
     padding: $padding-small $padding-base;
@@ -13,15 +13,19 @@
 }
 
 .nav-link {
-    display: inline-block;
-    padding: 0 $padding-small;
-    height: 100%;
+    color: $gray-dark;
+    display: block;
+    height: $navbar-height;
+    line-height: $navbar-height;
+    margin: 0;
+    border-top: 1px solid lighten($brand-accent, 10%);
 
     &:hover,
     &:active,
     &.router-link-active {
-        text-decoration: none;
+        background: $body-bg;
         color: $brand-primary;
+        text-decoration: none;
     }
 }
 
@@ -39,32 +43,20 @@
     padding: $padding-small;
     background: darken(#fff, 5%);
 
+    .btn {
+        width: 100%;
+        margin-top: $padding-small;
+    }
+
     .form-group {
         margin: 0;
         padding: 0 $padding-base 0 0;
     }
 }
 
-.mobile-nav {
-    display: none;
-}
-
 .nav-menu {
     display: none;
 }
-
-.nav-link {
-    color: $gray-dark;
-    height: $navbar-height;
-    line-height: $navbar-height;
-    
-    &:hover,
-    &:active {
-        color: $brand-primary; 
-    }
-}
-
-
 
 .nav-main {
     .logo {
@@ -76,15 +68,11 @@
     }
 
     .nav-wrapper {
-        @include make-xs-column(12);
+        @include make-sm-column(12);
         text-transform: uppercase;  
         padding: 0;
     }
 }
-
-
-
-
 
 .nav-hero {
     .logo {
@@ -94,64 +82,81 @@
     }
 }
 
+.offscreen-left,
+.offscreen-right {
+    @include animate($duration-short);
+    overflow: hidden;
+    max-height: 0px;
+    min-height: 0px;
+    padding: 0;
+}
 
-
-// mobile only with no unset for others
-@media (max-width: $screen-xs-min) {
-    .offscreen-left,
+.offscreen-right-visible {
     .offscreen-right {
-        @include animate($duration-short);
-        overflow: hidden;
-        max-height: 0px;
-        min-height: 0px;
+        max-height: 999px;
+        padding: $padding-small 0;
     }
+}
 
-    .offscreen-right {
-        padding: 0 $padding-small;
+.offscreen-left-visible {
+    .offscreen-left {
+        max-height: 999px;
     }
+}
 
-    .offscreen-right-visible {
-        .offscreen-right {
-            max-height: 999px;
-            padding: $padding-small;
-        }
+.mobile-nav {
+    display: block;
+
+    .btn {
+        width: 100%;
+        margin: $padding-base 0;
     }
+}
 
-    .offscreen-left-visible {
-        .offscreen-left {
-            max-height: 999px;
-        }
-    }
-
+@media (min-width: $screen-sm-min) {
     .mobile-nav {
-        display: block;
+        display: none;
+    }
 
-        .btn {
-            width: 100%;
-            margin: $padding-base 0;
-        }
+    .nav-menu {
+        display: block;
+    }
+
+    .offscreen-right,
+    .offscreen-left {
+        @include unanimate();
+        max-height: 999px;
+        padding: $padding-small 0;
     }
 
     .nav-link {
-        display: block;
-        margin: 0;
-        border-top: 1px solid lighten($brand-accent, 10%);
+        display: inline-block;
+        padding: 0 $padding-small;
+        border: none;
 
-    
         &:hover,
         &:active,
         &.router-link-active {
-            background: $body-bg;
+            background-color: transparent;
+        }
+    }
+
+    .nav-container {
+        padding: 0;
+    }
+
+    .login-form {
+        .btn {
+            margin: 0;
         }
     }
 }
 
 
-
-
-@media (min-width: $screen-sm-min) {
+@media (min-width: $screen-md-min) {
     .nav-container {
         text-align: right;
+        padding-right: $padding-small;
     }
 
     .login-form {
@@ -159,16 +164,20 @@
         height: $login-height;
         float: right !important;
         width: auto;
+
+        .btn {
+            margin: 0;
+        }
     }
 
     .nav-main {
         .logo {
-            @include make-xs-column(3);
+            @include make-sm-column(3);
             text-align: left;
         }
 
         .nav-wrapper {
-            @include make-xs-column(9);
+            @include make-sm-column(9);
             padding: 0;
         }
 
@@ -180,7 +189,6 @@
         }
 
         .login-form {
-            padding: $padding-small;
             background: lighten(#000, 95%);
         }
 

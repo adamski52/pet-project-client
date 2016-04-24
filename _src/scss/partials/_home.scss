@@ -53,17 +53,8 @@
 }
 
 
-// mobile only with no unset for others
-@media (max-width: $screen-xs-min) {
-    .card-wrapper {
-        width: 100%;
-    }
-}
-
-
-
 // tablet and bigger
-@media (min-width: $screen-sm-min) {
+@media (min-width: $screen-md-min) {
     .hero-background {
         margin-top: -$login-height;
     }

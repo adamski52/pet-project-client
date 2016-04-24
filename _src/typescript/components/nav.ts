@@ -1,18 +1,26 @@
-import {Directive, ElementRef} from 'angular2/core';
+import {Component} from 'angular2/core';
+import {RouterLink} from "angular2/router";
 import {LoginService} from "../services/login";
 import {LogoutService} from "../services/logout";
 import {UserService} from "../services/user";
 import {AlertService} from "../services/alert";
 import {NavService} from "../services/nav";
+import {ButtonSliderComponent} from "../components/button-slider";
 
-@Directive({
+
+@Component({
     selector: "[nav]",
+    templateUrl: "templates/nav.html",
     host: {
         "[class.nav-hero]": "_state.isHeroMode",
         "[class.nav-main]": "!_state.isHeroMode",
         "[class.offscreen-left-visible]": "_state.isLeftOpen",
         "[class.offscreen-right-visible]": "_state.isRightOpen"
-    }
+    },
+    directives: [
+        RouterLink,
+        //ButtonSliderComponent
+    ]
 })
 
 export class NavComponent {
@@ -20,7 +28,6 @@ export class NavComponent {
     private _state:Object;
 
     constructor(private _alert:AlertService,
-                private _element:ElementRef,
                 private _logout:LogoutService,
                 private _login:LoginService,
                 private _user: UserService,
@@ -47,6 +54,21 @@ export class NavComponent {
         this._nav.get();
     }
 
+    setLeft(isOpen:boolean) {
+        this._nav.setLeft(isOpen);        
+    }
+
+    setRight(isOpen:boolean) {
+        this._nav.setRight(isOpen);
+    }
+
+    toggleLeft() {
+        this._nav.toggleLeft();
+    }
+
+    toggleRight() {
+        this._nav.toggleRight();
+    }
 
     onLogin(username:string, password:string, e?:Event) {
         if (e) {
