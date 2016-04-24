@@ -22,6 +22,24 @@ h1, .h1 {
 .btn {
     text-transform: uppercase;
     @include animate($duration-short);
+
+    &.btn-default {
+        &:hover {
+            background: $btn-primary-bg;
+            @include glow($glow-base, $brand-accent);
+            color: $btn-primary-color;
+            border-color: $btn-primary-bg;
+        }
+    }
+
+    &.btn-primary {
+        &:hover {
+            background: $btn-default-bg;
+            @include glow($glow-base, $brand-accent);
+            color: $btn-default-color;
+            border-color: $btn-default-bg;
+        }
+    }
 }
 
 footer {
@@ -63,5 +81,30 @@ footer {
     .section-content {
         @include make-xs-column(7);
         @include make-sm-column(9);
+    }
+}
+
+.alerts {
+    @include animate($duration-short);
+    position: fixed;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+
+    &.is-visible {
+        max-height: 999px;
+    }
+
+    .alert {
+        border-radius: 0;
+        margin: 0;
+        padding: $padding-small;
+        text-align: center;
+        font-size: 1.2em;
     }
 }

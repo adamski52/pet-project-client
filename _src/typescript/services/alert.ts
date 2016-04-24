@@ -16,6 +16,7 @@ export class AlertService {
     }
 
     public success(message:string) {
+        console.log("SUCCESS", message);
         this._observer.next({
             type: CONSTANTS.ALERT_TYPES.SUCCESS,
             message: message
@@ -23,6 +24,7 @@ export class AlertService {
     }
 
     public error(message:string) {
+        console.log("ERROR", message);
         this._observer.next({
             type: CONSTANTS.ALERT_TYPES.ERROR,
             message: message
@@ -30,6 +32,7 @@ export class AlertService {
     }
 
     public info(message:string) {
+        console.log("INFO", message);
         this._observer.next({
             type: CONSTANTS.ALERT_TYPES.INFO,
             message: message
@@ -37,6 +40,7 @@ export class AlertService {
     }
 
     public warning(message:string) {
+        console.log("WARNING", message);
         this._observer.next({
             type: CONSTANTS.ALERT_TYPES.WARNING,
             message: message

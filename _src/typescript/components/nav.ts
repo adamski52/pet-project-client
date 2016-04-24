@@ -5,8 +5,6 @@ import {LogoutService} from "../services/logout";
 import {UserService} from "../services/user";
 import {AlertService} from "../services/alert";
 import {NavService} from "../services/nav";
-import {ButtonSliderComponent} from "../components/button-slider";
-
 
 @Component({
     selector: "[nav]",
@@ -18,8 +16,7 @@ import {ButtonSliderComponent} from "../components/button-slider";
         "[class.offscreen-right-visible]": "_state.isRightOpen"
     },
     directives: [
-        RouterLink,
-        //ButtonSliderComponent
+        RouterLink
     ]
 })
 
@@ -62,11 +59,19 @@ export class NavComponent {
         this._nav.setRight(isOpen);
     }
 
-    toggleLeft() {
+    toggleLeft(e) {
+        if (e) {
+            e.preventDefault();
+        }
+
         this._nav.toggleLeft();
     }
 
-    toggleRight() {
+    toggleRight(e) {
+        if (e) {
+            e.preventDefault();
+        }
+
         this._nav.toggleRight();
     }
 
@@ -75,17 +80,11 @@ export class NavComponent {
             e.preventDefault();
         }
 
+        console.log(username, password);
+
         this._login.post({
             username,
             password
         });
-    }
-
-    onLogout(e?:Event) {
-        if (e) {
-            e.preventDefault();
-        }
-
-        this._logout.post();
     }
 }

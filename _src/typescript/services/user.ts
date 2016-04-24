@@ -24,26 +24,26 @@ export class UserService {
     }
 
     isAuthenticated() {
-        let auth:boolean = Object.keys(this.user).length > 0;
-        console.log(this.user, Object.keys(this.user).length);
-        if(!auth) {
-            this._logout.post();
-        }
-
+        let auth:boolean = this.user.hasOwnProperty("username");
         return auth;
     }
 
     get() {
-        this._api.get("whoami").subscribe(
-            response => {
-                if (response.length > 0) {
-                    this.user = response[0];
-                    console.log("USER SET TO", this.user);
-                    this._observer.next(response[0]);
+        return new Promise((resolve, reject) => {
+            this._api.get("whoami").subscribe(
+                response => {
+                    if (response.length > 0) {
+                        this.user = response[0];
+                        console.log("USER SET TO", this.user);
+                        this._observer.next(this.user);
+                        resolve(this.user);
+                    }
+                },
+                error => {
+                    reject();
                 }
-            },
-            error => { }
-        );   
+            );   
+        });
     }
 
     getAll() {

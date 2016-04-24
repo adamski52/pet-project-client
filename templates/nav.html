@@ -2,38 +2,48 @@
 <nav class="nav-wrapper">
     <div class="col-xs-12 mobile-nav">
         <div class="col-xs-6">
-            <a (click)="toggleLeft()" class="btn btn-default">
+            <a (click)="toggleLeft($event)" class="btn btn-default">
                 <span class="glyphicon glyphicon-menu-hamburger"></span> Menu
             </a>
         </div>
         <div class="col-xs-6">
-            <button (click)="toggleRight()" class="btn btn-primary">Account</button>
+            <button *ngIf="!isAuthenticated" (click)="toggleRight($event)" class="btn btn-primary">Sign In</button>
+            <a [routerLink]="['Logout']" *ngIf="isAuthenticated" class="btn btn-primary">Sign Out</a>
         </div>
     </div>
     <div class="col-xs-12 nav-container offscreen-left">       
-        <a [routerLink]="['Home']" class="nav-link">Home</a>
         <a [routerLink]="['About']" class="nav-link">About Us</a>
         <a [routerLink]="['Services']" class="nav-link">Our Services</a>
-        <a [routerLink]="['Contact']" class="nav-link">Contact Us</a>  
+        <a [routerLink]="['Contact']" class="nav-link">Contact Us</a>
+        <div class="nav-link nav-menu-toggler icon-angle-down" *ngIf="isAuthenticated">My Account
+            <div class="nav-dropdown">
+                <a [routerLink]="['MyProfile']" class="nav-link icon-user">My Profile</a>
+                <a [routerLink]="['MyAlerts']" class="nav-link icon-bell">My Alerts</a>
+                <a [routerLink]="['MyDogs']" class="nav-link icon-paw">My Dogs</a>
+                <a [routerLink]="['MyAppointments']" class="nav-link icon-calendar">My Appointments</a>
+                <a [routerLink]="['MySettings']" class="nav-link icon-cog">My Settings</a>
+                <a [routerLink]="['Logout']" class="nav-link icon-lock">Sign Out</a>
+            </div>
+        </div>
     </div>
 
-    <form class="col-xs-12 login-form offscreen-right">
+    <form *ngIf="!isAuthenticated" class="col-xs-12 login-form offscreen-right" (submit)="onLogin(username.value, password.value, $event)">
         <div class="col-xs-6 col-sm-3">
             <label class="sr-only" for="username">Username</label>
-            <input class="form-control text-uppercase" type="text" name="username" id="username" placeholder="Username">
+            <input class="form-control" type="text" #username name="username" id="username" placeholder="USERNAME">
         </div>
         <div class="col-xs-6 col-sm-3">
             <label class="sr-only" for="password">Password</label>
-            <input class="form-control text-uppercase" type="password" name="password" id="password" placeholder="Password">
+            <input class="form-control" type="password" #password name="password" id="password" placeholder="PASSWORD">
         </div>
         <div class="col-xs-4 col-sm-2">
-            <button class="btn btn-primary">Sign In</button>
+            <button type="submit" class="btn btn-primary">Sign In</button>
         </div>
         <div class="col-xs-4 col-sm-2">
-            <button class="btn btn-default">Register</button>
+            <a href="" class="btn btn-default">Register</a>
         </div>
         <div class="col-xs-4 col-sm-2">
-            <button class="btn btn-default">Help</button>
+            <a href="" class="btn btn-default">Help</a>
         </div>
     </form>
 </nav>
