@@ -72,6 +72,10 @@ footer {
     margin: $padding-base;
     padding: $padding-large;
     border-radius: $padding-base;
+
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+        text-align: center;
+    }
     
     [class^="col-"] {
         padding-top: $padding-small;
@@ -83,7 +87,7 @@ footer {
     }
 
     .section-photo {
-        @include make-xs-column(5);
+        @include make-xs-column(12);
         @include make-sm-column(3);
 
         text-align: center;
@@ -97,7 +101,7 @@ footer {
     }
 
     .section-content {
-        @include make-xs-column(7);
+        @include make-xs-column(12);
         @include make-sm-column(9);
     }
 }
@@ -132,6 +136,10 @@ footer {
         margin: $padding-large;
         padding: $padding-large;
         border-radius: $padding-large;
+
+        h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+            text-align: left;
+        }
     }
 }
 
