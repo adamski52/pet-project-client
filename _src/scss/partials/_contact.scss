@@ -1,0 +1,10 @@
+.map {
+    width: 100%;
+    height: 250px;
+    border: $border-base-size*2 solid $gray-light;
+
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+}

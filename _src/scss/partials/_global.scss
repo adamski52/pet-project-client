@@ -1,6 +1,7 @@
 html, body {
     width: 100%;
     overflow-x: hidden;
+    font-size: 1.05em;
 }
 
 [class^="col-"] {
@@ -24,6 +25,8 @@ h1, .h1 {
     @include animate($duration-short);
 
     &.btn-default {
+        border-color: lighten($brand-accent, 10%);
+
         &:hover {
             background: $btn-primary-bg;
             @include glow($glow-base, $brand-accent);
@@ -44,15 +47,19 @@ h1, .h1 {
 
 footer {
     padding: $padding-base;
-    @include gradient-vertical(#fff, darken($gray-lighter, 5%), 0%, 100%);
-    border-top: 6px solid lighten($gray-lighter, 5%);
+    font-size: .75em;
+    background: $gray-lighter;
+    border-top: 6px solid $gray-light;
 }
 
 .icon-block {
-    margin-left: 30px;
-    text-indent: -30px;
-
+    position: relative;
+    padding-left: 1.8em;
+    padding-top: 0;
     &:before {
+        position: absolute;
+        top: auto;
+        left: 0;
         font-size: 1.4em;
         vertical-align: middle;
         margin-right: $padding-small;
@@ -61,8 +68,19 @@ footer {
 
 .section {
     @include make-row();
-    margin-top: $padding-base;
-    margin-bottom: $padding-base;
+    background: $gray-lighter;
+    margin: $padding-base;
+    padding: $padding-large;
+    border-radius: $padding-base;
+    
+    [class^="col-"] {
+        padding-top: $padding-small;
+        padding-bottom: $padding-small;
+
+        .btn {
+            width: 100%;
+        }
+    }
 
     .section-photo {
         @include make-xs-column(5);
@@ -106,5 +124,21 @@ footer {
         padding: $padding-small;
         text-align: center;
         font-size: 1.2em;
+    }
+}
+
+@media (min-width: $screen-sm-min) {
+    .section {
+        margin: $padding-large;
+        padding: $padding-large;
+        border-radius: $padding-large;
+    }
+}
+
+@media (min-width: $screen-md-min) {
+    .section {
+        margin: $padding-xlarge;
+        padding: $padding-xlarge;
+        border-radius: $padding-xlarge;
     }
 }

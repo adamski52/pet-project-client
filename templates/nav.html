@@ -28,22 +28,22 @@
     </div>
 
     <form *ngIf="!isAuthenticated" class="col-xs-12 login-form offscreen-right" (submit)="onLogin(username.value, password.value, $event)">
-        <div class="col-xs-6 col-sm-3">
+        <div class="col-xs-6 col-md-3">
             <label class="sr-only" for="username">Username</label>
             <input class="form-control" type="text" #username name="username" id="username" placeholder="USERNAME">
         </div>
-        <div class="col-xs-6 col-sm-3">
+        <div class="col-xs-6 col-md-3">
             <label class="sr-only" for="password">Password</label>
             <input class="form-control" type="password" #password name="password" id="password" placeholder="PASSWORD">
         </div>
-        <div class="col-xs-4 col-sm-2">
+        <div class="col-xs-4 col-md-2">
             <button type="submit" class="btn btn-primary">Sign In</button>
         </div>
-        <div class="col-xs-4 col-sm-2">
-            <a href="" class="btn btn-default">Register</a>
+        <div class="col-xs-4 col-md-2">
+            <a [routerLink]="['SignUp']" class="btn btn-default">Register</a>
         </div>
-        <div class="col-xs-4 col-sm-2">
-            <a href="" class="btn btn-default">Help</a>
+        <div class="col-xs-4 col-md-2">
+            <a [routerLink]="['ForgotPassword']" class="btn btn-default">Help</a>
         </div>
     </form>
 </nav>

@@ -13,6 +13,7 @@
 }
 
 .nav-link {
+    font-size: .8em;
     color: $gray-dark;
     display: block;
     line-height: $navbar-height;
@@ -65,7 +66,7 @@
 
 .login-form {
     padding: $padding-small;
-    background: darken(#fff, 5%);
+    background: $gray-lighter;
 
     .btn {
         width: 100%;
@@ -194,12 +195,6 @@
         border: none;
     }
 
-    .login-form {
-        .btn {
-            margin: 0;
-        }
-    }
-
 
     .nav-menu-toggler {
         .nav-dropdown {
@@ -249,6 +244,7 @@
         height: $login-height;
         float: right !important;
         width: auto;
+        padding: $padding-small;
 
         .btn {
             margin: 0;
@@ -274,7 +270,7 @@
         }
 
         .login-form {
-            background: lighten(#000, 95%);
+            background: $gray-lighter;
         }
 
         .nav-link {

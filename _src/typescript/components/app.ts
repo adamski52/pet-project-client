@@ -87,6 +87,11 @@ import {AuthRouterComponent} from "./auth-router";
             path: '/sign-up',
             name: "SignUp",
             loader: () => ComponentHelper.LoadComponentAsync('SignUpComponent','./js/components/sign-up')
+        }),
+        new AsyncRoute({
+            path: '/forgot',
+            name: "ForgotPassword",
+            loader: () => ComponentHelper.LoadComponentAsync('ForgotComponent','./js/components/forgot')
         })
     ]
 )
