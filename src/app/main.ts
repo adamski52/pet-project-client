@@ -4,6 +4,7 @@ import {bootstrap} from "angular2/platform/browser";
 import "rxjs/Rx";
 import {Component, provide} from "angular2/core";
 import {RouteConfig, RouterLink, AsyncRoute, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from "angular2/router";
+import {LocationStrategy, HashLocationStrategy} from "angular2/platform/common";
 
 // app-wide services
 import {AlertService} from "./services/alert";
@@ -19,14 +20,14 @@ import {API} from "./lib/api";
 import {Cookie} from "./lib/cookie";
 import {CORSBrowserXHR} from "./lib/cors-browser-xhr";
 
-
-
-
 bootstrap(AppComponent, [
     HTTP_PROVIDERS,
     ROUTER_PROVIDERS,
     provide(BrowserXhr, {
         useClass: CORSBrowserXHR
+    }),
+    provide(LocationStrategy, {
+        useClass: HashLocationStrategy
     }),
     API,
     Cookie,

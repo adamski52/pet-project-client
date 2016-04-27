@@ -25,8 +25,7 @@ export class SignUpComponent extends MainBaseComponent {
         cellPhone: null,
         address2: null,
         gender: null
-    }
-
+    };
 
     private errors:Object[];
     

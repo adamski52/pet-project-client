@@ -2,7 +2,7 @@
   "name": "storybook-client",
   "version": "1.0.0",
   "scripts": {
-    "start": "gulp clean && gulp"
+    "start": "gulp"
   },
   "devDependencies": {
     "del": "^2.2.0",
