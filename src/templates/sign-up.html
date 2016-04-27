@@ -7,73 +7,60 @@
             <li>Excepteur sint occaecat cupidatat non proident</li>
             <li>Sunt in culpa qui officia deserunt mollit anim id est laborum</li>
         </ul>
-    </div>
-    <ul class="col-xs-12" [hidden]="rForm.valid || rForm.pristine">
-        <li [hidden]="rUsername.valid || rUsername.pristine">Username is required.</li>
-        <li [hidden]="rPassword.valid || rPassword.pristine">Password is required.</li>
-        <li [hidden]="rPassword2.pristine || rPassword.pristine || rPassword.value == rPassword2.value">Passwords do not match.</li>
-        <li [hidden]="rFirstName.valid || rFirstName.pristine">First Name is required.</li>
-        <li [hidden]="rLastName.valid || rLastName.pristine">Last Name is required.</li>
-        <li [hidden]="rGender.pristine || ['', 'F', 'M'].indexOf(rGender.value) > -1">Invalid gender.</li>
-        <li [hidden]="rDOB.valid || rDOB.pristine">Date of Birth is required.</li>
-        <li [hidden]="rAddress.valid || rAddress.pristine">Address is required.</li>
-        <li [hidden]="rAddress2.pristine || rAddress2.value == '' || (rAddress.value != '' && rAddress2.value == '') || (rAddress.value != '' && rAddress2.value != '')">Address is required prior to address line 2.</li>
-        <li [hidden]="rCity.valid || rCity.pristine">City is required.</li>
-        <li [hidden]="rState.valid || rState.pristine">State is required.</li>
-        <li [hidden]="rZIP.valid || rZIP.pristine">ZIP is required.</li>
-        <li [hidden]="rHomePhone.valid || rHomePhone.pristine">Invaid home phone.</li>
-        <li [hidden]="rCellPhone.valid || rCellPhone.pristine">Invalid cell phone.</li>
-    </ul>
 
-    <form class="col-xs-12" #rForm="ngForm">
+    </div>
+
+    <form class="col-xs-12" [ngFormModel]="rForm" (ngSubmit)="onRegister($event)">
         <div class="col-xs-12 col-sm-4">
-            <input type="text" class="form-control" placeholder="USERNAME" required ngControl="rUsername" #rUsername="ngForm">
+            <input type="text" class="form-control" placeholder="USERNAME" required [ngFormControl]="rForm.controls.account.controls.username">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <input type="password" class="form-control" placeholder="PASSWORD" required ngControl="rPassword" #rPassword="ngForm">
+            <input type="password" class="form-control" placeholder="PASSWORD" required [ngFormControl]="rForm.controls.account.controls.passwords.controls.password">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <input type="password" class="form-control" placeholder="CONFIRM PASSWORD" required ngControl="rPassword2" #rPassword2="ngForm">
+            <input type="password" class="form-control" placeholder="CONFIRM PASSWORD" required [ngFormControl]="rForm.controls.account.controls.passwords.controls.password2">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <input type="text" class="form-control" placeholder="FIRST NAME" required ngControl="rFirstName" #rFirstName="ngForm">
+            <input type="text" class="form-control" placeholder="EMAIL" required [ngFormControl]="rForm.controls.account.controls.email">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <input type="text" class="form-control" placeholder="LAST NAME" required ngControl="rLastName" #rLastName="ngForm">
+            <input type="text" class="form-control" placeholder="FIRST NAME" required [ngFormControl]="rForm.controls.personal.controls.firstName">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <select class="form-control" ngControl="rGender" #rGender="ngForm">
-                <option value="">GENDER</option>
+            <input type="text" class="form-control" placeholder="LAST NAME" required [ngFormControl]="rForm.controls.personal.controls.lastName">
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <select class="form-control" required [ngFormControl]="rForm.controls.personal.controls.gender">
                 <option value="F">Female</option>
                 <option value="M">Male</option>
             </select>
         </div>
         <div class="col-xs-12 col-sm-4">
-            <input type="date" class="form-control" placeholder="DOB" required ngControl="rDOB" #rDOB="ngForm">
+            <input type="date" class="form-control" placeholder="DOB" required [ngFormControl]="rForm.controls.personal.controls.dob">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <input type="text" class="form-control" placeholder="ADDRESS" required ngControl="rAddress" #rAddress="ngForm">
+            <input type="text" class="form-control" placeholder="ADDRESS" required [ngFormControl]="rForm.controls.location.controls.address">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <input type="text" class="form-control" placeholder="ADDRESS (Cont)" ngControl="rAddress2" #rAddress2="ngForm">
+            <input type="text" class="form-control" placeholder="ADDRESS (Cont)" [ngFormControl]="rForm.controls.location.controls.address2">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <input type="text" class="form-control" placeholder="CITY" required ngControl="rCity" #rCity="ngForm">
+            <input type="text" class="form-control" placeholder="CITY" required [ngFormControl]="rForm.controls.location.controls.city">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <input type="text" class="form-control" placeholder="STATE" required ngControl="rState" #rState="ngForm">
+            <input type="text" class="form-control" placeholder="STATE" required [ngFormControl]="rForm.controls.location.controls.state">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <input type="text" class="form-control" placeholder="ZIP" required ngControl="rZIP" #rZIP="ngForm">
+            <input type="text" class="form-control" placeholder="ZIP" required [ngFormControl]="rForm.controls.location.controls.zip">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <input type="tel" class="form-control" placeholder="HOME PHONE" ngControl="rHomePhone" #rHomePhone="ngForm">
+            <input type="tel" class="form-control" placeholder="HOME PHONE" [ngFormControl]="rForm.controls.phones.controls.homePhone">
         </div>
         <div class="col-xs-12 col-sm-4">
-            <input type="tel" class="form-control" placeholder="CELL PHONE" ngControl="rCellPhone" #rCellPhone="ngForm">
+            <input type="tel" class="form-control" placeholder="CELL PHONE" [ngFormControl]="rForm.controls.phones.controls.cellPhone">
         </div>
         <div class="col-xs-12 col-sm-4 pull-right">
-            <button class="btn btn-primary" [disabled]="!rForm.valid">Sign up</button>
+            <button class="btn btn-primary">Sign up</button>
         </div>
     </form>
 </section>
