@@ -1,5 +1,4 @@
 /// <reference path="../../node_modules/angular2/typings/browser.d.ts" />
-
 import {HTTP_PROVIDERS, BrowserXhr} from "angular2/http";
 import {bootstrap} from "angular2/platform/browser";
 import "rxjs/Rx";

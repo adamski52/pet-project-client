@@ -5,6 +5,7 @@ import {NavComponent} from "./nav";
 import {AlertComponent} from "./alert";
 import {UserService} from "../services/user";
 import {LoginService} from "../services/login";
+import {AlertService} from "../services/alert";
 import {AuthRouterComponent} from "./auth-router";
 
 
@@ -26,72 +27,72 @@ import {AuthRouterComponent} from "./auth-router";
             path: '/',
             name: "Home",
             useAsDefault: true,
-            loader: () => ComponentHelper.LoadComponentAsync('HomeComponent','./js/components/home')
+            loader: () => ComponentHelper.LoadComponentAsync('HomeComponent','./app/components/home')
         }),
         new AsyncRoute({
             path: '/login',
             name: "Login",
-            loader: () => ComponentHelper.LoadComponentAsync('LoginComponent','./js/components/login')
+            loader: () => ComponentHelper.LoadComponentAsync('LoginComponent','./app/components/login')
         }),
         new AsyncRoute({
             path: '/logout',
             name: "Logout",
-            loader: () => ComponentHelper.LoadComponentAsync('LogoutComponent','./js/components/logout')
+            loader: () => ComponentHelper.LoadComponentAsync('LogoutComponent','./app/components/logout')
         }),
         new AsyncRoute({
             path: '/about-us',
             name: "About",
-            loader: () => ComponentHelper.LoadComponentAsync('AboutComponent','./js/components/about')
+            loader: () => ComponentHelper.LoadComponentAsync('AboutComponent','./app/components/about')
         }),
         new AsyncRoute({
             path: '/account/my-profile',
             name: "MyProfile",
-            loader: () => ComponentHelper.LoadComponentAsync('ProfileComponent','./js/components/profile')
+            loader: () => ComponentHelper.LoadComponentAsync('ProfileComponent','./app/components/profile')
         }),
         new AsyncRoute({
             path: '/account/my-dogs',
             name: "MyDogs",
-            loader: () => ComponentHelper.LoadComponentAsync('DogsComponent','./js/components/dogs')
+            loader: () => ComponentHelper.LoadComponentAsync('DogsComponent','./app/components/dogs')
         }),
         new AsyncRoute({
             path: '/account/my-alerts',
             name: "MyAlerts",
-            loader: () => ComponentHelper.LoadComponentAsync('NotificationsComponent','./js/components/notifications')
+            loader: () => ComponentHelper.LoadComponentAsync('NotificationsComponent','./app/components/notifications')
         }),
         new AsyncRoute({
             path: '/account/my-appointments',
             name: "MyAppointments",
-            loader: () => ComponentHelper.LoadComponentAsync('AppointmentsComponent','./js/components/appointments')
+            loader: () => ComponentHelper.LoadComponentAsync('AppointmentsComponent','./app/components/appointments')
         }),
         new AsyncRoute({
             path: '/account/my-settings',
             name: "MySettings",
-            loader: () => ComponentHelper.LoadComponentAsync('SettingsComponent','./js/components/settings')
+            loader: () => ComponentHelper.LoadComponentAsync('SettingsComponent','./app/components/settings')
         }),
         new AsyncRoute({
             path: '/contact-us',
             name: "Contact",
-            loader: () => ComponentHelper.LoadComponentAsync('ContactComponent','./js/components/contact')
+            loader: () => ComponentHelper.LoadComponentAsync('ContactComponent','./app/components/contact')
         }),
         new AsyncRoute({
             path: '/our-services',
             name: "Services",
-            loader: () => ComponentHelper.LoadComponentAsync('ServicesComponent','./js/components/services')
+            loader: () => ComponentHelper.LoadComponentAsync('ServicesComponent','./app/components/services')
         }),
         new AsyncRoute({
             path: '/forgot-password',
             name: "ForgotPassword",
-            loader: () => ComponentHelper.LoadComponentAsync('ForgotPasswordComponent','./js/components/forgot-password')
+            loader: () => ComponentHelper.LoadComponentAsync('ForgotPasswordComponent','./app/components/forgot-password')
         }),
         new AsyncRoute({
             path: '/sign-up',
             name: "SignUp",
-            loader: () => ComponentHelper.LoadComponentAsync('SignUpComponent','./js/components/sign-up')
+            loader: () => ComponentHelper.LoadComponentAsync('SignUpComponent','./app/components/sign-up')
         }),
         new AsyncRoute({
             path: '/forgot',
             name: "ForgotPassword",
-            loader: () => ComponentHelper.LoadComponentAsync('ForgotComponent','./js/components/forgot')
+            loader: () => ComponentHelper.LoadComponentAsync('ForgotComponent','./app/components/forgot')
         })
     ]
 )
@@ -99,11 +100,19 @@ import {AuthRouterComponent} from "./auth-router";
 export class AppComponent {
     constructor(private _user:UserService,
                 private _login:LoginService,
-                private _router:Router) {
+                private _router:Router,
+                private _alert:AlertService) {
 
         this._login.data$.subscribe(
             response => {
                 this._user.get();
+            }
+        );
+
+        this._user.data$.subscribe(
+            response => {
+                this._alert.success("Login successful.");
+                this._router.navigate(["MyProfile"]);
             }
         );
 

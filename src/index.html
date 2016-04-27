@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <script>
+    if(document.location.href.indexOf("localhost") > -1) {
+      document.write("<base href='/'>");
+    }
+    else {
+      document.write("<base href='/storybook/'>");
+    }
+  </script>
+  
+  <title>Storybook Kennels</title>
+  
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <script src="vendor/angular2-polyfills.js"></script>
+  <script src="vendor/system.js"></script>
+  <script src="vendor/angular2.dev.js"></script>
+  <script src="vendor/http.js"></script>
+  <script src="vendor/router.js"></script>
+  <script src="vendor/Rx.js"></script>
+  <script>
+      System.config({
+        packages: {
+          app: {
+            defaultExtension: 'js'
+          }
+        }
+      });
+
+      System.import('./app/main.js').catch(function(err){
+        console.error(err);
+      });
+  </script>
+</head>
+<body>
+    <div storybook class="container-fluid"></div>
+</body>
+</html>

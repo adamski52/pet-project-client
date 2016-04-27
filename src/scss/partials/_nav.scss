@@ -27,15 +27,15 @@
         border: 1px solid lighten($brand-accent, 10%);
         border-top: none;
         border-bottom: none;
+    }
 
-        .nav-link {
-            background: #fff;
+    .nav-link {
+        background: #fff;
 
-            &:hover,
-            &:active,
-            &.router-link-active {
-                color: $brand-primary;
-            }
+        &:hover,
+        &:active,
+        &.router-link-active {
+            color: $brand-primary;
         }
     }
 
@@ -301,10 +301,21 @@
         }
     }
 
-    .nav-menu-toggler {
-        .nav-link,
-        .nav-dropdown {
-            background: $body-bg !important;
+    .nav-link {
+        &.nav-menu-toggler {
+            .nav-link,
+            .nav-dropdown {
+                background: $body-bg;
+                color: $gray-dark;
+            }
+
+            .nav-link {
+                &:hover,
+                &:active,
+                &.router-link-active {
+                    color: $brand-primary;
+                }
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-import {Directive, Attribute, ElementRef, DynamicComponentLoader} from "angular2/core";
+import {Directive, Attribute, ViewContainerRef, DynamicComponentLoader} from "angular2/core";
 import {UserService} from "../services/user";
 import {RouterOutlet, Router, ComponentInstruction} from "angular2/router";
 
@@ -8,7 +8,7 @@ import {RouterOutlet, Router, ComponentInstruction} from "angular2/router";
 })
 export class AuthRouterComponent extends RouterOutlet {
   constructor(
-    _elementRef: ElementRef,
+    _elementRef: ViewContainerRef,
     _loader: DynamicComponentLoader,
     private parentRouter: Router,
     @Attribute('name') nameAttr: string,
