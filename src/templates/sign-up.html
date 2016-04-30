@@ -8,9 +8,12 @@
             <li>Sunt in culpa qui officia deserunt mollit anim id est laborum</li>
         </ul>
 
+        <ul>
+            <li *ngFor="#error of errors">{{error.text}}</li>
+        </ul>
     </div>
 
-    <form class="col-xs-12" [ngFormModel]="rForm" (ngSubmit)="onRegister($event)">
+    <form class="col-xs-12" [ngFormModel]="rForm" novalidate (ngSubmit)="onRegister($event)">
         <div class="col-xs-12 col-sm-4">
             <input type="text" class="form-control" placeholder="USERNAME" required [ngFormControl]="rForm.controls.account.controls.username">
         </div>

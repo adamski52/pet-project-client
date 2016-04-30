@@ -2,10 +2,43 @@ export class ValidationService {
     static errors = {
         email: "Invalid email address.",
         allMatch: "Values do not match.",
-        atLeastOne: "At least one value is required."
+        atLeastOne: "At least one value is required.",
+        required: "Field is required."
     }
 
-    static getErrors(type) {
+    static getControlErrors(control) {
+        console.log("ERRORS FOR", control);
+        var results = [],
+            childResults,
+            errs,
+            obj;
+
+        for(var c in control.controls) {
+            childResults = ValidationService.getControlErrors(control.controls[c]);
+            if(childResults) {
+                results.push(childResults);
+            }
+
+
+            errs = control.controls[c]._errors;
+            if(errs) {
+                obj = {
+                    name: c,
+                    errors: []
+                };
+
+                for(var e in control.controls[c]._errors) {
+                    obj.errors.push(ValidationService.getErrorMsg(e));
+                }
+
+                results.push(obj);
+            }
+        }
+
+        return [].concat(...results);
+    }
+
+    static getErrorMsg(type) {
         return ValidationService.errors[type] || "Invalid value.";
     }
 
@@ -81,6 +114,5 @@ export class ValidationService {
 
     static phoneNumber(control) {
         let match = control.value.match(/^\d{3}-\d{3}-\d{4}$/);
-        console.log(match);
     }
 }

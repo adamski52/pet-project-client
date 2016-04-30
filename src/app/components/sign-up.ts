@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES, FormBuilder, Validators} from 'angular2/common';
 import {MainBaseComponent} from './main-base-component';
+import {NgFor} from "angular2/common";
 
 import {LoginService} from "../services/login";
 import {AlertService} from "../services/alert";
@@ -11,21 +12,21 @@ import {ValidationService} from "../services/validation";
     selector: "[enroll]",
     templateUrl: "templates/sign-up.html",
     directives: [
-        FORM_DIRECTIVES
+        FORM_DIRECTIVES,
+        NgFor
     ]
 })
 
 export class SignUpComponent extends MainBaseComponent {
     private rForm;
+    private errors:Object[];
     constructor(private _alert: AlertService,
                 private _login: LoginService,
                 private _nav: NavService,
                 private _formBuilder: FormBuilder) {
         super(_nav);
-    }
-
-    ngOnInit() {
-      this.rForm = this._formBuilder.group({
+    
+        this.rForm = this._formBuilder.group({
             account: this._formBuilder.group({
                 username: ["", Validators.required],
                 passwords: this._formBuilder.group({
@@ -44,7 +45,7 @@ export class SignUpComponent extends MainBaseComponent {
             }),
             location: this._formBuilder.group({
                 address: ["", Validators.required],
-                address2: ["", Validators.required],
+                address2: [""],
                 city: ["", Validators.required],
                 state: ["", Validators.required],
                 zip: ["", Validators.compose([Validators.required, ValidationService.zipCode])]
@@ -61,9 +62,9 @@ export class SignUpComponent extends MainBaseComponent {
     }
 
     validateForm(data) {
-      if(!this.rForm.controls.account.controls.passwords.valid) {
-
-      }
+        if(this.rForm.valid) {
+            return;
+        }
     }
 
     onRegister(e?:Event) {
@@ -71,7 +72,7 @@ export class SignUpComponent extends MainBaseComponent {
             e.preventDefault();
         }
 
-        console.log(this.rForm.value);
+        console.log(ValidationService.getControlErrors(this.rForm.controls.location));
     }
 
     onLogin(username:string, password:string, e?:Event) {
