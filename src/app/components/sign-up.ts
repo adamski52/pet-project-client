@@ -3,6 +3,7 @@ import {FORM_DIRECTIVES, FormBuilder, Validators} from 'angular2/common';
 import {MainBaseComponent} from './main-base-component';
 import {NgFor} from "angular2/common";
 
+import {EntryBaseComponent} from "./entry-base";
 import {LoginService} from "../services/login";
 import {AlertService} from "../services/alert";
 import {NavService} from "../services/nav";
@@ -13,6 +14,7 @@ import {ValidationService} from "../services/validation";
     templateUrl: "templates/sign-up.html",
     directives: [
         FORM_DIRECTIVES,
+        EntryBaseComponent,
         NgFor
     ]
 })

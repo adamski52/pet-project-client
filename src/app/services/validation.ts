@@ -1,54 +1,11 @@
 export class ValidationService {
-    static errors = {
-        email: "Invalid email address.",
-        allMatch: "Values do not match.",
-        atLeastOne: "At least one value is required.",
-        required: "Field is required."
-    }
-
-    static getControlErrors(control) {
-        console.log("ERRORS FOR", control);
-        var results = [],
-            childResults,
-            errs,
-            obj;
-
-        for(var c in control.controls) {
-            childResults = ValidationService.getControlErrors(control.controls[c]);
-            if(childResults) {
-                results.push(childResults);
-            }
-
-
-            errs = control.controls[c]._errors;
-            if(errs) {
-                obj = {
-                    name: c,
-                    errors: []
-                };
-
-                for(var e in control.controls[c]._errors) {
-                    obj.errors.push(ValidationService.getErrorMsg(e));
-                }
-
-                results.push(obj);
-            }
-        }
-
-        return [].concat(...results);
-    }
-
-    static getErrorMsg(type) {
-        return ValidationService.errors[type] || "Invalid value.";
-    }
-
     static email(control) {
         if (control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
             return null;
         }
 
         return {
-            email: true
+            format: true
         };
     }
 
@@ -69,7 +26,7 @@ export class ValidationService {
             }
             else if(val != control.value) {
                 return {
-                    mismatched: true
+                    mismatch: true
                 }
             }
         }
@@ -98,7 +55,7 @@ export class ValidationService {
         }
 
         return {
-            allBlank: true
+            either: true
         };
     }
 
@@ -108,7 +65,7 @@ export class ValidationService {
         }
 
         return {
-            zipCode: true
+            format: true
         };
     }
 

@@ -1,12 +1,17 @@
-@mixin animate($duration, $delay: 0s, $what: all) {
-    -webkit-transition-property: $what;
-    transition-property: $what;
+@mixin animate($duration, $delay: 0s, $wat: all) {
+    -webkit-transition-property: $wat;
+    transition-property: $wat;
 
     -webkit-transition-duration: $duration;
     transition-duration: $duration;
 
     -webkit-transition-delay: $delay;
     transition-delay: $delay;
+}
+
+@mixin fancyAnimate($wat...) {
+    -webkit-transition: $wat;
+    transition: $wat;
 }
 
 @mixin unanimate() {
