@@ -6,18 +6,17 @@ import {FormControl} from "angular2/common";
     inputs: ["label", "control"],
     outputs: ["ngFormControl"],
     template: `
-        <div class="input-group sb-entry-group">
-            <label class="input-group-addon sb-entry-group-label">{{label}}</label>
-            <ng-content></ng-content>
-            <span [ngClass]="getClass()">
-                <span class="sb-toggle-content icon-{{icon}}">{{message}}</span>
+        <div class="sb-entry-group">
+            <label class="sb-entry-group-label">{{label}}</label>
+            <span class="sb-entry-group-content">
+                <ng-content></ng-content>
             </span>
+            <span [ngClass]="getClass()">{{message}}</span>
         </div>
     `
 })
 
 export class EntryBaseComponent {
-    private icon:string = "";
     private status:string = "";
     private message:string = "";
 
@@ -25,36 +24,26 @@ export class EntryBaseComponent {
     // TODO:  Make this recursive.
     private updateErrors():void {
         if(this.control._parent && this.control._parent.errors) {
-            this.icon = "exclamation-triangle";
-            this.status = "warning";
-
-            let numErrors = Object.keys(this.control._parent.errors).length;
-
-            if(numErrors > 1) {
-                this.message = numErrors;
-                return;
-            }
-
-            this.icon = "exclamation-triangle";
             this.status = "warning";
             this.message = Object.keys(this.control._parent.errors)[0];
-            this.isOpen = true;
+
+            let numErrors = Object.keys(this.control._parent.errors).length;
+            if(numErrors > 1) {
+                this.message = numErrors;
+            }
+
             return;
         }
 
         if(this.control.pristine) {
-            if(!this.control.valid) {
-                this.icon = "asterisk";
-                this.status = "";
-                this.message = "Required";
-                this.isOpen = true;
-                return;
-            }
-
-            this.icon = "thumbs-up";
             this.status = "success";
             this.message = "Optional";
-            this.isOpen = true;
+
+            if(!this.control.valid) {
+                this.status = "";
+                this.message = "Required";
+            }
+            
             return;
         }
 
@@ -62,37 +51,40 @@ export class EntryBaseComponent {
         let numErrors = this.control.errors ? Object.keys(this.control.errors).length : 0;
 
         if(numErrors > 0) {
-            this.icon = "exclamation-triangle";
             this.status = "danger";
-            this.isOpen = true;
-            
+            this.message = Object.keys(this.control.errors)[0];
+
             if(numErrors > 1) {
                 this.message = numErrors;
-                return;
             }
-
-            this.message = Object.keys(this.control.errors)[0];
 
             return;
         }
     
-        this.icon = "thumbs-up";
         this.status = "success";
         this.message = "OK";
-        this.isOpen = false;
     }
 
     getClass() {
-        return {
-            "sb-toggle-x-off": !this.isOpen,
-            "input-group-addon": true,
-            "sb-success": this.status == "success",
-            "sb-danger": this.status == "danger",
-            "sb-info": this.status == "info",
-            "sb-warning": this.status == "warning",
-            "sb-toggle": true,
-            "sb-toggle-x": true
+        let classList = {
+            "sb-entry-group-message": true
         };
+
+        switch(this.status) {
+            case "warning":
+            case "danger":
+                classList["icon-exclamation-triangle"] = true;
+                break;
+            case "success":
+                classList["icon-thumbs-up"] = true;
+                break;
+            default:
+                break;
+        }
+
+        classList["sb-" + this.status] = true;
+
+        return classList;
     }
 
     constructor() {}
@@ -102,7 +94,5 @@ export class EntryBaseComponent {
             value => this.updateErrors()
         );
         this.updateErrors();
-
-        console.log(this.label, this.control);
     }
 }
