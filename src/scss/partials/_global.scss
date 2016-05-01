@@ -159,7 +159,7 @@ footer {
     .sb-entry-group-message {
         font-family: $font-family-sans-serif;
         font-weight: normal;
-        width: 25%;
+        width: 30%;
         line-height: 1.2em;
         font-size: .6em;
         text-transform: uppercase;
@@ -177,7 +177,7 @@ footer {
     }
 
     .sb-entry-group-content {
-        width: 50%;
+        width: 40%;
         //@include make-xs-column(6);
 
         & > * {
@@ -242,6 +242,10 @@ footer {
     color: $btn-warning-bg;
 }
 
+.sb-clear-fix {
+    clear: both;
+}
+
 @media (min-width: $screen-sm-min) {
     .section {
         margin: $padding-large;
@@ -259,5 +263,18 @@ footer {
         margin: $padding-xlarge;
         padding: $padding-xlarge;
         border-radius: $padding-xlarge;
+    }
+}
+
+@media (min-width: $screen-lg-min) {
+    .sb-entry-group {
+        .sb-entry-group-label,
+        .sb-entry-group-message {
+            width: 25%;
+        }
+
+        .sb-entry-group-content {
+            width: 50%;
+        }
     }
 }
