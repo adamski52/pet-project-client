@@ -14,101 +14,93 @@
     </div>
 
     <form class="col-xs-12" [ngFormModel]="rForm" novalidate (ngSubmit)="onRegister($event)">
-        <div class="col-sm-12 col-md-6">
-            <entry label="Username" [control]="rForm.controls.account.controls.username">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.account.controls.username">
-            </entry>
+        <div entry label="Username" [control]="rForm.controls.account.controls.username">
+            <input type="text" [ngFormControl]="rForm.controls.account.controls.username">
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <entry label="Password" [control]="rForm.controls.account.controls.passwords.controls.password">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.account.controls.passwords.controls.password">
-            </entry>
+        <div entry label="Email Address" [control]="rForm.controls.account.controls.email">
+            <input type="text" [ngFormControl]="rForm.controls.account.controls.email">
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <entry label="Confirm Password" [control]="rForm.controls.account.controls.passwords.controls.password2">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.account.controls.passwords.controls.password2">
-            </entry>
+        <div entrygroup label="Passwords" [control]="rForm.controls.account.controls.passwords">
+            <div entry label="Password" [control]="rForm.controls.account.controls.passwords.controls.password">
+                <input type="text" [ngFormControl]="rForm.controls.account.controls.passwords.controls.password">
+            </div>
+
+            <div entry label="Confirm Password" [control]="rForm.controls.account.controls.passwords.controls.password2">
+                <input type="text" [ngFormControl]="rForm.controls.account.controls.passwords.controls.password2">
+            </div>
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <entry label="Email Address" [control]="rForm.controls.account.controls.email">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.account.controls.email">
-            </entry>
+        <div entry label="First Name" [control]="rForm.controls.personal.controls.firstName">
+            <input type="text" [ngFormControl]="rForm.controls.personal.controls.firstName">
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <entry label="First Name" [control]="rForm.controls.personal.controls.firstName">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.personal.controls.firstName">
-            </entry>
+        <div entry label="Last Name" [control]="rForm.controls.personal.controls.lastName">
+            <input type="text" [ngFormControl]="rForm.controls.personal.controls.lastName">
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <entry label="Last Name" [control]="rForm.controls.personal.controls.firstName">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.personal.controls.lastName">
-            </entry>
+        <div entry label="Gender" [control]="rForm.controls.personal.controls.gender">
+            <select [ngFormControl]="rForm.controls.personal.controls.gender">
+                <option value="F">Female</option>
+                <option value="M">Male</option>
+            </select>
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <entry label="Gender" [control]="rForm.controls.personal.controls.gender">
-                <select class="form-control" [ngFormControl]="rForm.controls.personal.controls.gender">
-                    <option value="F">Female</option>
-                    <option value="M">Male</option>
+        <div entrygroup label="Date of Birth" [control]="rForm.controls.personal.controls.dob">
+            <div entry label="Month" [control]="rForm.controls.personal.controls.dob.controls.month">
+                <select [ngFormControl]="rForm.controls.personal.controls.dob.controls.month">
+                    <option *ngFor="#month of months" value="month.value">{{month.name}}</option>
                 </select>
-            </entry>
-        </div>
+            </div>
 
-        <div class="col-sm-12 col-md-6">
-            <entry label="Date of Birth" [control]="rForm.controls.personal.controls.dob">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.personal.controls.dob">
-            </entry>
-        </div>
-
-        <div class="col-sm-12 col-md-6">
-            <entry label="Address" [control]="rForm.controls.location.controls.address">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.location.controls.address">
-            </entry>
-        </div>
-
-        <div class="col-sm-12 col-md-6">
-            <entry label="Address (St., Apt.)" [control]="rForm.controls.location.controls.address2">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.location.controls.address2">
-            </entry>
-        </div>
-
-        <div class="col-sm-12 col-md-6">
-            <entry label="City" [control]="rForm.controls.location.controls.city">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.location.controls.city">
-            </entry>
-        </div>
-
-        <div class="col-sm-12 col-md-6">
-            <entry label="State" [control]="rForm.controls.location.controls.state">
-                <select class="form-control" [ngFormControl]="rForm.controls.location.controls.state">
-                    <option value="MI">Michigan</option>
-                    <option value="OH">Ohio</option>
-                    <option value="OT">Ontario</option>
+            <div entry label="Date" [control]="rForm.controls.personal.controls.dob.controls.date">
+                <select [ngFormControl]="rForm.controls.personal.controls.dob.controls.date">
+                    <option *ngFor="#date of dates" value="date">{{date}}</option>
                 </select>
-            </entry>
+            </div>
+
+            <div entry label="Year" [control]="rForm.controls.personal.controls.dob.controls.year">
+                <select [ngFormControl]="rForm.controls.personal.controls.dob.controls.year">
+                    <option *ngFor="#year of years" value="year">{{year}}</option>
+                </select>
+            </div>
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <entry label="ZIP Code" [control]="rForm.controls.location.controls.zip">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.location.controls.zip">
-            </entry>
+        <div entrygroup label="Street Address" [control]="rForm.controls.location.controls.address">
+            <div entry label="Line 1" [control]="rForm.controls.location.controls.address">
+                <input type="text" [ngFormControl]="rForm.controls.location.controls.address">
+            </div>
+
+            <div entry label="Line 2" [control]="rForm.controls.location.controls.address2">
+                <input type="text" [ngFormControl]="rForm.controls.location.controls.address2">
+            </div>
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <entry label="Home Phone" [control]="rForm.controls.phones.controls.homePhone">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.phones.controls.homePhone">
-            </entry>
+        <div entry label="City" [control]="rForm.controls.location.controls.city">
+            <input type="text" [ngFormControl]="rForm.controls.location.controls.city">
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <entry label="Cell Phone" [control]="rForm.controls.phones.controls.cellPhone">
-                <input type="text" class="form-control" [ngFormControl]="rForm.controls.phones.controls.cellPhone">
-            </entry>
+        <div entry label="State" [control]="rForm.controls.location.controls.state">
+            <select [ngFormControl]="rForm.controls.location.controls.state">
+                <option value="MI">Michigan</option>
+                <option value="OH">Ohio</option>
+                <option value="OT">Ontario</option>
+            </select>
+        </div>
+
+        <div entry label="ZIP Code" [control]="rForm.controls.location.controls.zip">
+            <input type="text" [ngFormControl]="rForm.controls.location.controls.zip">
+        </div>
+
+        <div entrygroup label="Phone Numbers" [control]="rForm.controls.phones">
+            <div entry label="Home Phone" [control]="rForm.controls.phones.controls.homePhone">
+                <input type="text" [ngFormControl]="rForm.controls.phones.controls.homePhone">
+            </div>
+
+            <div entry label="Cell Phone" [control]="rForm.controls.phones.controls.cellPhone">
+                <input type="text" [ngFormControl]="rForm.controls.phones.controls.cellPhone">
+            </div>
         </div>
         
         <div class="col-xs-12 col-sm-4 sb-clear-fix pull-right">

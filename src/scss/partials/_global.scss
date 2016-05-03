@@ -140,10 +140,7 @@ footer {
     border-radius: $padding-small;
     padding: $padding-small;
     border: 1px solid darken($gray-light, 5%);
-
-    .sb-entry-group-label {
-        background: darken($gray-light, 5%);
-    }
+    margin: $padding-small 0;
 
     .sb-entry-group-label,
     .sb-entry-group-content,
@@ -157,13 +154,13 @@ footer {
 
     .sb-entry-group-label,
     .sb-entry-group-message {
+        background: darken($gray-light, 5%);
         font-family: $font-family-sans-serif;
         font-weight: normal;
-        width: 30%;
+        width: 20%;
         line-height: 1.2em;
         font-size: .6em;
         text-transform: uppercase;
-        //@include make-xs-column(3);
     }
 
     .sb-entry-group-message {
@@ -177,14 +174,11 @@ footer {
     }
 
     .sb-entry-group-content {
-        width: 40%;
-        //@include make-xs-column(6);
+        width: 60%;
 
-        & > * {
+        & > input,
+        & > select {
             @extend .form-control;
-            border: 1px solid darken($gray-light, 5%);
-            border-radius: $padding-small;
-            width: 100%;
         }
     }
 
@@ -197,49 +191,49 @@ footer {
 }
 
 .sb-theme {
-    background: $brand-primary;
-    color: #fff;
+    background: $brand-primary !important;
+    color: #fff !important;
 }
 
 .sb-theme-subtle {
-    background: lighten($brand-accent, 15%);
-    color: $brand-primary;
+    background: lighten($brand-accent, 15%) !important;
+    color: $brand-primary !important;
 }
 
 .sb-danger {
-    background: $btn-danger-bg;
-    color: $btn-danger-color;
+    background: $btn-danger-bg !important;
+    color: $btn-danger-color !important;
 }
 
 .sb-danger-subtle {
-    color: $btn-danger-bg;
+    color: $btn-danger-bg !important;
 }
 
 .sb-success {
-    background: $btn-success-bg;
-    color: $btn-success-color;
+    background: $btn-success-bg !important;
+    color: $btn-success-color !important;
 }
 
 .sb-success-subtle {
-    color: $btn-success-bg;
+    color: $btn-success-bg !important;
 }
 
 .sb-info {
-    background: $btn-info-bg;
-    color: $btn-info-color;
+    background: $btn-info-bg !important;
+    color: $btn-info-color !important;
 }
 
 .sb-info-subtle {
-    color: $btn-info-bg;
+    color: $btn-info-bg !important;
 }
 
 .sb-warning {
-    background: $btn-warning-bg;
-    color: $btn-warning-color;
+    background: $btn-warning-bg !important;
+    color: $btn-warning-color !important;
 }
 
 .sb-warning-subtle {
-    color: $btn-warning-bg;
+    color: $btn-warning-bg !important;
 }
 
 .sb-clear-fix {
@@ -254,6 +248,27 @@ footer {
 
         h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
             text-align: left;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .sb-entry-group .sb-entry-group {
+        .sb-entry-group-label,
+        .sb-entry-group-content,
+        .sb-entry-group-message {
+            display: block;
+            width: 100%;
+            margin: 0;
+        }
+
+        .sb-entry-group-label,
+        .sb-entry-group-message {
+            padding: $padding-base 0;
+        }
+
+        .sb-entry-group-content {
+            padding: $padding-small 0;
         }
     }
 }

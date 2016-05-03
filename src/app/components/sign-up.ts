@@ -3,25 +3,32 @@ import {FORM_DIRECTIVES, FormBuilder, Validators} from 'angular2/common';
 import {MainBaseComponent} from './main-base-component';
 import {NgFor} from "angular2/common";
 
-import {EntryBaseComponent} from "./entry-base";
+import {EntryComponent} from "./entry";
+import {EntryGroupComponent} from "./entry-group";
 import {LoginService} from "../services/login";
 import {AlertService} from "../services/alert";
 import {NavService} from "../services/nav";
 import {ValidationService} from "../services/validation";
+import {DateService} from "../services/date";
 
 @Component({
     selector: "[enroll]",
     templateUrl: "templates/sign-up.html",
     directives: [
         FORM_DIRECTIVES,
-        EntryBaseComponent,
+        EntryComponent,
+        EntryGroupComponent,
         NgFor
     ]
 })
 
 export class SignUpComponent extends MainBaseComponent {
     private rForm;
+    private dates:number[];
+    private months:number[];
+    private years:number[];
     private errors:Object[];
+
     constructor(private _alert: AlertService,
                 private _login: LoginService,
                 private _nav: NavService,
@@ -35,22 +42,28 @@ export class SignUpComponent extends MainBaseComponent {
                     password: ["", Validators.required],
                     password2: ["", Validators.required]
                 }, {
-                    validator: ValidationService.allMatch
+                    validator: Validators.compose([ValidationService.allMatch, Validators.required])
                 }),
-                email: ["", Validators.compose([Validators.required, ValidationService.email])]
+                email: ["", Validators.compose([ValidationService.email, Validators.required])]
             }),
             personal: this._formBuilder.group({
                 firstName: ["", Validators.required],
                 lastName: ["", Validators.required],
                 gender: ["", Validators.required],
-                dob: ["", Validators.required]
+                dob: this._formBuilder.group({
+                  month: ["", Validators.required],
+                  date: ["", Validators.required],
+                  year: ["", Validators.required]
+                }, {
+                  validator: ValidationService.allRequired
+                })
             }),
             location: this._formBuilder.group({
                 address: ["", Validators.required],
                 address2: [""],
                 city: ["", Validators.required],
                 state: ["", Validators.required],
-                zip: ["", Validators.compose([Validators.required, ValidationService.zipCode])]
+                zip: ["", Validators.compose([ValidationService.zipCode, Validators.required])]
             }),
             phones: this._formBuilder.group({
                 homePhone: ["", ValidationService.phoneNumber],
@@ -61,6 +74,10 @@ export class SignUpComponent extends MainBaseComponent {
         });
 
         this.rForm.valueChanges.subscribe(data => this.validateForm(data));
+
+        this.months = DateService.getMonths();
+        this.dates = DateService.getDates();
+        this.years = DateService.getYears();
     }
 
     validateForm(data) {
